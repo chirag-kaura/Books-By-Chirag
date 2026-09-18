@@ -646,3 +646,1264 @@ But how does Python store values such as order IDs, customer names, quantities, 
 To answer that, we need to understand **variables and data types**.
 
 **Next: Section 2 — Understanding Python Syntax.**
+
+
+2. Understanding Python Syntax
+
+Before writing larger Python programs, we need to understand how Python code is structured.
+
+Every programming language has a set of rules that determine how instructions must be written. These rules are called syntax.
+
+For example, in English:
+
+The customer placed an order.
+
+This sentence follows the rules of English grammar.
+
+In Python:
+
+print("The customer placed an order.")
+
+This follows Python’s syntax rules.
+
+If we break those rules, Python may not understand our instructions and will raise an error.
+
+2.1 What Is Syntax?
+
+Syntax is the set of rules that defines how Python code must be written.
+
+Consider this valid Python statement:
+
+print("Welcome to NovaMart")
+
+Python understands that:
+
+print is a built-in function.
+
+"Welcome to NovaMart" is a string.
+
+Parentheses contain the value passed to the function.
+
+Now consider this invalid statement:
+
+print("Welcome to NovaMart"
+
+The closing parenthesis is missing.
+
+Python will raise a SyntaxError because the instruction is incomplete.
+
+Example
+customer_name = "Chirag"
+print(customer_name)
+
+Output:
+
+Chirag
+
+The code follows Python syntax because:
+
+The variable name is valid.
+
+The assignment operator = is used correctly.
+
+The string is enclosed in quotation marks.
+
+The print() function is written correctly.
+
+2.2 Python Uses Indentation
+
+One of the most important features of Python is indentation.
+
+Indentation means adding spaces at the beginning of a line.
+
+Many programming languages use curly braces {} to define blocks of code. Python generally uses indentation instead.
+
+For example:
+
+order_value = 1500
+
+if order_value > 1000:
+    print("Eligible for premium delivery")
+
+Output:
+
+Eligible for premium delivery
+
+The indented line belongs to the if block.
+
+if condition:
+    indented statement
+
+The colon : indicates that a code block is starting.
+
+The indentation tells Python which statements belong to that block.
+
+Incorrect indentation
+order_value = 1500
+
+if order_value > 1000:
+print("Eligible for premium delivery")
+
+This produces an error similar to:
+
+IndentationError: expected an indented block
+Correct indentation
+order_value = 1500
+
+if order_value > 1000:
+    print("Eligible for premium delivery")
+Recommended indentation
+
+The standard convention is to use four spaces for each indentation level.
+
+if order_value > 1000:
+    print("Premium order")
+
+    if order_value > 5000:
+        print("High-value premium order")
+
+The second if statement is nested inside the first if statement.
+
+Visual representation
+if order_value > 1000:
+    print("Premium order")
+
+    if order_value > 5000:
+        print("High-value premium order")
+
+The indentation levels are:
+
+Level 0: if order_value > 1000:
+Level 1:     print("Premium order")
+Level 1:     if order_value > 5000:
+Level 2:         print("High-value premium order")
+Important rule
+
+Do not mix tabs and spaces within the same code block.
+
+Use four spaces consistently.
+
+Most modern code editors, including VS Code, can automatically insert spaces when you press the Tab key.
+
+2.3 Code Blocks
+
+A code block is a group of statements that belong together.
+
+Python uses indentation to define code blocks in:
+
+if statements
+
+for loops
+
+while loops
+
+functions
+
+classes
+
+exception handling
+
+context managers
+
+Example: Conditional block
+order_status = "shipped"
+
+if order_status == "shipped":
+    print("Send shipping notification")
+    print("Update customer dashboard")
+
+print("Process completed")
+
+Output:
+
+Send shipping notification
+Update customer dashboard
+Process completed
+
+The first two print() statements belong to the if block.
+
+The last statement is outside the block because it is not indented.
+
+Example: Function block
+def calculate_total(price, quantity):
+    total = price * quantity
+    return total
+
+The statements inside the function are indented.
+
+def calculate_total(price, quantity):
+    total = price * quantity
+    return total
+
+The function ends when the indentation returns to the previous level.
+
+2.4 Comments in Python
+
+A comment is text written inside the code to explain what the code does.
+
+Python ignores comments during execution.
+
+Comments are useful for:
+
+Explaining business logic
+
+Documenting assumptions
+
+Making code easier to understand
+
+Temporarily disabling a line
+
+Helping teammates maintain the code
+
+Single-line comments
+
+A single-line comment begins with #.
+
+# Store the customer's order value
+order_value = 2500
+
+print(order_value)
+
+Python ignores this line:
+
+# Store the customer's order value
+Inline comments
+
+A comment can also appear after a statement.
+
+order_value = 2500  # Order value in Indian rupees
+Multiple comments
+# Step 1: Read the order value
+order_value = 2500
+
+# Step 2: Calculate the delivery charge
+delivery_charge = 50
+
+# Step 3: Calculate the final amount
+final_amount = order_value + delivery_charge
+
+print(final_amount)
+
+Output:
+
+2550
+Good comments
+
+Good comments explain why something is done.
+
+# Apply free delivery for orders above the premium threshold
+if order_value >= 2000:
+    delivery_charge = 0
+Weak comments
+
+Weak comments only repeat what the code already says.
+
+# Add 50 to order value
+final_amount = order_value + 50
+
+The code already explains the operation.
+
+Best practice
+
+Use comments to explain:
+
+Business rules
+
+Important assumptions
+
+Non-obvious decisions
+
+Temporary workarounds
+
+Data quality considerations
+
+Avoid writing comments for every simple line.
+
+2.5 Docstrings
+
+A docstring is a string used to document a function, class, or module.
+
+Docstrings are usually written using triple quotes.
+
+def calculate_total(price, quantity):
+    """
+    Calculate the total value of an order.
+    """
+    return price * quantity
+
+The text inside the triple quotes describes the purpose of the function.
+
+Function docstring example
+def calculate_delivery_charge(order_value):
+    """
+    Return the delivery charge based on the order value.
+
+    Orders above or equal to 2000 receive free delivery.
+    """
+    if order_value >= 2000:
+        return 0
+
+    return 50
+
+Docstrings are useful because tools such as Python help systems and documentation generators can read them.
+
+You can inspect a function’s documentation using:
+
+help(calculate_delivery_charge)
+Comments vs docstrings
+
+Feature
+
+	
+
+Comments
+
+	
+
+Docstrings
+
+
+
+
+Begins with
+
+	
+
+#
+
+	
+
+Quotes, usually """
+
+
+
+
+Main purpose
+
+	
+
+Explain code
+
+	
+
+Document modules, functions, and classes
+
+
+
+
+Used by help()
+
+	
+
+No
+
+	
+
+Yes
+
+
+
+
+Executed as Python expression
+
+	
+
+No
+
+	
+
+Yes, when placed appropriately
+
+2.6 Statements and Expressions
+
+To understand Python code clearly, we must distinguish between statements and expressions.
+
+Statement
+
+A statement is an instruction that performs an action.
+
+Examples:
+
+order_value = 1500
+print("Processing order")
+if order_value > 1000:
+    print("Premium order")
+Expression
+
+An expression is a piece of code that produces a value.
+
+Examples:
+
+10 + 20
+price * quantity
+order_value > 1000
+Example
+price = 500
+quantity = 3
+
+total = price * quantity
+
+Here:
+
+price = 500 is an assignment statement.
+
+quantity = 3 is an assignment statement.
+
+price * quantity is an expression.
+
+total = price * quantity is an assignment statement containing an expression.
+
+Expression evaluation
+
+Python evaluates:
+
+price * quantity
+
+If:
+
+price = 500
+quantity = 3
+
+Then:
+
+price * quantity
+
+produces:
+
+1500
+
+This value is assigned to total.
+
+2.7 Assignment Statements
+
+Assignment is used to store a value in a variable.
+
+customer_name = "Chirag"
+order_value = 2500
+
+The assignment operator is:
+
+=
+
+It does not mean mathematical equality.
+
+It means:
+
+Evaluate the expression on the right and store the result in the name on the left.
+
+Example
+order_value = 1000
+order_value = order_value + 500
+
+print(order_value)
+
+Output:
+
+1500
+
+The second statement means:
+
+Read the current value of order_value.
+
+Add 500.
+
+Store the result back in order_value.
+
+Assignment shortcut
+
+Python supports augmented assignment operators.
+
+order_value = 1000
+order_value += 500
+
+print(order_value)
+
+Output:
+
+1500
+
+These two statements are equivalent:
+
+order_value = order_value + 500
+order_value += 500
+
+Other augmented assignment operators include:
+
+order_value -= 100
+order_value *= 2
+order_value /= 5
+NovaMart example
+total_orders = 100
+
+total_orders += 25
+
+print(total_orders)
+
+Output:
+
+125
+
+This can represent the addition of newly received orders to a running count.
+
+2.8 Python Is Case-Sensitive
+
+Python treats uppercase and lowercase letters as different.
+
+For example:
+
+customer_name = "Chirag"
+Customer_name = "Rahul"
+CUSTOMER_NAME = "Amit"
+
+print(customer_name)
+print(Customer_name)
+print(CUSTOMER_NAME)
+
+Output:
+
+Chirag
+Rahul
+Amit
+
+These are three different variable names.
+
+customer_name
+Customer_name
+CUSTOMER_NAME
+Common mistake
+order_value = 2500
+
+print(Order_value)
+
+This raises:
+
+NameError
+
+because Order_value and order_value are different names.
+
+Best practice
+
+Use lowercase variable names with underscores:
+
+order_value = 2500
+customer_name = "Chirag"
+delivery_charge = 50
+2.9 Naming Conventions
+
+Python allows names for:
+
+Variables
+
+Functions
+
+Classes
+
+Modules
+
+Constants
+
+Good naming improves readability and maintainability.
+
+Rules for valid names
+
+A Python name:
+
+Can contain letters.
+
+Can contain digits.
+
+Can contain underscores.
+
+Cannot begin with a digit.
+
+Cannot contain spaces.
+
+Cannot be a Python keyword.
+
+Is case-sensitive.
+
+Valid names
+customer_name = "Chirag"
+order_1 = 100
+delivery_charge = 50
+Invalid names
+1st_order = 100
+
+A name cannot begin with a digit.
+
+customer name = "Chirag"
+
+Spaces are not allowed in variable names.
+
+class = "Premium"
+
+class is a Python keyword.
+
+Naming styles
+snake_case
+
+Commonly used for variables and functions.
+
+customer_name = "Chirag"
+calculate_order_total()
+PascalCase
+
+Commonly used for classes.
+
+class OrderProcessor:
+    pass
+
+
+UPPER_CASE
+
+UPPER_CASE is commonly used for constants.
+
+Constants are values that are intended to remain unchanged during program execution.
+
+MAX_RETRY_COUNT = 3
+DEFAULT_DELIVERY_CHARGE = 50
+NovaMart example
+FREE_DELIVERY_THRESHOLD = 2000
+STANDARD_DELIVERY_CHARGE = 50
+
+order_value = 1500
+
+if order_value >= FREE_DELIVERY_THRESHOLD:
+    delivery_charge = 0
+else:
+    delivery_charge = STANDARD_DELIVERY_CHARGE
+
+print(delivery_charge)
+
+Output:
+
+50
+
+Using uppercase names makes important configuration values easy to identify.
+
+Python does not strictly prevent constants from being changed. Uppercase naming is a convention that communicates developer intent.
+
+2.10 Python Keywords
+
+Keywords are reserved words that have special meaning in Python.
+
+Examples include:
+
+if
+else
+elif
+for
+while
+def
+return
+class
+try
+except
+finally
+import
+from
+as
+True
+False
+None
+and
+or
+not
+in
+is
+
+You cannot use these words as variable names.
+
+Invalid example
+class = "Premium"
+
+This produces a syntax error because class is a Python keyword.
+
+Valid example
+order_class = "Premium"
+View Python keywords
+
+You can use Python’s built-in keyword module:
+
+import keyword
+
+print(keyword.kwlist)
+
+This displays the keywords supported by your installed Python version.
+
+2.11 Line Continuation
+
+Python usually treats the end of a line as the end of a statement.
+
+customer_name = "Chirag"
+order_value = 2500
+
+However, long expressions can be split across multiple lines.
+
+Using parentheses
+final_amount = (
+    order_value
+    + delivery_charge
+    + tax_amount
+)
+
+This is easier to read than writing everything on one line.
+
+Example
+order_value = 2500
+delivery_charge = 50
+tax_amount = 100
+
+final_amount = (
+    order_value
+    + delivery_charge
+    + tax_amount
+)
+
+print(final_amount)
+
+Output:
+
+2650
+Explicit line continuation
+
+Python also supports the backslash character \.
+
+final_amount = order_value + \
+               delivery_charge + \
+               tax_amount
+
+Although this works, using parentheses is generally clearer and safer.
+
+Recommended:
+
+final_amount = (
+    order_value
+    + delivery_charge
+    + tax_amount
+)
+2.12 Multiple Statements on One Line
+
+Python allows multiple simple statements on one line using a semicolon.
+
+order_value = 1000; delivery_charge = 50
+
+However, this reduces readability.
+
+Prefer:
+
+order_value = 1000
+delivery_charge = 50
+Best practice
+
+Write one logical statement per line unless there is a strong reason not to.
+
+Readable code is especially important in data engineering because pipelines are often maintained and debugged by multiple people.
+
+2.13 Blank Lines and Readability
+
+Blank lines usually do not affect Python execution, but they improve readability.
+
+Less readable
+order_value = 2500
+delivery_charge = 50
+tax_amount = 100
+final_amount = order_value + delivery_charge + tax_amount
+print(final_amount)
+More readable
+order_value = 2500
+delivery_charge = 50
+tax_amount = 100
+
+final_amount = (
+    order_value
+    + delivery_charge
+    + tax_amount
+)
+
+print(final_amount)
+
+The second version separates:
+
+Input values
+
+Calculation
+
+Output
+
+This makes the code easier to understand.
+
+2.14 Common Syntax Errors
+
+Syntax errors happen when Python cannot understand the structure of the code.
+
+Missing quotation mark
+
+Incorrect:
+
+customer_name = "Chirag
+
+Possible error:
+
+SyntaxError: unterminated string literal
+
+Correct:
+
+customer_name = "Chirag"
+Missing closing parenthesis
+
+Incorrect:
+
+print("Welcome to NovaMart"
+
+Correct:
+
+print("Welcome to NovaMart")
+Missing colon
+
+Incorrect:
+
+if order_value > 1000
+    print("Premium order")
+
+Correct:
+
+if order_value > 1000:
+    print("Premium order")
+Incorrect indentation
+
+Incorrect:
+
+if order_value > 1000:
+print("Premium order")
+
+Correct:
+
+if order_value > 1000:
+    print("Premium order")
+Invalid variable name
+
+Incorrect:
+
+order value = 2500
+
+Correct:
+
+order_value = 2500
+Using a keyword as a variable
+
+Incorrect:
+
+class = "Premium"
+
+Correct:
+
+order_class = "Premium"
+Incorrect comparison operator
+
+Incorrect:
+
+if order_value = 1000:
+    print("Order value is 1000")
+
+Correct:
+
+if order_value == 1000:
+    print("Order value is 1000")
+
+Remember:
+
+= assigns a value.
+
+== compares two values.
+
+2.15 Syntax Errors vs Runtime Errors
+
+Not every error is a syntax error.
+
+Syntax error
+
+Python cannot parse the code.
+
+print("Hello"
+
+Python stops before executing the program.
+
+Runtime error
+
+The code is syntactically valid, but an error occurs while it runs.
+
+order_value = 1000
+delivery_charge = "50"
+
+final_amount = order_value + delivery_charge
+
+This raises a TypeError because Python cannot add an integer and a string.
+
+Logical error
+
+The code runs successfully but produces the wrong result.
+
+order_value = 1000
+delivery_charge = 50
+
+final_amount = order_value - delivery_charge
+
+print(final_amount)
+
+Output:
+
+950
+
+The code is valid Python, but the business logic is incorrect if the delivery charge should be added.
+
+Comparison
+
+Error type
+
+	
+
+Meaning
+
+	
+
+Example
+
+
+
+
+Syntax error
+
+	
+
+Code structure is invalid
+
+	
+
+Missing )
+
+
+
+
+Runtime error
+
+	
+
+Error occurs during execution
+
+	
+
+Adding string and integer
+
+
+
+
+Logical error
+
+	
+
+Code runs but result is wrong
+
+	
+
+Subtracting delivery charge
+
+2.16 NovaMart Syntax Practice
+
+Create the following file:
+
+code\01-python-foundations\01-python-fundamentals\02_python_syntax.py
+
+Add this code:
+
+"""
+Practice Python syntax using a simple NovaMart example.
+"""
+
+# Customer and order information
+customer_name = "Chirag"
+order_value = 2500
+delivery_charge = 0
+
+# Apply the free-delivery rule
+if order_value >= 2000:
+    delivery_charge = 0
+else:
+    delivery_charge = 50
+
+# Calculate the final amount
+final_amount = order_value + delivery_charge
+
+# Display the result
+print("Customer:", customer_name)
+print("Order value:", order_value)
+print("Delivery charge:", delivery_charge)
+print("Final amount:", final_amount)
+
+Run the file from the project root:
+
+python code\01-python-foundations\01-python-fundamentals\02_python_syntax.py
+
+Expected output:
+
+Customer: Chirag
+Order value: 2500
+Delivery charge: 0
+Final amount: 2500
+What this example demonstrates
+
+The program uses:
+
+A module docstring
+
+Comments
+
+Variables
+
+Assignment
+
+An if-else block
+
+Indentation
+
+Comparison operators
+
+Arithmetic expressions
+
+Output using print()
+
+2.17 Syntax Checklist
+
+Before moving forward, verify that you understand:
+
+What Python syntax means
+Why indentation is important
+How code blocks are created
+How to write comments
+The purpose of docstrings
+The difference between statements and expressions
+How assignment works
+Why Python is case-sensitive
+Python naming conventions
+Python keywords
+How to split long expressions
+Common syntax errors
+The difference between syntax, runtime, and logical errors
+2.18 Practice Exercises
+Exercise 1: Customer Information
+
+Create variables for:
+
+customer_name
+customer_city
+customer_age
+
+Print them in a readable format.
+
+Expected output format:
+
+Customer: Chirag
+City: Bengaluru
+Age: 25
+
+Use your own values if required.
+
+Exercise 2: Order Calculation
+
+Create variables:
+
+product_price = 1200
+quantity = 3
+
+Calculate and print the total order value.
+
+Expected output:
+
+Total order value: 3600
+Exercise 3: Delivery Rule
+
+Write a program that:
+
+Gives free delivery when the order value is at least 2000.
+
+Charges 50 otherwise.
+
+Example:
+
+order_value = 1800
+
+Expected output:
+
+Delivery charge: 50
+Exercise 4: Identify the Error
+
+Find and correct the error:
+
+customer_name = "Chirag
+
+print(customer_name)
+Exercise 5: Indentation
+
+Correct this code:
+
+order_value = 3000
+
+if order_value >= 2000:
+print("Free delivery")
+Exercise 6: Naming Convention
+
+Rewrite these variable names using Python’s recommended naming style:
+
+CustomerName
+order-value
+1st_order
+DeliveryCharge
+Exercise 7: Comments and Docstrings
+
+Create a Python file containing:
+
+A module docstring
+
+Two comments
+
+Three variables
+
+One calculation
+
+One output statement
+
+Use a NovaMart order example.
+
+2.19 Interview Questions
+Beginner Questions
+
+What is syntax in Python?
+
+Why is indentation important in Python?
+
+How many spaces are commonly used for indentation?
+
+What is the purpose of a colon : in Python?
+
+What is a comment?
+
+How do you write a single-line comment?
+
+What is a docstring?
+
+Is Python case-sensitive?
+
+What is the difference between = and ==?
+
+What are Python keywords?
+
+Intermediate Questions
+
+What is the difference between a statement and an expression?
+
+How does Python define code blocks?
+
+What happens when indentation is incorrect?
+
+What is the difference between a syntax error and a runtime error?
+
+What is a logical error?
+
+Why should meaningful variable names be used?
+
+What is the recommended naming convention for Python variables?
+
+How can a long Python expression be split across multiple lines?
+
+Why is using semicolons generally discouraged in Python?
+
+What is the difference between comments and docstrings?
+
+Data Engineering Questions
+
+Why is readable Python important in data pipelines?
+
+How can poor naming make a data pipeline difficult to maintain?
+
+Why should business rules be documented in pipeline code?
+
+How can indentation errors affect scheduled ETL jobs?
+
+Why are comments useful when implementing data quality rules?
+
+How can syntax errors be detected before deploying a pipeline?
+
+Why should complex calculations be split across multiple lines?
+
+What is the difference between a syntax error and a data quality issue?
+
+Why should pipeline code use consistent naming conventions?
+
+How can clear code structure help during production debugging?
+
+2.20 Section Summary
+
+In this section, we learned how Python code is structured.
+
+The main concepts were:
+
+Syntax defines the rules for writing Python code.
+
+Indentation is used to define code blocks.
+
+A colon introduces blocks such as if, loops, functions, and classes.
+
+Comments explain code and are ignored during execution.
+
+Docstrings document modules, functions, and classes.
+
+Statements perform actions, while expressions produce values.
+
+Assignment stores values in variables.
+
+Python is case-sensitive.
+
+Meaningful names improve readability.
+
+Keywords cannot be used as variable names.
+
+Parentheses can be used to split long expressions.
+
+Syntax errors prevent Python from parsing code.
+
+Runtime errors occur during execution.
+
+Logical errors produce incorrect results even when code runs.
+
+Connection to the Next Section
+
+Now that we understand how Python code is written, we can explore the values that Python works with.
+
+In the next section, we will learn about:
+
+Variables
+
+Integers
+
+Floats
+
+Strings
+
+Booleans
+
+Data types
+
+Type checking
+
+Type conversion
+
+How Python stores and references values
+
+These concepts will help us process real NovaMart data such as:
+
+Order ID
+Customer Name
+Product Price
+Quantity
+Order Status
+Delivery Completed
