@@ -5554,3 +5554,1729 @@ Completed the exercises.
 Reviewed the interview questions.
 Updated documentation if required.
 Committed and pushed the changes.
+
+
+5. Strings and Text Processing
+
+Strings are one of the most commonly used data types in Python.
+
+In data engineering, strings are used to represent:
+
+Customer names
+
+Product names
+
+Email addresses
+
+Order statuses
+
+File paths
+
+CSV values
+
+JSON fields
+
+API responses
+
+Database text columns
+
+For example, NovaMart may receive customer data like this:
+
+" chirag.kaura@example.com "
+
+Before using this value, we may need to:
+
+Remove extra spaces.
+
+Convert the text to lowercase.
+
+Validate the email format.
+
+Extract the username.
+
+Store the cleaned value.
+
+Python provides many built-in features for working with strings.
+
+5.1 What Is a String?
+
+A string is a sequence of characters enclosed within quotes.
+
+customer_name = "Chirag"
+product_name = 'Wireless Mouse'
+order_status = "Delivered"
+
+You can use either single quotes or double quotes.
+
+first_name = "Chirag"
+last_name = 'Kaura'
+
+Both values are strings:
+
+print(type(first_name))
+print(type(last_name))
+
+Output:
+
+<class 'str'>
+<class 'str'>
+
+A string can contain:
+
+Letters
+
+Numbers
+
+Spaces
+
+Symbols
+
+Special characters
+
+customer_id = "CUST1001"
+email = "chirag@example.com"
+address = "Mumbai, India"
+
+Although "1001" contains numbers, it is still a string because it is enclosed in quotes.
+
+5.2 Creating Strings
+Single Quotes
+product_name = 'Laptop'
+Double Quotes
+product_name = "Laptop"
+Triple Quotes
+
+Triple quotes are used for multiline strings.
+
+description = """
+This product is a wireless mouse.
+It has five buttons.
+It is suitable for office use.
+"""
+
+print(description)
+
+Triple quotes are also commonly used for:
+
+Documentation strings.
+
+Long text.
+
+Multiline messages.
+
+SQL queries.
+
+JSON examples.
+
+5.3 Strings Containing Quotes
+
+If a string contains an apostrophe, use double quotes around it:
+
+message = "Customer's order is confirmed"
+
+If a string contains double quotes, use single quotes:
+
+message = 'The customer said "Thank you"'
+
+You can also use an escape character.
+
+message = 'Customer\'s order is confirmed'
+
+print(message)
+
+Output:
+
+Customer's order is confirmed
+Common Escape Characters
+
+Escape Sequence
+
+	
+
+Meaning
+
+
+
+
+\n
+
+	
+
+New line
+
+
+
+
+\t
+
+	
+
+Tab
+
+
+
+
+\\
+
+	
+
+Backslash
+
+
+
+
+\'
+
+	
+
+Single quote
+
+
+
+
+\"
+
+	
+
+Double quote
+
+Example:
+
+print("NovaMart\nOrder Confirmed")
+
+Output:
+
+NovaMart
+Order Confirmed
+
+Example:
+
+print("Product:\tWireless Mouse")
+print("Quantity:\t2")
+
+Output:
+
+Product:    Wireless Mouse
+Quantity:   2
+5.4 String Indexing
+
+A string is a sequence of characters. Each character has a position called an index.
+
+Python uses zero-based indexing.
+
+product_name = "Laptop"
+
+Character
+
+	
+
+L
+
+	
+
+a
+
+	
+
+p
+
+	
+
+t
+
+	
+
+o
+
+	
+
+p
+
+
+
+
+Index
+
+	
+
+0
+
+	
+
+1
+
+	
+
+2
+
+	
+
+3
+
+	
+
+4
+
+	
+
+5
+
+Accessing Characters
+product_name = "Laptop"
+
+print(product_name[0])
+print(product_name[1])
+print(product_name[5])
+
+Output:
+
+L
+a
+p
+Negative Indexing
+
+Negative indexes start from the end.
+
+Character
+
+	
+
+L
+
+	
+
+a
+
+	
+
+p
+
+	
+
+t
+
+	
+
+o
+
+	
+
+p
+
+
+
+
+Negative Index
+
+	
+
+-6
+
+	
+
+-5
+
+	
+
+-4
+
+	
+
+-3
+
+	
+
+-2
+
+	
+
+-1
+
+product_name = "Laptop"
+
+print(product_name[-1])
+print(product_name[-2])
+
+Output:
+
+p
+o
+Index Error
+
+Trying to access an index that does not exist causes an error.
+
+product_name = "Laptop"
+
+print(product_name[10])
+
+This causes:
+
+IndexError
+
+Before accessing an index, remember that valid indexes range from:
+
+0
+
+to:
+
+len(product_name) - 1
+5.5 Finding the Length of a String
+
+Use the len() function to count the number of characters.
+
+product_name = "Laptop"
+
+print(len(product_name))
+
+Output:
+
+6
+
+Spaces are also counted.
+
+customer_name = "Chirag Kaura"
+
+print(len(customer_name))
+
+Output:
+
+12
+NovaMart Example
+order_id = "ORD2026001"
+
+print("Order ID:", order_id)
+print("Order ID Length:", len(order_id))
+
+String length checks are useful for:
+
+Validating IDs.
+
+Checking phone numbers.
+
+Checking postal codes.
+
+Validating text fields.
+
+Detecting empty strings.
+
+5.6 String Slicing
+
+Slicing extracts part of a string.
+
+The syntax is:
+
+string[start:stop]
+
+The start index is included, but the stop index is excluded.
+
+product_name = "Laptop"
+
+print(product_name[0:3])
+
+Output:
+
+Lap
+
+Indexes 0, 1, and 2 are included. Index 3 is excluded.
+
+More Examples
+product_name = "Laptop"
+
+print(product_name[:3])
+print(product_name[3:])
+print(product_name[:])
+
+Output:
+
+Lap
+top
+Laptop
+Using a Step
+
+The syntax can also include a step:
+
+string[start:stop:step]
+
+Example:
+
+product_name = "Laptop"
+
+print(product_name[::2])
+
+Output:
+
+Lpo
+Reversing a String
+product_name = "Laptop"
+
+print(product_name[::-1])
+
+Output:
+
+potpaL
+NovaMart Example
+order_id = "ORD2026001"
+
+prefix = order_id[:3]
+year = order_id[3:7]
+
+print("Prefix:", prefix)
+print("Year:", year)
+
+Output:
+
+Prefix: ORD
+Year: 2026
+5.7 Strings Are Immutable
+
+Strings are immutable, meaning their individual characters cannot be changed directly.
+
+This is not allowed:
+
+product_name = "Laptop"
+
+product_name[0] = "T"
+
+It causes:
+
+TypeError
+Correct Approach
+
+Create a new string:
+
+product_name = "Laptop"
+
+updated_product_name = "T" + product_name[1:]
+
+print(updated_product_name)
+
+Output:
+
+Taptop
+
+Another example:
+
+customer_name = "chirag"
+
+customer_name = customer_name.capitalize()
+
+print(customer_name)
+
+Output:
+
+Chirag
+
+String methods return a new string instead of modifying the original string.
+
+5.8 Common String Methods
+
+Python provides many useful string methods.
+
+lower()
+
+Converts text to lowercase.
+
+status = "DELIVERED"
+
+print(status.lower())
+
+Output:
+
+delivered
+upper()
+
+Converts text to uppercase.
+
+status = "delivered"
+
+print(status.upper())
+
+Output:
+
+DELIVERED
+capitalize()
+
+Capitalizes the first character.
+
+customer_name = "chirag"
+
+print(customer_name.capitalize())
+
+Output:
+
+Chirag
+title()
+
+Capitalizes the first character of each word.
+
+customer_name = "chirag kaura"
+
+print(customer_name.title())
+
+Output:
+
+Chirag Kaura
+strip()
+
+Removes leading and trailing spaces.
+
+customer_name = "  Chirag Kaura  "
+
+print(customer_name.strip())
+
+Output:
+
+Chirag Kaura
+lstrip()
+
+Removes spaces from the left side.
+
+value = "   NovaMart"
+
+print(value.lstrip())
+rstrip()
+
+Removes spaces from the right side.
+
+value = "NovaMart   "
+
+print(value.rstrip())
+replace()
+
+Replaces one piece of text with another.
+
+status = "Order pending"
+
+updated_status = status.replace("pending", "confirmed")
+
+print(updated_status)
+
+Output:
+
+Order confirmed
+find()
+
+Returns the index of the first occurrence of a substring.
+
+email = "chirag@example.com"
+
+print(email.find("@"))
+
+Output:
+
+6
+
+If the substring is not found, find() returns -1.
+
+print(email.find("#"))
+
+Output:
+
+-1
+index()
+
+The index() method also returns the position of a substring.
+
+email = "chirag@example.com"
+
+print(email.index("@"))
+
+Output:
+
+6
+
+However, unlike find(), index() raises a ValueError if the substring is not found.
+
+print(email.index("#"))
+
+This causes:
+
+ValueError
+Difference Between find() and index()
+
+Method
+
+	
+
+If value is found
+
+	
+
+If value is missing
+
+
+
+
+find()
+
+	
+
+Returns index
+
+	
+
+Returns -1
+
+
+
+
+index()
+
+	
+
+Returns index
+
+	
+
+Raises ValueError
+
+Practical rule: Use find() when the value may not exist and you want to handle the result safely.
+
+5.9 Counting and Checking Text
+count()
+
+Counts how many times a substring appears.
+
+order_status = "Pending, Processing, Pending"
+
+print(order_status.count("Pending"))
+
+Output:
+
+2
+startswith()
+
+Checks whether a string starts with a specific value.
+
+order_id = "ORD2026001"
+
+print(order_id.startswith("ORD"))
+
+Output:
+
+True
+endswith()
+
+Checks whether a string ends with a specific value.
+
+file_name = "orders.csv"
+
+print(file_name.endswith(".csv"))
+
+Output:
+
+True
+
+These methods are useful for checking:
+
+File extensions.
+
+Order ID prefixes.
+
+Product code formats.
+
+API paths.
+
+Customer identifiers.
+
+5.10 Checking String Content
+isdigit()
+
+Checks whether all characters are digits.
+
+quantity = "25"
+
+print(quantity.isdigit())
+
+Output:
+
+True
+
+A decimal value returns False:
+
+price = "299.99"
+
+print(price.isdigit())
+
+Output:
+
+False
+
+The decimal point is not a digit.
+
+isalpha()
+
+Checks whether all characters are alphabetic.
+
+customer_name = "Chirag"
+
+print(customer_name.isalpha())
+
+Output:
+
+True
+
+A string containing spaces returns False:
+
+customer_name = "Chirag Kaura"
+
+print(customer_name.isalpha())
+
+Output:
+
+False
+isalnum()
+
+Checks whether all characters are letters or numbers.
+
+customer_id = "CUST1001"
+
+print(customer_id.isalnum())
+
+Output:
+
+True
+
+A hyphen causes False:
+
+product_code = "NM-LAP-1001"
+
+print(product_code.isalnum())
+
+Output:
+
+False
+isspace()
+
+Checks whether the string contains only whitespace.
+
+value = "   "
+
+print(value.isspace())
+
+Output:
+
+True
+in Operator
+
+Checks whether a substring exists inside another string.
+
+email = "chirag@example.com"
+
+print("@" in email)
+print(".com" in email)
+
+Output:
+
+True
+True
+5.11 Splitting and Joining Strings
+split()
+
+The split() method divides a string into a list.
+
+categories = "Electronics,Books,Clothing"
+
+category_list = categories.split(",")
+
+print(category_list)
+
+Output:
+
+['Electronics', 'Books', 'Clothing']
+Splitting by Spaces
+customer_name = "Chirag Kaura"
+
+name_parts = customer_name.split(" ")
+
+print(name_parts)
+
+Output:
+
+['Chirag', 'Kaura']
+join()
+
+The join() method combines string values into one string.
+
+categories = ["Electronics", "Books", "Clothing"]
+
+category_text = ", ".join(categories)
+
+print(category_text)
+
+Output:
+
+Electronics, Books, Clothing
+Important Difference
+text = "A,B,C"
+
+print(text.split(","))
+
+Output:
+
+['A', 'B', 'C']
+values = ["A", "B", "C"]
+
+print(",".join(values))
+
+Output:
+
+A,B,C
+
+split() converts a string into a list.
+
+join() converts a list of strings into one string.
+
+5.12 Cleaning and Normalizing Text
+
+Data received from external systems is often inconsistent.
+
+Example:
+
+raw_status = "  delivered "
+
+The value contains:
+
+Leading spaces.
+
+Trailing spaces.
+
+Lowercase text.
+
+Cleaning the Value
+raw_status = "  delivered "
+
+clean_status = raw_status.strip().lower()
+
+print(clean_status)
+
+Output:
+
+delivered
+Standardizing the Status
+raw_status = "  delivered "
+
+clean_status = raw_status.strip().lower()
+
+if clean_status == "delivered":
+    final_status = "Delivered"
+else:
+    final_status = "Unknown"
+
+print(final_status)
+
+Output:
+
+Delivered
+Normalizing Customer Names
+raw_name = "  chirag kaura  "
+
+clean_name = raw_name.strip().title()
+
+print(clean_name)
+
+Output:
+
+Chirag Kaura
+Normalizing Email Addresses
+raw_email = "  CHIRAG@EXAMPLE.COM "
+
+clean_email = raw_email.strip().lower()
+
+print(clean_email)
+
+Output:
+
+chirag@example.com
+Normalizing Product Codes
+raw_product_code = " nm-lap-1001 "
+
+product_code = raw_product_code.strip().upper()
+
+print(product_code)
+
+Output:
+
+NM-LAP-1001
+Important Production Principle
+
+Do not apply the same transformation to every text field.
+
+For example:
+
+Names may use .title().
+
+Emails may use .lower().
+
+Product codes may use .upper().
+
+Status values may be mapped to standard values.
+
+Product descriptions should usually preserve their original wording.
+
+5.13 NovaMart Text Processing Example
+
+NovaMart receives the following raw order information:
+
+raw_customer_name = "  chirag kaura "
+raw_email = " CHIRAG@EXAMPLE.COM "
+raw_status = " delivered "
+raw_product_code = " nm-lap-1001 "
+
+Clean the values:
+
+customer_name = raw_customer_name.strip().title()
+email = raw_email.strip().lower()
+status = raw_status.strip().title()
+product_code = raw_product_code.strip().upper()
+
+print("Customer Name:", customer_name)
+print("Email:", email)
+print("Status:", status)
+print("Product Code:", product_code)
+
+Output:
+
+Customer Name: Chirag Kaura
+Email: chirag@example.com
+Status: Delivered
+Product Code: NM-LAP-1001
+Validating an Order ID
+order_id = "ORD2026001"
+
+is_valid_order_id = (
+    order_id.startswith("ORD")
+    and len(order_id) == 10
+)
+
+print("Valid Order ID:", is_valid_order_id)
+
+Output:
+
+Valid Order ID: True
+Extracting Order Information
+order_id = "ORD2026001"
+
+order_prefix = order_id[:3]
+order_year = order_id[3:7]
+order_number = order_id[7:]
+
+print("Prefix:", order_prefix)
+print("Year:", order_year)
+print("Order Number:", order_number)
+
+Output:
+
+Prefix: ORD
+Year: 2026
+Order Number: 001
+5.14 Practical Implementation
+
+Create this file:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\code\01-python-foundations\01-python-fundamentals\05_strings_and_text_processing.py
+
+Add:
+
+"""
+Practice file for strings and text processing.
+
+NovaMart example:
+Cleaning and validating customer, product, and order text.
+"""
+
+
+# 1. Basic strings
+customer_name = "Chirag"
+product_name = "Wireless Mouse"
+order_status = "Delivered"
+
+print("Customer Name:", customer_name)
+print("Product Name:", product_name)
+print("Order Status:", order_status)
+
+
+# 2. String indexing
+print("\nString Indexing:")
+print(product_name[0])
+print(product_name[-1])
+
+
+# 3. String length
+print("\nString Length:")
+print(len(product_name))
+
+
+# 4. String slicing
+order_id = "ORD2026001"
+
+print("\nString Slicing:")
+print("Prefix:", order_id[:3])
+print("Year:", order_id[3:7])
+print("Order Number:", order_id[7:])
+
+
+# 5. String methods
+raw_status = "  delivered "
+
+print("\nString Methods:")
+print("Lower:", raw_status.lower())
+print("Upper:", raw_status.upper())
+print("Stripped:", raw_status.strip())
+print("Title:", raw_status.strip().title())
+
+
+# 6. Searching and checking text
+email = "chirag@example.com"
+
+print("\nSearching and Checking:")
+print("Position of @:", email.find("@"))
+print("Contains @:", "@" in email)
+print("Starts with chirag:", email.startswith("chirag"))
+print("Ends with .com:", email.endswith(".com"))
+
+
+# 7. Text normalization
+raw_customer_name = "  chirag kaura "
+raw_email = " CHIRAG@EXAMPLE.COM "
+raw_product_code = " nm-lap-1001 "
+
+clean_customer_name = raw_customer_name.strip().title()
+clean_email = raw_email.strip().lower()
+clean_product_code = raw_product_code.strip().upper()
+
+print("\nCleaned Data:")
+print("Customer Name:", clean_customer_name)
+print("Email:", clean_email)
+print("Product Code:", clean_product_code)
+
+
+# 8. String validation
+print("\nString Validation:")
+print("Order ID Starts Correctly:", order_id.startswith("ORD"))
+print("Email Contains @:", "@" in clean_email)
+print(
+    "Product Code Is Valid:",
+    clean_product_code.replace("-", "").isalnum()
+)
+
+
+# 9. Splitting and joining
+raw_categories = "electronics, books, clothing"
+
+categories = raw_categories.split(",")
+
+cleaned_categories = []
+
+for category in categories:
+    cleaned_categories.append(category.strip().title())
+
+print("\nCategories:")
+print(cleaned_categories)
+
+category_text = ", ".join(cleaned_categories)
+
+print("Joined Categories:", category_text)
+
+
+# 10. f-string formatting
+quantity = 3
+unit_price = 799.50
+total_amount = quantity * unit_price
+
+print("\nOrder Summary:")
+print(f"Customer: {clean_customer_name}")
+print(f"Product: {product_name}")
+print(f"Quantity: {quantity}")
+print(f"Unit Price: ₹{unit_price:.2f}")
+print(f"Total Amount: ₹{total_amount:.2f}")
+
+
+# 11. Order ID validation
+is_valid_order_id = (
+    order_id.startswith("ORD")
+    and len(order_id) == 10
+)
+
+print("\nOrder ID Validation:")
+print("Is Valid Order ID:", is_valid_order_id)
+5.15 Running the Implementation
+
+From the project root, run:
+
+python code\01-python-foundations\01-python-fundamentals\05_strings_and_text_processing.py
+Verify that:
+
+String values are printed.
+
+Positive indexing works.
+
+Negative indexing works.
+
+String length is displayed.
+
+String slicing extracts the correct order details.
+
+lower(), upper(), strip(), and title() work.
+
+find() returns the correct position.
+
+startswith() and endswith() return Boolean values.
+
+Customer names, emails, and product codes are normalized.
+
+Categories are split into a list.
+
+Categories are joined into a string.
+
+The order summary is displayed using f-strings.
+
+The total amount is formatted to two decimal places.
+
+Order ID validation returns True.
+
+Expected Output
+
+The exact output may vary depending on your code, but it should look similar to:
+
+Customer Name: Chirag
+Product Name: Wireless Mouse
+Order Status: Delivered
+
+String Indexing:
+W
+e
+
+String Length:
+14
+
+String Slicing:
+Prefix: ORD
+Year: 2026
+Order Number: 001
+
+String Methods:
+Lower:   delivered
+Upper:   DELIVERED
+Stripped: delivered
+Title: Delivered
+
+Searching and Checking:
+Position of @: 6
+Contains @: True
+Starts with chirag: True
+Ends with .com: True
+
+Cleaned Data:
+Customer Name: Chirag Kaura
+Email: chirag@example.com
+Product Code: NM-LAP-1001
+
+String Validation:
+Order ID Starts Correctly: True
+Email Contains @: True
+Product Code Is Valid: True
+
+Categories:
+['Electronics', 'Books', 'Clothing']
+Joined Categories: Electronics, Books, Clothing
+
+Order Summary:
+Customer: Chirag Kaura
+Product: Wireless Mouse
+Quantity: 3
+Unit Price: ₹799.50
+Total Amount: ₹2398.50
+
+Order ID Validation:
+Is Valid Order ID: True
+
+The output does not need to match spacing exactly. The important point is that the operations execute successfully and produce the expected values.
+
+5.16 Common Mistakes
+Mistake 1: Forgetting That Indexing Starts at Zero
+product_name = "Laptop"
+
+print(product_name[1])
+
+Output:
+
+a
+
+The first character is at index 0.
+
+Mistake 2: Accessing an Invalid Index
+product_name = "Laptop"
+
+print(product_name[10])
+
+This causes:
+
+IndexError
+
+Use len() to understand the valid index range.
+
+Mistake 3: Trying to Modify a String Directly
+product_name = "Laptop"
+
+product_name[0] = "T"
+
+This causes:
+
+TypeError
+
+Strings are immutable. Create a new string instead.
+
+Mistake 4: Forgetting to Store the Result of a String Method
+customer_name = "chirag"
+
+customer_name.upper()
+
+print(customer_name)
+
+Output:
+
+chirag
+
+The original string remains unchanged.
+
+Correct:
+
+customer_name = customer_name.upper()
+
+print(customer_name)
+
+Output:
+
+CHIRAG
+Mistake 5: Confusing split() and join()
+
+split() converts a string into a list:
+
+text = "A,B,C"
+
+print(text.split(","))
+
+Output:
+
+['A', 'B', 'C']
+
+join() combines strings into one string:
+
+values = ["A", "B", "C"]
+
+print(",".join(values))
+
+Output:
+
+A,B,C
+Mistake 6: Using index() Without Handling Missing Values
+email = "chirag@example.com"
+
+position = email.index("#")
+
+This raises:
+
+ValueError
+
+Use find() when the substring may not exist:
+
+position = email.find("#")
+
+if position == -1:
+    print("Character not found")
+Mistake 7: Assuming isdigit() Handles Decimal Values
+price = "299.99"
+
+print(price.isdigit())
+
+Output:
+
+False
+
+The decimal point is not a digit.
+
+For numeric conversion, use appropriate validation:
+
+price = "299.99"
+
+try:
+    price_number = float(price)
+    print(price_number)
+except ValueError:
+    print("Invalid price")
+Mistake 8: Calling join() on Non-String Values
+
+This causes an error:
+
+quantities = [1, 2, 3]
+
+print(",".join(quantities))
+
+join() expects strings, not integers.
+
+Correct:
+
+quantities = [1, 2, 3]
+
+quantity_text = ",".join(map(str, quantities))
+
+print(quantity_text)
+
+Output:
+
+1,2,3
+5.17 Testing and Production Considerations
+
+Strings are important in data engineering because external data often arrives as text.
+
+Common sources include:
+
+CSV files.
+
+JSON files.
+
+APIs.
+
+Database columns.
+
+Log files.
+
+User input.
+
+Configuration files.
+
+Before processing string values, check:
+
+Leading and trailing spaces.
+
+Uppercase and lowercase differences.
+
+Empty strings.
+
+Missing values.
+
+Unexpected characters.
+
+Invalid formats.
+
+Duplicate separators.
+
+Encoding issues.
+
+Inconsistent status values.
+
+Incorrect identifiers.
+
+Empty String Check
+customer_name = "   "
+
+if customer_name.strip() == "":
+    print("Customer name is missing")
+else:
+    print("Customer name is valid")
+
+Output:
+
+Customer name is missing
+Basic Email Check
+email = "chirag@example.com"
+
+if "@" in email and "." in email:
+    print("Email format appears valid")
+else:
+    print("Invalid email format")
+
+This is only a basic check. Production systems may require stronger validation.
+
+Status Mapping
+
+Instead of relying on exact incoming values, normalize them first:
+
+status_mapping = {
+    "pending": "Pending",
+    "processing": "Processing",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+}
+
+raw_status = " DELIVERED "
+
+normalized_status = raw_status.strip().lower()
+final_status = status_mapping.get(normalized_status, "Unknown")
+
+print(final_status)
+
+Output:
+
+Delivered
+Handling Unknown Statuses
+raw_status = "returned"
+
+normalized_status = raw_status.strip().lower()
+final_status = status_mapping.get(normalized_status, "Unknown")
+
+print(final_status)
+
+Output:
+
+Unknown
+
+In a production pipeline, unknown values should generally be:
+
+Logged.
+
+Counted.
+
+Sent to a validation report.
+
+Reviewed by the data-quality team.
+
+Handled according to business rules.
+
+5.18 Exercises
+Exercise 1: String Information
+
+Create a string containing a product name and print:
+
+First character.
+
+Last character.
+
+Length.
+
+Reversed string.
+
+Exercise 2: Customer Name Cleaning
+
+Given:
+
+customer_name = "   cHIRAG kAURA   "
+
+Convert it into:
+
+Chirag Kaura
+Exercise 3: Email Normalization
+
+Given:
+
+email = "  CHIRAG@EXAMPLE.COM "
+
+Remove spaces and convert the email into lowercase.
+
+Exercise 4: Order ID Extraction
+
+Given:
+
+order_id = "ORD2026001"
+
+Extract:
+
+Prefix.
+
+Year.
+
+Order number.
+
+Exercise 5: Category Cleaning
+
+Given:
+
+categories = " electronics, books , clothing "
+
+Convert it into:
+
+["Electronics", "Books", "Clothing"]
+Exercise 6: Product Code Validation
+
+Given:
+
+product_code = "NM-LAP-1001"
+
+Check whether the product code:
+
+Starts with "NM".
+
+Contains only letters, numbers, and hyphens.
+
+Is uppercase.
+
+Exercise 7: Order Summary
+
+Create an f-string showing:
+
+Customer name.
+
+Product name.
+
+Quantity.
+
+Unit price.
+
+Total amount.
+
+Exercise 8: Status Normalization
+
+Convert each of the following into a standard status:
+
+" delivered "
+"DELIVERED"
+"Delivered"
+" delivered"
+
+Expected result:
+
+Delivered
+Exercise 9: Safe Substring Search
+
+Given:
+
+email = "chirag@example.com"
+
+Use find() to check whether the email contains:
+
+#
+
+Print a meaningful message when the character is not found.
+
+Exercise 10: Convert Numbers Before Joining
+
+Given:
+
+order_ids = [1001, 1002, 1003]
+
+Convert the values into one comma-separated string:
+
+1001,1002,1003
+5.19 Interview Questions
+
+What is a string in Python?
+
+What is zero-based indexing?
+
+What is negative indexing?
+
+How do you find the length of a string?
+
+What is string slicing?
+
+Are Python strings mutable or immutable?
+
+What is the difference between find() and index()?
+
+What does find() return when a substring is not found?
+
+What is the use of strip()?
+
+What is the difference between split() and join()?
+
+What is the difference between replace() and strip()?
+
+How do you check whether a string starts with a specific value?
+
+How do you check whether a string contains only digits?
+
+Why does "299.99".isdigit() return False?
+
+What are f-strings?
+
+How do you format a number to two decimal places?
+
+How would you normalize email addresses?
+
+How would you clean inconsistent order statuses?
+
+How would you validate an order ID using string methods?
+
+Why is string cleaning important in data engineering pipelines?
+
+5.20 Section Summary
+
+In this section, you learned:
+
+What strings are.
+
+How to create strings.
+
+How to use single, double, and triple quotes.
+
+How to use escape characters.
+
+How string indexing works.
+
+How negative indexing works.
+
+How to find string length.
+
+How to slice strings.
+
+Why strings are immutable.
+
+How to use common string methods.
+
+How to search within strings using find().
+
+The difference between find() and index().
+
+How to split and join strings.
+
+How to format text using f-strings.
+
+How to clean and normalize external text data.
+
+How to validate order IDs and product codes.
+
+How string processing is used in data engineering.
+
+Strings are essential when working with:
+
+CSV columns.
+
+JSON fields.
+
+API responses.
+
+Customer records.
+
+Product data.
+
+Database values.
+
+Log messages.
+
+File names and paths.
+
+The next section is:
+
+6. Input and Output
+
+You will learn:
+
+How print() works.
+
+How to take input using input().
+
+How to convert input values.
+
+How to validate user input.
+
+How to build a NovaMart order input program.
+
+5.21 Completion Checklist
+
+Before moving to Section 6, confirm that you have:
+
+Added the remaining Section 5 content.
+Created 05_strings_and_text_processing.py.
+Run the file successfully.
+Practiced string indexing.
+Practiced slicing.
+Practiced find() and index().
+Practiced string methods.
+Practiced splitting and joining.
+Practiced f-strings.
+Practiced text normalization.
+Completed the exercises.
+Reviewed the interview questions.
+Updated documentation if required.
+Committed and pushed the changes.
