@@ -9015,3 +9015,1956 @@ Run the implementation file:
 python code\01-python-foundations\01-python-fundamentals\06_input_and_output.py
 
 Check that the program executes successfully.
+
+
+Section 7 — None and Basic Missing Values
+
+Add the following content to:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\book\01-python-foundations\01-python-fundamentals.md
+
+Place it after Section 6 — Input and Output.
+
+# 7. `None` and Basic Missing Values
+
+In real-world data engineering, values are not always available.
+
+A customer may not provide an email address.  
+A transaction may not have a discount.  
+A delivery record may not contain a completed delivery date.  
+A database column may contain a missing value.
+
+Python represents the absence of a value using a special object called `None`.
+
+Understanding `None` is important because data engineers frequently work with incomplete, missing, or unavailable data.
+
+---
+
+## 7.1 Understanding `None`
+
+`None` is a special Python value that represents the absence of a value.
+
+It is not the same as:
+
+- `0`
+- `False`
+- An empty string `""`
+- An empty list `[]`
+- An empty dictionary `{}`
+
+Example:
+
+```python
+customer_email = None
+
+print(customer_email)
+print(type(customer_email))
+
+Output:
+
+None
+<class 'NoneType'>
+
+The type of None is NoneType.
+
+There is only one None object in a normal Python program.
+
+Example
+delivery_date = None
+
+print(delivery_date)
+
+Output:
+
+None
+
+This means that the delivery date is currently unavailable.
+
+It does not mean that the delivery date is:
+
+"None"
+
+0
+
+False
+
+An empty string
+
+It means that no value has been assigned.
+
+7.2 None Is Not Zero or an Empty Value
+
+It is important to understand the difference between None and other values.
+
+value_none = None
+value_zero = 0
+value_false = False
+value_empty_string = ""
+value_empty_list = []
+
+print(value_none)
+print(value_zero)
+print(value_false)
+print(value_empty_string)
+print(value_empty_list)
+
+Output:
+
+None
+0
+False
+
+[]
+
+Each value has a different meaning.
+
+Value
+
+	
+
+Meaning
+
+
+
+
+None
+
+	
+
+Value is absent or unavailable
+
+
+
+
+0
+
+	
+
+Numeric value is zero
+
+
+
+
+False
+
+	
+
+Boolean condition is false
+
+
+
+
+""
+
+	
+
+String contains no characters
+
+
+
+
+[]
+
+	
+
+List contains no elements
+
+
+
+
+{}
+
+	
+
+Dictionary contains no key-value pairs
+
+Example: Customer Information
+customer_name = "Aarav"
+customer_email = None
+customer_age = 0
+customer_is_active = False
+
+print(customer_name)
+print(customer_email)
+print(customer_age)
+print(customer_is_active)
+
+Here:
+
+The customer has a name.
+
+The email address is missing.
+
+The customer's age is recorded as 0.
+
+The customer is marked as inactive.
+
+These values should not be treated as interchangeable.
+
+7.3 Checking for None Using is
+
+The recommended way to check whether a value is None is by using is.
+
+customer_email = None
+
+if customer_email is None:
+    print("Email address is missing")
+
+Output:
+
+Email address is missing
+
+To check whether a value is not None, use:
+
+customer_email = "aarav@example.com"
+
+if customer_email is not None:
+    print("Email address is available")
+
+Output:
+
+Email address is available
+Why Use is?
+
+Use:
+
+value is None
+
+Instead of:
+
+value == None
+
+The is operator checks whether two references point to the same object.
+
+The == operator checks whether two values are equal.
+
+For checking None, Python convention recommends:
+
+is None
+
+and:
+
+is not None
+Example
+value = None
+
+print(value is None)
+print(value is not None)
+
+Output:
+
+True
+False
+7.4 Comparing None with Other Values
+
+Let's compare None with different values.
+
+print(None == 0)
+print(None == "")
+print(None == False)
+print(None == [])
+print(None is None)
+
+Output:
+
+False
+False
+False
+False
+True
+
+This demonstrates that None is different from all these values.
+
+Important Rule
+
+Use:
+
+if value is None:
+
+Do not use:
+
+if value == None:
+
+Although the second form may work in many cases, the first form is the standard and recommended Python style.
+
+7.5 None and Boolean Conditions
+
+None behaves as a falsy value in a Boolean condition.
+
+Example:
+
+value = None
+
+if value:
+    print("Value is available")
+else:
+    print("Value is missing or falsy")
+
+Output:
+
+Value is missing or falsy
+
+However, a Boolean check alone cannot tell us whether the value is specifically None.
+
+Consider:
+
+value = 0
+
+if value:
+    print("Value is available")
+else:
+    print("Value is missing or falsy")
+
+Output:
+
+Value is missing or falsy
+
+The value is 0, not None.
+
+Therefore, these two checks have different meanings.
+
+Check for Missing Value
+if value is None:
+    print("Value is missing")
+Check for Any Falsy Value
+if not value:
+    print("Value is missing or falsy")
+
+The second check also matches:
+
+0
+
+False
+
+""
+
+[]
+
+{}
+
+None
+
+Example
+values = [None, 0, False, "", [], "Python", 10]
+
+for value in values:
+    if value is None:
+        print("Specifically None:", value)
+
+Output:
+
+Specifically None: None
+
+Only the None value matches the condition.
+
+7.6 Functions That Return None
+
+A Python function returns None when it does not explicitly return another value.
+
+Example:
+
+def greet_customer():
+    print("Welcome to NovaMart")
+
+
+result = greet_customer()
+
+print(result)
+
+Output:
+
+Welcome to NovaMart
+None
+
+The function prints a message but does not use the return statement.
+
+Therefore, the function automatically returns None.
+
+Function with an Explicit Return
+def calculate_total():
+    return 500
+
+
+result = calculate_total()
+
+print(result)
+
+Output:
+
+500
+Function Without a Return Value
+def display_total():
+    print("Total amount: 500")
+
+
+result = display_total()
+
+print(result)
+
+Output:
+
+Total amount: 500
+None
+Important Difference
+
+print() displays a value.
+
+return sends a value back to the caller.
+
+Example:
+
+def add_numbers(a, b):
+    print(a + b)
+
+
+result = add_numbers(10, 20)
+
+print("Result:", result)
+
+Output:
+
+30
+Result: None
+
+The function displayed 30, but it did not return 30.
+
+Correct version:
+
+def add_numbers(a, b):
+    return a + b
+
+
+result = add_numbers(10, 20)
+
+print("Result:", result)
+
+Output:
+
+Result: 30
+
+This distinction becomes very important when building reusable data processing functions.
+
+7.7 None in Data Engineering
+
+Data engineering pipelines frequently process incomplete data.
+
+For example, a customer dataset may contain:
+
+customer = {
+    "customer_id": 101,
+    "name": "Aarav",
+    "email": None,
+    "phone": "9876543210",
+    "city": None
+}
+
+Here:
+
+customer_id is available.
+
+name is available.
+
+email is missing.
+
+phone is available.
+
+city is missing.
+
+We can check missing values individually.
+
+if customer["email"] is None:
+    print("Email is missing")
+
+if customer["city"] is None:
+    print("City is missing")
+
+Output:
+
+Email is missing
+City is missing
+Why Missing Values Matter
+
+Missing values can affect:
+
+Data quality
+
+Data validation
+
+Data transformation
+
+Database loading
+
+Analytics
+
+Machine learning
+
+Reporting
+
+Business decisions
+
+For example, a missing email address may be acceptable for some reports but unacceptable for an email marketing pipeline.
+
+A missing transaction amount may be a serious data quality problem.
+
+A missing delivery date may be normal for an order that has not yet been delivered.
+
+The meaning of a missing value depends on the business context.
+
+7.8 Handling Missing Values with Default Values
+
+Sometimes we want to replace a missing value with a default value.
+
+Example:
+
+customer_email = None
+
+if customer_email is None:
+    customer_email = "Not Provided"
+
+print(customer_email)
+
+Output:
+
+Not Provided
+
+A shorter version is:
+
+customer_email = None
+
+display_email = customer_email if customer_email is not None else "Not Provided"
+
+print(display_email)
+
+Output:
+
+Not Provided
+Using or
+
+Python also allows:
+
+customer_email = None
+
+display_email = customer_email or "Not Provided"
+
+print(display_email)
+
+Output:
+
+Not Provided
+
+However, be careful.
+
+The or operator replaces every falsy value, not only None.
+
+Example:
+
+customer_age = 0
+
+display_age = customer_age or "Not Provided"
+
+print(display_age)
+
+Output:
+
+Not Provided
+
+This may be incorrect because 0 is a real value.
+
+If we only want to replace None, use an explicit check:
+
+customer_age = 0
+
+if customer_age is None:
+    display_age = "Not Provided"
+else:
+    display_age = customer_age
+
+print(display_age)
+
+Output:
+
+0
+Recommended Approach
+
+Use an explicit None check when 0, False, or an empty string may be valid values.
+
+7.9 Practical Example: NovaMart Customer Data
+
+Suppose NovaMart receives customer records from an external system.
+
+Some records contain missing email addresses or city names.
+
+customer_records = [
+    {
+        "customer_id": 101,
+        "name": "Aarav",
+        "email": "aarav@example.com",
+        "city": "Mumbai"
+    },
+    {
+        "customer_id": 102,
+        "name": "Diya",
+        "email": None,
+        "city": "Pune"
+    },
+    {
+        "customer_id": 103,
+        "name": "Kabir",
+        "email": "kabir@example.com",
+        "city": None
+    }
+]
+
+We can identify records with missing values.
+
+for customer in customer_records:
+    if customer["email"] is None:
+        print("Missing email:", customer["customer_id"])
+
+    if customer["city"] is None:
+        print("Missing city:", customer["customer_id"])
+
+Output:
+
+Missing email: 102
+Missing city: 103
+Creating a Clean Display Record
+for customer in customer_records:
+    email = customer["email"]
+    city = customer["city"]
+
+    if email is None:
+        email = "Not Provided"
+
+    if city is None:
+        city = "Not Provided"
+
+    print(
+        f"Customer: {customer['name']}, "
+        f"Email: {email}, "
+        f"City: {city}"
+    )
+
+Output:
+
+Customer: Aarav, Email: aarav@example.com, City: Mumbai
+Customer: Diya, Email: Not Provided, City: Pune
+Customer: Kabir, Email: kabir@example.com, City: Not Provided
+
+This is a basic example of data cleaning.
+
+7.10 Practical Implementation
+
+Create the following Python file:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\code\01-python-foundations\01-python-fundamentals\07_none_and_missing_values.py
+
+Add the following code:
+
+"""
+Section 7: None and Basic Missing Values
+
+This script demonstrates:
+1. Understanding None
+2. Checking for None
+3. Difference between None and falsy values
+4. Functions returning None
+5. Handling missing customer data
+"""
+
+print("SECTION 7: NONE AND BASIC MISSING VALUES")
+print("-" * 50)
+
+
+# --------------------------------------------------
+# 1. Understanding None
+# --------------------------------------------------
+
+customer_email = None
+
+print("\n1. Understanding None")
+print("Customer email:", customer_email)
+print("Data type:", type(customer_email))
+print("Is None:", customer_email is None)
+
+
+# --------------------------------------------------
+# 2. None Compared with Other Values
+# --------------------------------------------------
+
+print("\n2. Comparing None with Other Values")
+
+print("None == 0:", None == 0)
+print('None == "":', None == "")
+print("None == False:", None == False)
+print("None == []:", None == [])
+print("None is None:", None is None)
+
+
+# --------------------------------------------------
+# 3. Checking for Missing Values
+# --------------------------------------------------
+
+print("\n3. Checking for Missing Values")
+
+phone_number = None
+
+if phone_number is None:
+    print("Phone number is missing")
+else:
+    print("Phone number is available")
+
+
+# --------------------------------------------------
+# 4. None and Falsy Values
+# --------------------------------------------------
+
+print("\n4. None and Falsy Values")
+
+values = [None, 0, False, "", [], "Python", 10]
+
+for value in values:
+    if value is None:
+        print(f"{value!r} is specifically None")
+    elif not value:
+        print(f"{value!r} is falsy but not None")
+    else:
+        print(f"{value!r} is truthy")
+
+
+# --------------------------------------------------
+# 5. Function Returning None
+# --------------------------------------------------
+
+print("\n5. Function Returning None")
+
+
+def display_welcome_message():
+    print("Welcome to NovaMart")
+
+
+result = display_welcome_message()
+
+print("Returned value:", result)
+
+
+# --------------------------------------------------
+# 6. Function Returning a Value
+# --------------------------------------------------
+
+print("\n6. Function Returning a Value")
+
+
+def calculate_total(price, quantity):
+    return price * quantity
+
+
+total = calculate_total(250, 3)
+
+print("Calculated total:", total)
+
+
+# --------------------------------------------------
+# 7. NovaMart Customer Records
+# --------------------------------------------------
+
+print("\n7. NovaMart Customer Records")
+
+customer_records = [
+    {
+        "customer_id": 101,
+        "name": "Aarav",
+        "email": "aarav@example.com",
+        "city": "Mumbai"
+    },
+    {
+        "customer_id": 102,
+        "name": "Diya",
+        "email": None,
+        "city": "Pune"
+    },
+    {
+        "customer_id": 103,
+        "name": "Kabir",
+        "email": "kabir@example.com",
+        "city": None
+    }
+]
+
+for customer in customer_records:
+    print(f"\nCustomer ID: {customer['customer_id']}")
+    print(f"Name: {customer['name']}")
+
+    if customer["email"] is None:
+        print("Email: Not Provided")
+    else:
+        print(f"Email: {customer['email']}")
+
+    if customer["city"] is None:
+        print("City: Not Provided")
+    else:
+        print(f"City: {customer['city']}")
+
+
+# --------------------------------------------------
+# 8. Counting Missing Values
+# --------------------------------------------------
+
+print("\n8. Counting Missing Values")
+
+missing_email_count = 0
+missing_city_count = 0
+
+for customer in customer_records:
+    if customer["email"] is None:
+        missing_email_count += 1
+
+    if customer["city"] is None:
+        missing_city_count += 1
+
+print("Missing email count:", missing_email_count)
+print("Missing city count:", missing_city_count)
+
+
+# --------------------------------------------------
+# 9. Final Summary
+# --------------------------------------------------
+
+print("\n" + "-" * 50)
+print("Section 7 completed successfully.")
+print("Key concept: None represents an absent or unavailable value.")
+7.11 Running the Implementation
+
+Open PowerShell in the project root:
+
+cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
+
+Run the script:
+
+python code\01-python-foundations\01-python-fundamentals\07_none_and_missing_values.py
+
+You should see output demonstrating:
+
+The type of None
+
+Comparisons with other values
+
+Missing value checks
+
+Functions returning None
+
+Customer records with missing data
+
+Missing email and city counts
+
+## 7.12 Common Mistakes
+
+### Mistake 1: Comparing with the String `"None"`
+
+Incorrect:
+
+```python
+email = None
+
+if email == "None":
+    print("Email is missing")
+
+This condition is false because None and "None" are different values.
+
+Correct:
+
+if email is None:
+    print("Email is missing")
+Mistake 2: Using 0 to Represent Missing Data
+
+Incorrect:
+
+customer_age = 0
+
+This may incorrectly suggest that the customer is zero years old.
+
+Better:
+
+customer_age = None
+
+Use None when the age is unavailable.
+
+However, if the business system explicitly uses 0 to represent missing data, that rule should be documented and handled during data cleaning.
+
+Mistake 3: Using False to Represent Missing Data
+
+Incorrect:
+
+customer_is_verified = False
+
+This means the customer is not verified.
+
+It does not necessarily mean that verification information is missing.
+
+A better representation would be:
+
+customer_is_verified = None
+
+This allows us to distinguish between:
+
+Value
+
+	
+
+Meaning
+
+
+
+
+True
+
+	
+
+Customer is verified
+
+
+
+
+False
+
+	
+
+Customer is not verified
+
+
+
+
+None
+
+	
+
+Verification status is unknown
+
+This distinction is important in business and analytics systems.
+
+Mistake 4: Confusing print() with return
+
+Incorrect:
+
+def calculate_total(price, quantity):
+    print(price * quantity)
+
+This function displays the result but returns None.
+
+Example:
+
+result = calculate_total(100, 3)
+
+print(result)
+
+Output:
+
+300
+None
+
+Correct:
+
+def calculate_total(price, quantity):
+    return price * quantity
+
+Now:
+
+result = calculate_total(100, 3)
+
+print(result)
+
+Output:
+
+300
+Mistake 5: Using == None Instead of is None
+
+Although the following may work:
+
+if value == None:
+    print("Missing")
+
+The recommended Python style is:
+
+if value is None:
+    print("Missing")
+
+Use:
+
+if value is not None:
+    print("Value is available")
+
+when checking that a value exists.
+
+Mistake 6: Replacing Valid Falsy Values
+
+Consider:
+
+discount = 0
+
+display_discount = discount or "Not Available"
+
+print(display_discount)
+
+Output:
+
+Not Available
+
+This may be incorrect because a discount of 0 can be a valid value.
+
+Use an explicit check instead:
+
+discount = 0
+
+if discount is None:
+    display_discount = "Not Available"
+else:
+    display_discount = discount
+
+print(display_discount)
+
+Output:
+
+0
+
+The explicit check replaces only None.
+
+Mistake 7: Accessing a Missing Dictionary Key
+
+Consider:
+
+customer = {
+    "name": "Aarav"
+}
+
+print(customer["email"])
+
+This raises:
+
+KeyError
+
+Use .get() when a key may not exist:
+
+email = customer.get("email")
+
+print(email)
+
+Output:
+
+None
+
+You can also provide a default value:
+
+email = customer.get("email", "Not Provided")
+
+print(email)
+
+Output:
+
+Not Provided
+Mistake 8: Assuming All Missing Values Are the Same
+
+These values may look similar but have different meanings:
+
+email_1 = None
+email_2 = ""
+email_3 = "N/A"
+email_4 = "unknown"
+
+They may represent:
+
+None: Value is absent
+
+"": Empty string received
+
+"N/A": Not applicable or unavailable
+
+"unknown": Source system does not know the value
+
+Before cleaning these values, understand the source system and business rules.
+
+Mistake 9: Performing Operations on None
+
+Incorrect:
+
+price = None
+
+total = price * 2
+
+print(total)
+
+This raises a TypeError because Python cannot multiply None by an integer.
+
+Correct:
+
+price = None
+
+if price is None:
+    print("Price is missing")
+else:
+    total = price * 2
+    print(total)
+
+Another option is to assign a default value:
+
+price = None
+
+if price is None:
+    price = 0
+
+total = price * 2
+
+print(total)
+
+However, replacing a missing price with 0 is only correct if the business rule allows it.
+
+Mistake 10: Forgetting That Missing Data Requires a Business Rule
+
+Consider a missing delivery date:
+
+delivery_date = None
+
+Possible meanings include:
+
+The order has not been delivered.
+
+The delivery date was not recorded.
+
+The source system failed.
+
+The order was cancelled.
+
+The data has not arrived yet.
+
+The correct handling depends on the business meaning.
+
+Do not automatically replace every missing value with:
+
+"Not Provided"
+
+or:
+
+0
+
+without understanding the data.
+
+7.13 Testing and Production Considerations
+
+When handling missing values in production data pipelines, consider the following practices.
+
+1. Identify Required Fields
+
+Some fields may be mandatory.
+
+For example:
+
+required_fields = [
+    "customer_id",
+    "name"
+]
+
+A record without a customer ID may not be usable.
+
+customer = {
+    "customer_id": None,
+    "name": "Aarav"
+}
+
+for field in required_fields:
+    if customer.get(field) is None:
+        print(f"Required field is missing: {field}")
+
+Output:
+
+Required field is missing: customer_id
+2. Identify Optional Fields
+
+Some fields may be optional.
+
+For example:
+
+Email address
+
+Secondary phone number
+
+Apartment number
+
+Customer nickname
+
+A missing optional field may not require the record to be rejected.
+
+Example:
+
+customer = {
+    "customer_id": 101,
+    "name": "Aarav",
+    "email": None
+}
+
+The record may still be valid if the email field is optional.
+
+3. Count Missing Values
+
+Counting missing values helps monitor data quality.
+
+records = [
+    {"email": "a@example.com"},
+    {"email": None},
+    {"email": "b@example.com"},
+    {"email": None}
+]
+
+missing_email_count = 0
+
+for record in records:
+    if record.get("email") is None:
+        missing_email_count += 1
+
+print("Missing email count:", missing_email_count)
+
+Output:
+
+Missing email count: 2
+4. Separate Validation from Transformation
+
+Validation checks whether the data is acceptable.
+
+Transformation changes the data into the required format.
+
+Example:
+
+email = None
+
+# Validation
+if email is None:
+    print("Email is missing")
+
+# Transformation
+if email is None:
+    cleaned_email = "Not Provided"
+else:
+    cleaned_email = email
+
+print(cleaned_email)
+
+In larger pipelines, these activities are often separated into different stages.
+
+5. Avoid Silent Data Loss
+
+Do not remove records containing missing values without recording the reason.
+
+Incorrect:
+
+cleaned_records = [
+    record for record in records
+    if record.get("email") is not None
+]
+
+This removes every record without an email address.
+
+That may be correct for an email marketing pipeline, but incorrect for a customer sales report.
+
+A safer approach is to count or log rejected records:
+
+valid_records = []
+rejected_records = []
+
+for record in records:
+    if record.get("email") is None:
+        rejected_records.append(record)
+    else:
+        valid_records.append(record)
+
+print("Valid records:", len(valid_records))
+print("Rejected records:", len(rejected_records))
+
+This makes the transformation more transparent.
+
+6. Document Missing-Value Rules
+
+A production pipeline should document rules such as:
+
+customer_id:
+    Required. Reject record if missing.
+
+email:
+    Optional. Replace missing value with "Not Provided".
+
+age:
+    Required for age-based analysis.
+    Do not replace missing age with zero.
+
+delivery_date:
+    Missing value may indicate that delivery is incomplete.
+
+These rules should be agreed upon with the business or data owner.
+
+7. Test Different Missing-Value Cases
+
+A good test should include:
+
+A valid value
+
+None
+
+An empty string
+
+0
+
+False
+
+A missing dictionary key
+
+An invalid value
+
+Example:
+
+test_values = [
+    "Aarav",
+    None,
+    "",
+    0,
+    False
+]
+
+for value in test_values:
+    print(repr(value), value is None)
+
+This helps confirm that the code handles each case correctly.
+
+7.14 Exercises
+Exercise 1: Basic None Check
+
+Create a variable called delivery_date with the value None.
+
+Print:
+
+The value
+
+Its type
+
+Whether it is None
+
+Exercise 2: Customer Email
+
+Create a variable:
+
+customer_email = None
+
+If the email is missing, print:
+
+Customer email is not available
+
+Otherwise, print the email address.
+
+Exercise 3: Function Return Value
+
+Create a function called show_message() that prints:
+
+Data pipeline started
+
+Store the function result in a variable and print the result.
+
+Observe why the result is None.
+
+Exercise 4: Missing City Count
+
+Use the following records:
+
+customers = [
+    {"name": "Aarav", "city": "Mumbai"},
+    {"name": "Diya", "city": None},
+    {"name": "Kabir", "city": "Pune"},
+    {"name": "Meera", "city": None}
+]
+
+Count how many customers have a missing city.
+
+Expected output:
+
+Missing city count: 2
+Exercise 5: Safe Dictionary Access
+
+Create a dictionary containing only:
+
+{
+    "customer_id": 101,
+    "name": "Aarav"
+}
+
+Use .get() to safely access:
+
+email
+
+phone
+
+city
+
+Print "Not Provided" when a value is missing.
+
+Exercise 6: Preserve Zero
+
+Create:
+
+discount = 0
+
+Write logic that displays 0 instead of "Not Available".
+
+Then test the same logic with:
+
+discount = None
+Exercise 7: Required Fields
+
+Create the following record:
+
+customer = {
+    "customer_id": None,
+    "name": "Diya",
+    "email": None
+}
+
+Write a program that:
+
+Checks whether customer_id is missing.
+
+Prints an error message if it is missing.
+
+Checks whether the email is missing.
+
+Prints a warning if the email is missing.
+
+Expected output:
+
+Error: Customer ID is missing
+Warning: Email is missing
+Exercise 8: Count Missing Values by Field
+
+Use:
+
+customers = [
+    {"name": "Aarav", "email": None, "city": "Mumbai"},
+    {"name": "Diya", "email": "diya@example.com", "city": None},
+    {"name": "Kabir", "email": None, "city": None}
+]
+
+Count:
+
+Missing emails
+
+Missing cities
+
+Expected output:
+
+Missing emails: 2
+Missing cities: 2
+7.15 Interview Questions
+Question 1: What is None in Python?
+
+None is a special Python object that represents the absence of a value. Its type is NoneType.
+
+Question 2: What is the difference between None, 0, and ""?
+
+None represents an absent value.
+
+0 is a numeric value.
+
+"" is an empty string.
+
+They have different meanings and should not be treated as identical.
+
+Question 3: How do you check whether a value is None?
+
+Use:
+
+if value is None:
+Question 4: Why is is None preferred over == None?
+
+is checks object identity and is the standard Python approach for checking the singleton None object.
+
+Question 5: What does a function return if it has no return statement?
+
+It returns None.
+
+Question 6: What is the difference between print() and return?
+
+print() displays information on the screen.
+
+return sends a value back to the caller.
+
+Question 7: What happens when a missing dictionary key is accessed using square brackets?
+
+A KeyError is raised.
+
+Example:
+
+customer["email"]
+
+Use .get() when the key may not exist.
+
+Question 8: Why should data engineers care about None?
+
+Because real-world datasets frequently contain missing values. Data engineers must detect, validate, transform, replace, or preserve these values based on business requirements.
+
+Question 9: Is an empty string the same as None?
+
+No.
+
+"" is None
+
+is false.
+
+An empty string is a string containing zero characters, while None represents the absence of a value.
+
+Question 10: What is the difference between a missing dictionary key and a key with a None value?
+
+Example with a None value:
+
+{"email": None}
+
+The key exists, but its value is missing.
+
+Example with a missing key:
+
+{}
+
+The key does not exist at all.
+
+Question 11: What is the difference between if value is None and if not value?
+if value is None:
+
+checks specifically for None.
+
+if not value:
+
+checks for any falsy value, including:
+
+None
+
+0
+
+False
+
+""
+
+[]
+
+{}
+
+Use the condition that matches the business requirement.
+
+Question 12: What happens if you perform arithmetic on None?
+
+Python generally raises a TypeError.
+
+Example:
+
+price = None
+total = price * 2
+
+This fails because None is not a numeric value.
+
+Question 13: Should every missing value be replaced with zero?
+
+No.
+
+Replacing a missing value with zero may change the meaning of the data.
+
+For example:
+
+Missing age is not the same as age zero.
+
+Missing sales is not always the same as zero sales.
+
+Missing discount may not mean no discount.
+
+The replacement rule must be based on business context.
+
+Question 14: Why should missing-value rules be documented?
+
+Because different fields have different meanings and requirements.
+
+Documentation helps ensure that data engineers, analysts, and business users handle missing values consistently.
+
+7.16 Summary
+
+In this section, we learned:
+
+None represents the absence of a value.
+
+The type of None is NoneType.
+
+None is different from 0, False, "", and empty collections.
+
+Use is None to check for None.
+
+Use is not None to check that a value is available.
+
+Functions without a return statement return None.
+
+print() displays a value but does not return it.
+
+Missing values are common in data engineering pipelines.
+
+.get() provides safer access to dictionary values.
+
+Missing keys and keys containing None are different situations.
+
+External systems may represent missing values using NULL, null, empty fields, or other formats.
+
+Missing values must be handled according to the business context.
+
+if not value checks all falsy values, not only None.
+
+Missing values should be validated, transformed, counted, and documented.
+
+Production pipelines should avoid silent data loss.
+
+Required and optional fields should have separate handling rules.
+
+7.17 Completion Checklist
+
+Before moving to the next section, confirm that you can:
+
+Explain what None means.
+Identify the type of None.
+Differentiate None from 0 and "".
+Use is None.
+Use is not None.
+Explain why functions may return None.
+Differentiate print() from return.
+Detect missing values in dictionaries.
+Use .get() safely.
+Count missing values in a collection.
+Distinguish missing keys from keys containing None.
+Explain the difference between None and falsy values.
+Handle required and optional fields.
+Avoid replacing valid values accidentally.
+Document missing-value handling rules.
+Run the Section 7 Python script successfully.
+
+
+## 7.18 Section Review
+
+In this review, you will build a small customer data-quality checker.
+
+The purpose of the checker is to identify missing values and separate valid customer records from records that are missing required information.
+
+### Business Requirements
+
+NovaMart requires the following rules:
+
+1. `customer_id` is required.
+2. `name` is required.
+3. `email` is optional.
+4. `city` is optional.
+5. Missing emails should be counted.
+6. Missing cities should be counted.
+7. Records missing required fields should be marked as invalid.
+8. Valid records should be separated from invalid records.
+9. The program should print a data-quality summary.
+
+---
+
+### Sample Data
+
+Use the following customer records:
+
+```python
+customers = [
+    {
+        "customer_id": 101,
+        "name": "Aarav",
+        "email": "aarav@example.com",
+        "city": "Mumbai"
+    },
+    {
+        "customer_id": None,
+        "name": "Diya",
+        "email": None,
+        "city": "Pune"
+    },
+    {
+        "customer_id": 103,
+        "name": "Kabir",
+        "email": "kabir@example.com",
+        "city": None
+    },
+    {
+        "customer_id": 104,
+        "name": None,
+        "email": None,
+        "city": None
+    }
+]
+Step 1: Create Counters
+
+Create counters for:
+
+Total records
+
+Missing emails
+
+Missing cities
+
+Missing customer IDs
+
+Missing names
+
+total_records = len(customers)
+
+missing_emails = 0
+missing_cities = 0
+missing_customer_ids = 0
+missing_names = 0
+Step 2: Create Valid and Invalid Lists
+
+Create two empty lists:
+
+valid_records = []
+invalid_records = []
+
+The valid records will contain customers with all required fields.
+
+The invalid records will contain customers missing at least one required field.
+
+Step 3: Process Each Customer
+
+Loop through each customer:
+
+for customer in customers:
+    is_valid = True
+
+    if customer.get("customer_id") is None:
+        missing_customer_ids += 1
+        is_valid = False
+
+    if customer.get("name") is None:
+        missing_names += 1
+        is_valid = False
+
+    if customer.get("email") is None:
+        missing_emails += 1
+
+    if customer.get("city") is None:
+        missing_cities += 1
+
+    if is_valid:
+        valid_records.append(customer)
+    else:
+        invalid_records.append(customer)
+
+Notice the difference between required and optional fields:
+
+Missing customer_id makes the record invalid.
+
+Missing name makes the record invalid.
+
+Missing email does not make the record invalid.
+
+Missing city does not make the record invalid.
+
+Step 4: Print the Summary
+print("Total records:", total_records)
+print("Valid records:", len(valid_records))
+print("Invalid records:", len(invalid_records))
+print("Missing emails:", missing_emails)
+print("Missing cities:", missing_cities)
+print("Missing customer IDs:", missing_customer_ids)
+print("Missing names:", missing_names)
+
+Expected output:
+
+Total records: 4
+Valid records: 2
+Invalid records: 2
+Missing emails: 2
+Missing cities: 2
+Missing customer IDs: 1
+Missing names: 1
+Complete Section Review Solution
+customers = [
+    {
+        "customer_id": 101,
+        "name": "Aarav",
+        "email": "aarav@example.com",
+        "city": "Mumbai"
+    },
+    {
+        "customer_id": None,
+        "name": "Diya",
+        "email": None,
+        "city": "Pune"
+    },
+    {
+        "customer_id": 103,
+        "name": "Kabir",
+        "email": "kabir@example.com",
+        "city": None
+    },
+    {
+        "customer_id": 104,
+        "name": None,
+        "email": None,
+        "city": None
+    }
+]
+
+
+total_records = len(customers)
+
+missing_emails = 0
+missing_cities = 0
+missing_customer_ids = 0
+missing_names = 0
+
+valid_records = []
+invalid_records = []
+
+
+for customer in customers:
+    is_valid = True
+
+    if customer.get("customer_id") is None:
+        missing_customer_ids += 1
+        is_valid = False
+
+    if customer.get("name") is None:
+        missing_names += 1
+        is_valid = False
+
+    if customer.get("email") is None:
+        missing_emails += 1
+
+    if customer.get("city") is None:
+        missing_cities += 1
+
+    if is_valid:
+        valid_records.append(customer)
+    else:
+        invalid_records.append(customer)
+
+
+print("Total records:", total_records)
+print("Valid records:", len(valid_records))
+print("Invalid records:", len(invalid_records))
+print("Missing emails:", missing_emails)
+print("Missing cities:", missing_cities)
+print("Missing customer IDs:", missing_customer_ids)
+print("Missing names:", missing_names)
+
+
+print("\nValid records:")
+for record in valid_records:
+    print(record)
+
+
+print("\nInvalid records:")
+for record in invalid_records:
+    print(record)
+
+Expected output:
+
+Total records: 4
+Valid records: 2
+Invalid records: 2
+Missing emails: 2
+Missing cities: 2
+Missing customer IDs: 1
+Missing names: 1
+
+Valid records:
+{'customer_id': 101, 'name': 'Aarav', 'email': 'aarav@example.com', 'city': 'Mumbai'}
+{'customer_id': 103, 'name': 'Kabir', 'email': 'kabir@example.com', 'city': None}
+
+Invalid records:
+{'customer_id': None, 'name': 'Diya', 'email': None, 'city': 'Pune'}
+{'customer_id': 104, 'name': None, 'email': None, 'city': None}
+What This Review Demonstrates
+
+This exercise combines several important concepts:
+
+Lists
+
+Dictionaries
+
+Loops
+
+Conditional statements
+
+None
+
+.get()
+
+Counters
+
+Data validation
+
+Separating valid and invalid records
+
+Basic data-quality reporting
+
+This is a simple example of a task that may appear inside a real data ingestion or data validation pipeline.
+
+7.19 Key Takeaways
+
+Remember these important rules:
+
+value is None
+
+Use this when checking specifically for None.
+
+value is not None
+
+Use this when checking that a value is available.
+
+not value
+
+Use this only when you want to check for any falsy value.
+
+dictionary.get("key")
+
+Use this when a dictionary key may not exist.
+
+return value
+
+Use return when a function needs to send a result back to the caller.
+
+Missing values should not automatically be replaced with zero, an empty string, or "Not Provided".
+
+The correct handling depends on:
+
+The meaning of the field
+
+Whether the field is required
+
+The source system
+
+The business requirement
+
+The downstream use of the data
+
+A missing email may be acceptable.
+
+A missing customer ID may make a record unusable.
+
+A missing delivery date may indicate that an order has not yet been delivered.
+
+Therefore, missing-value handling is both a technical and business decision.
+
+7.20 Section Completion
+
+Section 7 is complete when you have:
+
+Read and understood the explanation.
+Reviewed the examples.
+Created the Python implementation file.
+Executed the script successfully.
+Completed the exercises.
+Attempted the section review.
+Compared your solution with the reference solution.
+Committed the changes to Git.
+
+Run the implementation:
+
+cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
+
+python code\01-python-foundations\01-python-fundamentals\07_none_and_missing_values.py
