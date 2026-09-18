@@ -7,7 +7,7 @@ PROJECT_ROOT = Path(__file__).parent
 folders = [
     # Book chapters
     "book/00-preface",
-    "book/01-foundations",
+    "book/01-python-foundations",
     "book/02-sql",
     "book/03-databases",
     "book/04-pipelines",
