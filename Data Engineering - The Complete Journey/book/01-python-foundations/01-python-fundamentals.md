@@ -10968,3 +10968,1893 @@ Run the implementation:
 cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
 
 python code\01-python-foundations\01-python-fundamentals\07_none_and_missing_values.py
+
+
+Section 8 — Conditional Statements
+
+We will continue in the same Markdown file:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\book\01-python-foundations\01-python-fundamentals.md
+
+Add the following content after Section 7.
+
+# 8. Conditional Statements
+
+Programs often need to make decisions.
+
+For example:
+
+- If a customer is above 18, allow registration.
+- If an order amount is greater than ₹1,000, apply a discount.
+- If a required field is missing, reject the record.
+- If a delivery is completed, calculate delivery time.
+- If a transaction is suspicious, send it for review.
+
+Python uses **conditional statements** to make these decisions.
+
+The main conditional keywords in Python are:
+
+- `if`
+- `elif`
+- `else`
+
+---
+
+## 8.1 Understanding Conditions
+
+A condition is an expression that evaluates to either:
+
+```python
+True
+
+or:
+
+False
+
+Example:
+
+age = 25
+
+print(age > 18)
+
+Output:
+
+True
+
+Another example:
+
+age = 15
+
+print(age > 18)
+
+Output:
+
+False
+
+Python uses the result of a condition to decide which block of code should execute.
+
+8.2 The if Statement
+
+The if statement executes a block of code only when its condition is true.
+
+Syntax
+if condition:
+    # code to execute
+
+Example:
+
+age = 25
+
+if age >= 18:
+    print("Customer is eligible")
+
+Output:
+
+Customer is eligible
+
+The condition is:
+
+age >= 18
+
+Since 25 >= 18 is true, Python executes the print() statement.
+
+Example with a False Condition
+age = 15
+
+if age >= 18:
+    print("Customer is eligible")
+
+Output:
+
+Nothing is printed because the condition is false.
+
+8.3 Indentation in Conditional Statements
+
+Python uses indentation to define code blocks.
+
+Correct:
+
+age = 25
+
+if age >= 18:
+    print("Customer is eligible")
+    print("Registration can continue")
+
+Both statements belong to the if block.
+
+Incorrect:
+
+age = 25
+
+if age >= 18:
+print("Customer is eligible")
+
+This causes an IndentationError.
+
+Python commonly uses four spaces for indentation.
+
+Important Rule
+
+The colon : starts the conditional block.
+
+The indented lines belong to that block.
+
+if condition:
+    statement_1
+    statement_2
+8.4 Using Comparison Operators
+
+Conditional statements commonly use comparison operators.
+
+Operator
+
+	
+
+Meaning
+
+
+
+
+==
+
+	
+
+Equal to
+
+
+
+
+!=
+
+	
+
+Not equal to
+
+
+
+
+>
+
+	
+
+Greater than
+
+
+
+
+<
+
+	
+
+Less than
+
+
+
+
+>=
+
+	
+
+Greater than or equal to
+
+
+
+
+<=
+
+	
+
+Less than or equal to
+
+Example:
+
+order_amount = 1500
+
+if order_amount > 1000:
+    print("Discount is applicable")
+
+Output:
+
+Discount is applicable
+More Examples
+temperature = 35
+
+if temperature > 30:
+    print("High temperature")
+stock_quantity = 0
+
+if stock_quantity == 0:
+    print("Product is out of stock")
+payment_status = "failed"
+
+if payment_status != "success":
+    print("Payment requires attention")
+8.5 The else Statement
+
+The else block executes when the if condition is false.
+
+Syntax
+if condition:
+    # runs when condition is true
+else:
+    # runs when condition is false
+
+Example:
+
+age = 16
+
+if age >= 18:
+    print("Customer is eligible")
+else:
+    print("Customer is not eligible")
+
+Output:
+
+Customer is not eligible
+Example: Order Amount
+order_amount = 750
+
+if order_amount >= 1000:
+    print("Free delivery")
+else:
+    print("Delivery charges apply")
+
+Output:
+
+Delivery charges apply
+
+The else block does not have a condition of its own.
+
+It runs when the preceding if condition is false.
+
+8.6 The elif Statement
+
+The elif keyword means else if.
+
+It allows us to check multiple conditions.
+
+Syntax
+if condition_1:
+    # code
+elif condition_2:
+    # code
+else:
+    # code
+
+Example:
+
+marks = 75
+
+if marks >= 90:
+    print("Grade A")
+elif marks >= 60:
+    print("Grade B")
+else:
+    print("Grade C")
+
+Output:
+
+Grade B
+
+Python checks conditions from top to bottom.
+
+Once a condition is true, its block executes and the remaining conditions are skipped.
+
+8.7 Multiple elif Conditions
+
+Example:
+
+marks = 85
+
+if marks >= 90:
+    grade = "A"
+elif marks >= 75:
+    grade = "B"
+elif marks >= 60:
+    grade = "C"
+elif marks >= 40:
+    grade = "D"
+else:
+    grade = "F"
+
+print("Grade:", grade)
+
+Output:
+
+Grade: B
+Order Matters
+
+Consider:
+
+marks = 95
+
+if marks >= 40:
+    print("Pass")
+elif marks >= 90:
+    print("Grade A")
+
+Output:
+
+Pass
+
+The second condition is never checked because the first condition is already true.
+
+Correct ordering:
+
+marks = 95
+
+if marks >= 90:
+    print("Grade A")
+elif marks >= 40:
+    print("Pass")
+else:
+    print("Fail")
+
+Output:
+
+Grade A
+
+More specific conditions should generally be checked before broader conditions.
+
+8.8 Using Logical Operators
+
+Conditions can be combined using logical operators.
+
+Operator
+
+	
+
+Meaning
+
+
+
+
+and
+
+	
+
+Both conditions must be true
+
+
+
+
+or
+
+	
+
+At least one condition must be true
+
+
+
+
+not
+
+	
+
+Reverses the Boolean result
+
+Using and
+age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("Customer can rent a vehicle")
+
+Output:
+
+Customer can rent a vehicle
+
+Both conditions must be true.
+
+Using or
+payment_method = "UPI"
+
+if payment_method == "UPI" or payment_method == "Card":
+    print("Digital payment selected")
+
+Output:
+
+Digital payment selected
+
+At least one condition must be true.
+
+Using not
+is_blocked = False
+
+if not is_blocked:
+    print("Customer can continue")
+
+Output:
+
+Customer can continue
+8.9 Combining Comparison and Logical Operators
+
+Example:
+
+age = 28
+annual_income = 600000
+
+if age >= 21 and annual_income >= 500000:
+    print("Customer meets the eligibility criteria")
+else:
+    print("Customer does not meet the eligibility criteria")
+
+Output:
+
+Customer meets the eligibility criteria
+
+Another example:
+
+city = "Mumbai"
+is_member = True
+
+if city == "Mumbai" and is_member:
+    print("Premium delivery benefits available")
+8.10 Conditional Statements with None
+
+Conditional statements are useful for checking missing values.
+
+customer_email = None
+
+if customer_email is None:
+    print("Email address is missing")
+else:
+    print("Email address is available")
+
+Output:
+
+Email address is missing
+
+This connects directly with the previous section.
+
+Example: Required Customer ID
+customer_id = None
+
+if customer_id is None:
+    print("Invalid record: customer ID is missing")
+else:
+    print("Customer record is valid")
+
+Output:
+
+Invalid record: customer ID is missing
+8.11 Nested Conditional Statements
+
+A conditional statement inside another conditional statement is called a nested conditional.
+
+Example:
+
+age = 25
+has_license = True
+
+if age >= 18:
+    if has_license:
+        print("Customer can rent a vehicle")
+    else:
+        print("Driving license is required")
+else:
+    print("Customer must be at least 18 years old")
+
+Output:
+
+Customer can rent a vehicle
+
+Nested conditions are useful, but too many nested levels can make code difficult to understand.
+
+Sometimes logical operators provide a simpler solution:
+
+age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("Customer can rent a vehicle")
+else:
+    print("Customer is not eligible")
+8.12 Membership Conditions
+
+The in operator checks whether a value exists inside a collection.
+
+Example:
+
+payment_method = "UPI"
+
+if payment_method in ["UPI", "Card", "Net Banking"]:
+    print("Supported payment method")
+else:
+    print("Unsupported payment method")
+
+Output:
+
+Supported payment method
+Using not in
+status = "cancelled"
+
+if status not in ["completed", "processing"]:
+    print("Order requires attention")
+
+Output:
+
+Order requires attention
+8.13 Identity Conditions
+
+The is operator checks object identity.
+
+It is commonly used with None.
+
+value = None
+
+if value is None:
+    print("Value is missing")
+
+Use:
+
+is None
+
+instead of:
+
+== None
+
+For normal value comparisons, use ==.
+
+status = "completed"
+
+if status == "completed":
+    print("Order completed")
+8.14 Practical Example: NovaMart Order Validation
+
+NovaMart wants to validate an order before processing it.
+
+Business rules:
+
+The order ID must be available.
+
+The order amount must be greater than zero.
+
+The payment status must be "success".
+
+If all conditions are satisfied, the order can be processed.
+
+Otherwise, the order should be rejected.
+
+order_id = 1001
+order_amount = 1500
+payment_status = "success"
+
+if order_id is None:
+    print("Order rejected: order ID is missing")
+elif order_amount <= 0:
+    print("Order rejected: invalid order amount")
+elif payment_status != "success":
+    print("Order rejected: payment unsuccessful")
+else:
+    print("Order approved for processing")
+
+Output:
+
+Order approved for processing
+Invalid Example
+order_id = 1002
+order_amount = 0
+payment_status = "success"
+
+if order_id is None:
+    print("Order rejected: order ID is missing")
+elif order_amount <= 0:
+    print("Order rejected: invalid order amount")
+elif payment_status != "success":
+    print("Order rejected: payment unsuccessful")
+else:
+    print("Order approved for processing")
+
+Output:
+
+Order rejected: invalid order amount
+
+8.15 Practical Example: Delivery Status
+
+In an e-commerce system, an order can have different delivery statuses:
+
+pending
+
+processing
+
+shipped
+
+out_for_delivery
+
+delivered
+
+cancelled
+
+We can use conditional statements to display an appropriate message.
+
+delivery_status = "shipped"
+
+if delivery_status == "pending":
+    print("Your order is waiting for processing.")
+
+elif delivery_status == "processing":
+    print("Your order is being prepared.")
+
+elif delivery_status == "shipped":
+    print("Your order has been shipped.")
+
+elif delivery_status == "out_for_delivery":
+    print("Your order is out for delivery.")
+
+elif delivery_status == "delivered":
+    print("Your order has been delivered.")
+
+elif delivery_status == "cancelled":
+    print("Your order has been cancelled.")
+
+else:
+    print("Unknown delivery status.")
+
+Output:
+
+Your order has been shipped.
+Why Use elif?
+
+Only one matching branch is executed.
+
+Once Python finds:
+
+delivery_status == "shipped"
+
+it executes that block and skips the remaining conditions.
+
+8.16 Practical Example: Customer Segmentation
+
+Businesses often divide customers into segments based on their spending.
+
+For example:
+
+Annual Spending
+
+	
+
+Customer Segment
+
+
+
+
+₹50,000 or more
+
+	
+
+Premium
+
+
+
+
+₹20,000–₹49,999
+
+	
+
+Regular
+
+
+
+
+₹1–₹19,999
+
+	
+
+Occasional
+
+
+
+
+₹0
+
+	
+
+Inactive
+
+annual_spending = 35000
+
+if annual_spending >= 50000:
+    segment = "Premium"
+
+elif annual_spending >= 20000:
+    segment = "Regular"
+
+elif annual_spending > 0:
+    segment = "Occasional"
+
+else:
+    segment = "Inactive"
+
+print(f"Customer segment: {segment}")
+
+Output:
+
+Customer segment: Regular
+Important: Condition Order
+
+The conditions are checked from top to bottom.
+
+If we write:
+
+if annual_spending > 0:
+    segment = "Occasional"
+
+elif annual_spending >= 50000:
+    segment = "Premium"
+
+then a customer spending ₹60,000 would incorrectly be classified as Occasional.
+
+The more specific or higher threshold conditions should usually come first.
+
+8.17 Practical Example: Data Quality Validation
+
+Data engineering systems frequently validate incoming records before processing them.
+
+Suppose we receive a customer record:
+
+customer = {
+    "customer_id": 101,
+    "name": "Amit",
+    "age": 25,
+    "email": "amit@example.com"
+}
+
+We can validate the record using conditions.
+
+if customer["customer_id"] is None:
+    print("Invalid record: customer ID is missing.")
+
+elif customer["name"] == "":
+    print("Invalid record: customer name is missing.")
+
+elif customer["age"] < 18:
+    print("Invalid record: customer must be at least 18 years old.")
+
+elif "@" not in customer["email"]:
+    print("Invalid record: email address is invalid.")
+
+else:
+    print("Customer record is valid.")
+
+Output:
+
+Customer record is valid.
+Why This Matters in Data Engineering
+
+Conditional statements are used in:
+
+Data validation
+
+Data cleaning
+
+Pipeline control
+
+Error handling
+
+File processing
+
+API response handling
+
+Business rule implementation
+
+Data transformation
+
+For example:
+
+if record_is_valid:
+    process_record()
+else:
+    send_record_to_error_table()
+
+This pattern is common in real-world data pipelines.
+
+8.18 Practical Example: NovaMart Order Validation
+
+Let us create a small order validation system for NovaMart.
+
+An order should be approved only when:
+
+The order ID is available.
+
+The customer ID is available.
+
+The order amount is greater than zero.
+
+The payment status is successful.
+
+order = {
+    "order_id": "ORD1001",
+    "customer_id": "CUS501",
+    "order_amount": 2500,
+    "payment_status": "success"
+}
+
+if order["order_id"] is None:
+    print("Order rejected: order ID is missing.")
+
+elif order["customer_id"] is None:
+    print("Order rejected: customer ID is missing.")
+
+elif order["order_amount"] <= 0:
+    print("Order rejected: invalid order amount.")
+
+elif order["payment_status"] != "success":
+    print("Order rejected: payment unsuccessful.")
+
+else:
+    print("Order approved.")
+
+Output:
+
+Order approved.
+Adding a Discount Rule
+
+We can add another condition inside the approved order block.
+
+order_amount = 2500
+
+if order_amount >= 2000:
+    print("Customer is eligible for a discount.")
+else:
+    print("Customer is not eligible for a discount.")
+
+Output:
+
+Customer is eligible for a discount.
+Complete Example
+order = {
+    "order_id": "ORD1001",
+    "customer_id": "CUS501",
+    "order_amount": 2500,
+    "payment_status": "success",
+    "delivery_status": "processing"
+}
+
+if order["order_id"] is None:
+    print("Order rejected: order ID is missing.")
+
+elif order["customer_id"] is None:
+    print("Order rejected: customer ID is missing.")
+
+elif order["order_amount"] <= 0:
+    print("Order rejected: invalid order amount.")
+
+elif order["payment_status"] != "success":
+    print("Order rejected: payment unsuccessful.")
+
+else:
+    print("Order approved.")
+
+    if order["order_amount"] >= 2000:
+        print("Customer is eligible for a discount.")
+
+    if order["delivery_status"] == "processing":
+        print("Your order is being prepared.")
+
+    elif order["delivery_status"] == "shipped":
+        print("Your order has been shipped.")
+
+    elif order["delivery_status"] == "delivered":
+        print("Your order has been delivered.")
+
+    else:
+        print("Delivery status is currently unavailable.")
+
+Output:
+
+Order approved.
+Customer is eligible for a discount.
+Your order is being prepared.
+
+This example combines:
+
+Dictionary access
+
+if
+
+elif
+
+else
+
+Nested conditions
+
+Comparison operators
+
+Business rules
+
+8.19 Practical Example: Handling Missing Values
+
+In data engineering, missing values are common.
+
+Consider this customer record:
+
+customer_name = None
+customer_age = 28
+
+We can check whether the name is missing.
+
+if customer_name is None:
+    print("Customer name is missing.")
+else:
+    print(f"Customer name: {customer_name}")
+
+Output:
+
+Customer name is missing.
+Using a Default Value
+customer_name = None
+
+if customer_name is None:
+    customer_name = "Unknown Customer"
+
+print(customer_name)
+
+Output:
+
+Unknown Customer
+Important Difference
+
+Do not use:
+
+if customer_name == None:
+
+Prefer:
+
+if customer_name is None:
+
+The is operator checks object identity and is the recommended way to check for None.
+
+8.20 Practical Example: Checking File Type
+
+Suppose a data pipeline accepts only CSV and JSON files.
+
+file_extension = ".csv"
+
+if file_extension == ".csv":
+    print("Process the file using CSV logic.")
+
+elif file_extension == ".json":
+    print("Process the file using JSON logic.")
+
+else:
+    print("Unsupported file format.")
+
+Output:
+
+Process the file using CSV logic.
+
+This type of condition is useful when:
+
+Reading multiple file formats
+
+Selecting different parsing logic
+
+Processing files from cloud storage
+
+Validating uploaded files
+
+8.21 Common Mistakes
+Mistake 1: Using = Instead of ==
+
+Incorrect:
+
+age = 18
+
+if age = 18:
+    print("Eligible")
+
+Correct:
+
+age = 18
+
+if age == 18:
+    print("Eligible")
+
+= assigns a value.
+
+== compares two values.
+
+Mistake 2: Forgetting the Colon
+
+Incorrect:
+
+if age >= 18
+    print("Eligible")
+
+Correct:
+
+if age >= 18:
+    print("Eligible")
+
+Every conditional statement must end with a colon.
+
+Mistake 3: Incorrect Indentation
+
+Incorrect:
+
+if age >= 18:
+print("Eligible")
+
+Correct:
+
+if age >= 18:
+    print("Eligible")
+
+Python uses indentation to identify the code block.
+
+Mistake 4: Incorrect Condition Order
+
+Incorrect:
+
+marks = 95
+
+if marks >= 40:
+    print("Pass")
+
+elif marks >= 90:
+    print("Excellent")
+
+Output:
+
+Pass
+
+The second condition is never reached.
+
+Correct:
+
+marks = 95
+
+if marks >= 90:
+    print("Excellent")
+
+elif marks >= 40:
+    print("Pass")
+
+else:
+    print("Fail")
+
+Output:
+
+Excellent
+Mistake 5: Comparing Different Data Types
+age = "25"
+
+if age > 18:
+    print("Adult")
+
+This raises a TypeError because a string cannot be compared directly with an integer.
+
+Correct:
+
+age = "25"
+
+if int(age) > 18:
+    print("Adult")
+
+Output:
+
+Adult
+Mistake 6: Using is for Normal Value Comparison
+
+Avoid:
+
+age = 25
+
+if age is 25:
+    print("Age is 25")
+
+Use:
+
+age = 25
+
+if age == 25:
+    print("Age is 25")
+
+Use is mainly for identity checks such as:
+
+if value is None:
+    print("Value is missing")
+Mistake 7: Overcomplicated Conditions
+
+Instead of writing:
+
+if age >= 18 and age <= 60 and has_license == True:
+    print("Eligible")
+
+Prefer:
+
+if 18 <= age <= 60 and has_license:
+    print("Eligible")
+
+The second version is easier to read.
+
+8.22 Exercises
+Exercise 1: Positive, Negative, or Zero
+
+Write a program that checks whether a number is:
+
+Positive
+
+Negative
+
+Zero
+
+Example:
+
+number = -5
+
+Expected output:
+
+Negative
+Exercise 2: Even or Odd
+
+Write a program that checks whether a number is even or odd.
+
+Hint:
+
+number % 2
+
+Example:
+
+number = 12
+
+Expected output:
+
+Even
+Exercise 3: Age Category
+
+Create a program that classifies a person into:
+
+Child: below 13
+
+Teenager: 13–19
+
+Adult: 20–59
+
+Senior: 60 or above
+
+Exercise 4: Grade Calculator
+
+Create a program using the following rules:
+
+Marks
+
+	
+
+Grade
+
+
+
+
+90 or above
+
+	
+
+A
+
+
+
+
+75–89
+
+	
+
+B
+
+
+
+
+60–74
+
+	
+
+C
+
+
+
+
+40–59
+
+	
+
+D
+
+
+
+
+Below 40
+
+	
+
+F
+
+Exercise 5: Login Validation
+
+Create a program that checks:
+
+Username is correct.
+
+Password is correct.
+
+Example:
+
+username = "admin"
+password = "python123"
+
+Expected output:
+
+Login successful
+Exercise 6: Order Amount Validation
+
+Write a program that checks:
+
+If order amount is less than or equal to zero, reject the order.
+
+If order amount is greater than zero, approve the order.
+
+Exercise 7: Delivery Status
+
+Create a program that displays a message based on:
+
+delivery_status = "delivered"
+
+Expected output:
+
+Your order has been delivered.
+Exercise 8: Data Quality Check
+
+Create a customer record and validate:
+
+Customer ID is not missing.
+
+Customer name is not empty.
+
+Age is greater than zero.
+
+Email contains @.
+
+8.23 Interview Questions
+Question 1: What is a conditional statement?
+
+A conditional statement executes different blocks of code based on whether a condition is true or false.
+
+Question 2: What is the difference between if, elif, and else?
+
+if checks the first condition.
+
+elif checks additional conditions.
+
+else executes when no previous condition is true.
+
+Question 3: Can we use multiple elif blocks?
+
+Yes.
+
+if condition_1:
+    pass
+
+elif condition_2:
+    pass
+
+elif condition_3:
+    pass
+
+else:
+    pass
+Question 4: Can we use multiple independent if statements?
+
+Yes.
+
+age = 25
+
+if age >= 18:
+    print("Adult")
+
+if age >= 21:
+    print("Can legally purchase certain products")
+
+Both conditions are checked independently.
+
+Question 5: What is the difference between multiple if statements and if-elif-else?
+
+Multiple if statements check every condition.
+
+An if-elif-else chain stops after the first matching condition.
+
+Question 6: What is a nested conditional statement?
+
+A conditional statement written inside another conditional statement is called a nested conditional statement.
+
+if is_logged_in:
+    if has_permission:
+        print("Access granted")
+Question 7: What is the difference between == and is?
+
+== compares values.
+
+is compares object identity.
+
+Example:
+
+value is None
+Question 8: What are truthy and falsy values?
+
+Falsy values include:
+
+False
+None
+0
+0.0
+""
+[]
+{}
+()
+
+Most other values are truthy.
+
+Question 9: What happens if no condition is true and there is no else block?
+
+Nothing is executed for that conditional statement.
+
+age = 15
+
+if age >= 18:
+    print("Adult")
+
+There is no output.
+
+Question 10: Why is condition order important?
+
+Python checks conditions from top to bottom. Once a condition is true in an if-elif-else chain, the remaining conditions are skipped.
+
+8.24 Section Summary
+
+In this section, we learned:
+
+What conditional statements are.
+
+How to use if.
+
+How to use else.
+
+How to use elif.
+
+How indentation works.
+
+How comparison operators are used.
+
+How logical operators combine conditions.
+
+How to write nested conditions.
+
+How to check membership using in.
+
+How to check identity using is.
+
+How to handle None.
+
+How to validate business rules.
+
+How conditional logic is used in data engineering.
+
+Conditional statements help Python programs make decisions based on data and business requirements.
+
+8.25 Key Takeaways
+
+Python uses indentation to define code blocks.
+
+Conditions must produce a truthy or falsy result.
+
+Use == for value comparison.
+
+Use is None to check for missing values.
+
+Use elif for multiple possible conditions.
+
+Use else as a fallback block.
+
+The order of conditions matters.
+
+and, or, and not combine conditions.
+
+Nested conditions can represent complex business rules.
+
+Conditional statements are widely used in data validation and data pipelines.
+
+8.26 Section Checklist
+
+Before moving to the next section, make sure you can:
+
+Write a basic if statement.
+Use else.
+Use multiple elif conditions.
+Compare numbers and strings.
+Use and, or, and not.
+Check whether a value is None.
+Use nested conditions.
+Validate a dictionary record.
+Check file extensions.
+Implement an order validation system.
+Explain the difference between == and is.
+Explain the difference between multiple if statements and if-elif-else.
+8.27 Practice Implementation
+
+Create the following file:
+
+code/
+└── 01-python-foundations/
+    └── 01-python-fundamentals/
+        └── 08_conditional_statements.py
+
+Add this implementation:
+
+# 08_conditional_statements.py
+
+
+# Example 1: Basic condition
+age = 22
+
+if age >= 18:
+    print("You are an adult.")
+
+
+# Example 2: if-else
+number = 7
+
+if number % 2 == 0:
+    print("The number is even.")
+else:
+    print("The number is odd.")
+
+
+# Example 3: if-elif-else
+marks = 85
+
+if marks >= 90:
+    grade = "A"
+
+elif marks >= 75:
+    grade = "B"
+
+elif marks >= 60:
+    grade = "C"
+
+elif marks >= 40:
+    grade = "D"
+
+else:
+    grade = "F"
+
+print(f"Grade: {grade}")
+
+
+# Example 4: Logical operators
+has_account = True
+has_verified_email = True
+
+if has_account and has_verified_email:
+    print("User is eligible to continue.")
+else:
+    print("User verification is incomplete.")
+
+
+# Example 5: None check
+customer_name = None
+
+if customer_name is None:
+    print("Customer name is missing.")
+else:
+    print(f"Customer name: {customer_name}")
+
+
+# Example 6: Delivery status
+delivery_status = "shipped"
+
+if delivery_status == "pending":
+    print("Order is waiting for processing.")
+
+elif delivery_status == "processing":
+    print("Order is being prepared.")
+
+elif delivery_status == "shipped":
+    print("Order has been shipped.")
+
+elif delivery_status == "delivered":
+    print("Order has been delivered.")
+
+else:
+    print("Unknown delivery status.")
+
+
+# Example 7: NovaMart order validation
+order = {
+    "order_id": "ORD1001",
+    "customer_id": "CUS501",
+    "order_amount": 2500,
+    "payment_status": "success"
+}
+
+if order["order_id"] is None:
+    print("Order rejected: order ID is missing.")
+
+elif order["customer_id"] is None:
+    print("Order rejected: customer ID is missing.")
+
+elif order["order_amount"] <= 0:
+    print("Order rejected: invalid order amount.")
+
+elif order["payment_status"] != "success":
+    print("Order rejected: payment unsuccessful.")
+
+else:
+    print("Order approved.")
+8.28 Running the Code
+
+Open PowerShell from the project root:
+
+cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
+
+Run the Python file:
+
+python code\01-python-foundations\01-python-fundamentals\08_conditional_statements.py
+
+Expected output will be similar to:
+
+You are an adult.
+The number is odd.
+Grade: B
+User is eligible to continue.
+Customer name is missing.
+Order has been shipped.
+Order approved.
+
+8.29 Updating the Documentation
+
+After completing the section, update the learning documentation.
+
+The main book file is:
+
+book\01-python-foundations\01-python-fundamentals.md
+
+The corresponding Python implementation file is:
+
+code\01-python-foundations\01-python-fundamentals\08_conditional_statements.py
+
+Add the following project-learning record at the end of your documentation notes.
+
+Section 8 completed: Conditional Statements
+
+Topics covered:
+- if statements
+- if-else statements
+- if-elif-else statements
+- Comparison operators
+- Logical operators
+- Nested conditions
+- None checks
+- Truthy and falsy values
+- Membership operators
+- Identity operators
+- Data validation
+- Business rule implementation
+- Delivery status logic
+- Customer segmentation
+- File type validation
+- NovaMart order validation
+Documentation Example
+
+You can maintain a simple learning record like this:
+
+### Section 8: Conditional Statements
+
+Status: Completed
+
+Python conditional statements allow a program to execute different
+blocks of code based on conditions.
+
+Topics completed:
+
+- `if`
+- `elif`
+- `else`
+- Comparison operators
+- Logical operators
+- Nested conditions
+- Truthy and falsy values
+- `None` checks
+- Membership checks
+- Identity checks
+- Data validation
+- Business rule implementation
+
+Practical examples completed:
+
+1. Age validation
+2. Even and odd number checking
+3. Grade calculation
+4. Customer segmentation
+5. Delivery status handling
+6. File extension validation
+7. Customer data quality validation
+8. NovaMart order validation
+
+Implementation file:
+
+`code/01-python-foundations/01-python-fundamentals/08_conditional_statements.py`
+8.30 Final Section Review
+
+Before moving forward, review the following concepts.
+
+Basic Conditional Statement
+age = 25
+
+if age >= 18:
+    print("Adult")
+Conditional Statement with else
+age = 15
+
+if age >= 18:
+    print("Adult")
+else:
+    print("Minor")
+Multiple Conditions
+marks = 82
+
+if marks >= 90:
+    grade = "A"
+
+elif marks >= 75:
+    grade = "B"
+
+elif marks >= 60:
+    grade = "C"
+
+else:
+    grade = "Needs improvement"
+
+print(grade)
+Logical Conditions
+age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("Eligible to drive")
+else:
+    print("Not eligible to drive")
+Missing Value Check
+email = None
+
+if email is None:
+    print("Email is missing")
+else:
+    print("Email is available")
+Data Validation
+record = {
+    "customer_id": 101,
+    "age": 25,
+    "email": "customer@example.com"
+}
+
+if record["customer_id"] is None:
+    print("Customer ID is missing.")
+
+elif record["age"] <= 0:
+    print("Invalid age.")
+
+elif "@" not in record["email"]:
+    print("Invalid email.")
+
+else:
+    print("Record is valid.")
+8.31 Important Concepts to Remember
+1. Conditions Are Evaluated from Top to Bottom
+score = 95
+
+if score >= 90:
+    print("Excellent")
+
+elif score >= 75:
+    print("Good")
+
+Output:
+
+Excellent
+
+The second condition is not checked after the first condition succeeds.
+
+2. elif Is Optional
+
+This is valid:
+
+if temperature > 30:
+    print("Hot")
+
+This is also valid:
+
+if temperature > 30:
+    print("Hot")
+else:
+    print("Not hot")
+
+And this is valid:
+
+if temperature > 35:
+    print("Very hot")
+elif temperature > 30:
+    print("Hot")
+else:
+    print("Comfortable")
+3. Multiple if Statements Are Independent
+age = 25
+
+if age >= 18:
+    print("Adult")
+
+if age >= 21:
+    print("Above 21")
+
+if age >= 25:
+    print("Age is 25 or above")
+
+Output:
+
+Adult
+Above 21
+Age is 25 or above
+
+Every condition is evaluated separately.
+
+4. if-elif-else Selects One Branch
+age = 25
+
+if age >= 18:
+    print("Adult")
+
+elif age >= 21:
+    print("Above 21")
+
+else:
+    print("Minor")
+
+Output:
+
+Adult
+
+Only the first matching branch is executed.
+
+5. Use is None for Missing Values
+
+Recommended:
+
+if value is None:
+    print("Missing value")
+
+Avoid:
+
+if value == None:
+    print("Missing value")
+
+Use == for comparing normal values:
+
+if status == "success":
+    print("Payment successful")
+8.32 Final Practice Challenge
+
+Create a complete customer order validation program.
+
+Requirements
+
+The program should validate:
+
+Customer ID is available.
+
+Order ID is available.
+
+Order amount is greater than zero.
+
+Payment status is successful.
+
+Delivery status is displayed.
+
+Customers spending at least ₹2,000 receive a discount message.
+
+Reference Solution
+order = {
+    "customer_id": "CUS1001",
+    "order_id": "ORD5001",
+    "order_amount": 2500,
+    "payment_status": "success",
+    "delivery_status": "processing"
+}
+
+
+if order["customer_id"] is None:
+    print("Order rejected: customer ID is missing.")
+
+elif order["order_id"] is None:
+    print("Order rejected: order ID is missing.")
+
+elif order["order_amount"] <= 0:
+    print("Order rejected: invalid order amount.")
+
+elif order["payment_status"] != "success":
+    print("Order rejected: payment unsuccessful.")
+
+else:
+    print("Order approved.")
+
+    if order["order_amount"] >= 2000:
+        print("Customer is eligible for a discount.")
+    else:
+        print("Customer is not eligible for a discount.")
+
+    if order["delivery_status"] == "processing":
+        print("Your order is being prepared.")
+
+    elif order["delivery_status"] == "shipped":
+        print("Your order has been shipped.")
+
+    elif order["delivery_status"] == "delivered":
+        print("Your order has been delivered.")
+
+    else:
+        print("Delivery status is currently unavailable.")
+
+Expected output:
+
+Order approved.
+Customer is eligible for a discount.
+Your order is being prepared.
+8.33 Section Completion Checklist
+
+Confirm that you can now:
+
+Explain what a condition is.
+Write an if statement.
+Use else.
+Use multiple elif blocks.
+Compare numbers.
+Compare strings.
+Use and.
+Use or.
+Use not.
+Use nested conditions.
+Check for None.
+Understand truthy and falsy values.
+Use in for membership checks.
+Use is for identity checks.
+Validate customer records.
+Validate orders.
+Implement business rules.
+Explain why condition order matters.
+Run the implementation file successfully.
+8.34 Running the Final Implementation
+
+From the project root, run:
+
+cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
+
+Execute the Python file:
+
+python code\01-python-foundations\01-python-fundamentals\08_conditional_statements.py
