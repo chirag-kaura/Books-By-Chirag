@@ -7280,3 +7280,1738 @@ Completed the exercises.
 Reviewed the interview questions.
 Updated documentation if required.
 Committed and pushed the changes.
+
+6. Input and Output
+
+A program becomes useful when it can communicate with the outside world.
+
+So far, we have written programs that work with values already defined inside the code:
+
+name = "Chirag"
+age = 25
+
+However, real-world applications need to:
+
+Display information to users.
+
+Accept values from users.
+
+Read configuration values.
+
+Receive data from files, APIs, and databases.
+
+Format results clearly.
+
+Validate user-provided input.
+
+Python provides simple built-in tools for basic input and output:
+
+print() for displaying output.
+
+input() for receiving user input.
+
+Understanding these two functions is essential before building larger programs.
+
+6.1 Using print()
+
+The print() function displays information on the screen.
+
+Basic Example
+print("Hello, Python!")
+
+Output:
+
+Hello, Python!
+
+We can also print numbers:
+
+print(100)
+print(25.5)
+
+Output:
+
+100
+25.5
+
+We can print the result of an expression:
+
+print(10 + 20)
+
+Output:
+
+30
+
+We can also print variables:
+
+name = "Chirag"
+age = 25
+
+print(name)
+print(age)
+
+Output:
+
+Chirag
+25
+General Syntax
+print(value)
+6.2 Printing Multiple Values
+
+The print() function can display multiple values separated by commas.
+
+name = "Chirag"
+age = 25
+city = "Pune"
+
+print(name, age, city)
+
+Output:
+
+Chirag 25 Pune
+
+By default, Python separates multiple values using a space.
+
+print("Name:", name)
+print("Age:", age)
+print("City:", city)
+
+Output:
+
+Name: Chirag
+Age: 25
+City: Pune
+
+This is useful when displaying labels and values together.
+
+6.3 Understanding sep
+
+The sep parameter controls the separator between multiple values.
+
+By default:
+
+print("Python", "SQL", "Spark")
+
+Output:
+
+Python SQL Spark
+
+We can change the separator:
+
+print("Python", "SQL", "Spark", sep=" | ")
+
+Output:
+
+Python | SQL | Spark
+
+Another example:
+
+print("2026", "09", "19", sep="-")
+
+Output:
+
+2026-09-19
+
+The separator can be any string:
+
+print("A", "B", "C", sep="---")
+
+Output:
+
+A---B---C
+Practical Example
+order_id = "ORD1001"
+customer = "Rahul"
+amount = 1499
+
+print(order_id, customer, amount, sep=" | ")
+
+Output:
+
+ORD1001 | Rahul | 1499
+6.4 Understanding end
+
+By default, print() moves to a new line after displaying the output.
+
+print("Hello")
+print("World")
+
+Output:
+
+Hello
+World
+
+The end parameter controls what is printed at the end.
+
+print("Hello", end=" ")
+print("World")
+
+Output:
+
+Hello World
+
+Another example:
+
+print("Loading", end="...")
+print("Done")
+
+Output:
+
+Loading...Done
+
+We can also prevent the new line:
+
+print("Python", end=" ")
+print("Programming", end=" ")
+print("Language")
+
+Output:
+
+Python Programming Language
+Important Point
+
+The default value of end is:
+
+"\n"
+
+The \n character represents a new line.
+
+6.5 Printing Formatted Output
+
+Readable output is important in real applications.
+
+Consider this code:
+
+name = "Chirag"
+age = 25
+salary = 50000
+
+print(name, age, salary)
+
+Output:
+
+Chirag 25 50000
+
+The output is difficult to understand.
+
+A better approach is:
+
+print("Name:", name)
+print("Age:", age)
+print("Salary:", salary)
+
+Output:
+
+Name: Chirag
+Age: 25
+Salary: 50000
+
+We can also use f-strings.
+
+name = "Chirag"
+age = 25
+
+print(f"My name is {name} and I am {age} years old.")
+
+Output:
+
+My name is Chirag and I am 25 years old.
+
+F-strings are one of the most commonly used ways to format output in modern Python.
+
+6.6 Formatting Numbers in Output
+
+F-strings can format numbers.
+
+price = 1499.5678
+
+print(f"Price: {price:.2f}")
+
+Output:
+
+Price: 1499.57
+
+Here:
+
+:.2f
+
+means:
+
+f means floating-point number.
+
+.2 means two digits after the decimal point.
+
+Formatting with Commas
+revenue = 1250000
+
+print(f"Revenue: {revenue:,}")
+
+Output:
+
+Revenue: 1,250,000
+Formatting Percentages
+conversion_rate = 0.8567
+
+print(f"Conversion Rate: {conversion_rate:.2%}")
+
+Output:
+
+Conversion Rate: 85.67%
+Formatting Currency
+amount = 2499.5
+
+print(f"Total Amount: ₹{amount:,.2f}")
+
+Output:
+
+Total Amount: ₹2,499.50
+6.7 Taking Input with input()
+
+The input() function is used to receive data from the user.
+
+name = input("Enter your name: ")
+
+print(f"Hello, {name}!")
+
+Example interaction:
+
+Enter your name: Chirag
+Hello, Chirag!
+
+The text inside input() is called the prompt.
+
+input("Enter your name: ")
+
+The program waits until the user enters a value and presses Enter.
+
+General Syntax
+variable = input("Prompt message: ")
+6.8 Important Rule: input() Returns a String
+
+Regardless of what the user enters, input() returns a string.
+
+age = input("Enter your age: ")
+
+print(age)
+print(type(age))
+
+If the user enters:
+
+25
+
+Output:
+
+25
+<class 'str'>
+
+Even though the input looks like a number, Python stores it as a string.
+
+This creates a problem when performing mathematical operations.
+
+age = input("Enter your age: ")
+
+print(age + 1)
+
+This causes an error:
+
+TypeError: can only concatenate str (not "int") to str
+
+To perform numerical calculations, we must convert the input into the correct data type.
+
+6.9 Converting Input Values
+Converting to Integer
+
+Use int() when the user enters a whole number.
+
+age = int(input("Enter your age: "))
+
+print(age + 1)
+
+Example:
+
+Enter your age: 25
+26
+Converting to Float
+
+Use float() when the user enters a decimal number.
+
+price = float(input("Enter product price: "))
+
+print(price * 2)
+
+Example:
+
+Enter product price: 149.50
+299.0
+
+Converting to Boolean
+
+Python uses the bool() function to convert a value into either:
+
+True
+
+or:
+
+False
+
+Example:
+
+print(bool(1))
+print(bool(0))
+
+Output:
+
+True
+False
+Truthy and Falsy Values
+
+Python considers some values as truthy and others as falsy.
+
+Common falsy values include:
+
+False
+None
+0
+0.0
+""
+[]
+{}
+()
+
+Examples:
+
+print(bool(""))
+print(bool("Python"))
+
+print(bool(0))
+print(bool(10))
+
+print(bool([]))
+print(bool([1, 2, 3]))
+
+Output:
+
+False
+True
+False
+True
+False
+True
+
+The general rule is:
+
+Empty values and zero are usually falsy. Non-empty values and non-zero numbers are usually truthy.
+
+Important Example: Converting User Input to Boolean
+
+Consider this code:
+
+answer = input("Do you want to continue? ")
+
+print(bool(answer))
+
+If the user enters:
+
+False
+
+The output will be:
+
+True
+
+Why?
+
+Because the string "False" is not empty.
+
+Python checks whether the string contains any characters. It does not automatically interpret the text "False" as the Boolean value False.
+
+print(bool("False"))
+print(bool("True"))
+print(bool(""))
+
+Output:
+
+True
+True
+False
+
+This is a common beginner mistake.
+
+Correct Way to Convert Yes/No Input
+
+If the user enters "yes" or "no", we can explicitly check the text.
+
+answer = input("Do you want to continue? ").strip().lower()
+
+if answer == "yes":
+    continue_process = True
+else:
+    continue_process = False
+
+print(continue_process)
+
+Example:
+
+Do you want to continue? yes
+True
+
+Another example:
+
+Do you want to continue? no
+False
+
+The following methods are used here:
+
+.strip()
+
+Removes extra spaces.
+
+.lower()
+
+Converts the input to lowercase.
+
+For example:
+
+answer = " YES "
+
+print(answer.strip().lower())
+
+Output:
+
+yes
+Using a Boolean Expression Directly
+
+We can simplify the previous example:
+
+answer = input("Do you want to continue? ").strip().lower()
+
+continue_process = answer == "yes"
+
+print(continue_process)
+
+The expression:
+
+answer == "yes"
+
+returns either True or False.
+
+Example:
+
+print("yes" == "yes")
+print("no" == "yes")
+
+Output:
+
+True
+False
+
+This is cleaner than writing a complete if-else statement.
+
+Accepting Multiple Boolean Inputs
+
+Sometimes a program accepts values such as:
+
+yes
+
+y
+
+true
+
+1
+
+We can support multiple valid inputs.
+
+answer = input("Do you want email notifications? ").strip().lower()
+
+enabled_values = {"yes", "y", "true", "1"}
+
+email_notifications = answer in enabled_values
+
+print(f"Email notifications enabled: {email_notifications}")
+
+Example:
+
+Do you want email notifications? y
+Email notifications enabled: True
+
+Example:
+
+Do you want email notifications? no
+Email notifications enabled: False
+
+The expression:
+
+answer in enabled_values
+
+checks whether the input exists in the set.
+
+Creating a Reusable Boolean Conversion Function
+
+Later in this book, we will learn functions in detail. For now, consider this example:
+
+def convert_to_boolean(value):
+    value = value.strip().lower()
+
+    if value in {"yes", "y", "true", "1"}:
+        return True
+
+    if value in {"no", "n", "false", "0"}:
+        return False
+
+    return None
+
+Example usage:
+
+print(convert_to_boolean("yes"))
+print(convert_to_boolean("false"))
+print(convert_to_boolean("unknown"))
+
+Output:
+
+True
+False
+None
+
+Here:
+
+True means the input represents an enabled or positive value.
+
+False means the input represents a disabled or negative value.
+
+None means the input could not be understood.
+
+This approach is useful when processing configuration files, command-line arguments, and data received from external systems.
+
+Practical Example: NovaMart Delivery Confirmation
+
+NovaMart wants to ask customers whether they want delivery notifications.
+
+notification_input = input(
+    "Do you want delivery notifications? yes/no: "
+).strip().lower()
+
+if notification_input in {"yes", "y"}:
+    notifications_enabled = True
+elif notification_input in {"no", "n"}:
+    notifications_enabled = False
+else:
+    notifications_enabled = None
+
+if notifications_enabled is True:
+    print("Delivery notifications enabled.")
+
+elif notifications_enabled is False:
+    print("Delivery notifications disabled.")
+
+else:
+    print("Invalid response. Please enter yes or no.")
+
+Example:
+
+Do you want delivery notifications? yes/no: yes
+Delivery notifications enabled.
+
+Invalid input:
+
+Do you want delivery notifications? yes/no: maybe
+Invalid response. Please enter yes or no.
+Important Note
+
+Use:
+
+is True
+
+and:
+
+is False
+
+when you specifically want to check for the Boolean objects True and False.
+
+For general truth checking, use:
+
+if value:
+
+or:
+
+if not value:
+
+For example:
+
+is_active = True
+
+if is_active:
+    print("Account is active.")
+
+Quick Practice
+
+Try predicting the output:
+
+print(bool(0))
+print(bool(1))
+print(bool(""))
+print(bool("False"))
+print(bool([]))
+print(bool([0]))
+print(bool(None))
+
+Expected output:
+
+False
+True
+False
+True
+False
+True
+False
+
+The most important result to remember is:
+
+bool("False") == True
+
+because "False" is a non-empty string.
+
+6.10 Input Validation Basics
+
+User input cannot always be trusted.
+
+A user may enter:
+
+Text instead of a number.
+
+A negative quantity.
+
+An empty value.
+
+An invalid menu option.
+
+Unexpected spaces.
+
+A decimal number where an integer is required.
+
+For example:
+
+age = int(input("Enter your age: "))
+
+If the user enters:
+
+twenty-five
+
+Python raises:
+
+ValueError
+
+A basic validation approach is to check the input before conversion.
+
+age_text = input("Enter your age: ")
+
+if age_text.isdigit():
+    age = int(age_text)
+    print(f"Your age is {age}")
+else:
+    print("Please enter a valid whole number.")
+Using strip()
+
+The strip() method removes extra spaces from the beginning and end of a string.
+
+name = input("Enter your name: ").strip()
+
+print(f"Hello, {name}")
+
+If the user enters:
+
+   Chirag
+
+The stored value becomes:
+
+Chirag
+Checking for Empty Input
+name = input("Enter your name: ").strip()
+
+if name == "":
+    print("Name cannot be empty.")
+else:
+    print(f"Welcome, {name}!")
+
+A shorter version is:
+
+if not name:
+    print("Name cannot be empty.")
+6.11 Practical Example: NovaMart Order Input
+
+NovaMart needs a simple program that accepts order information from a user and displays a formatted order summary.
+
+The program should collect:
+
+Customer name.
+
+Product name.
+
+Quantity.
+
+Unit price.
+
+Basic Implementation
+customer_name = input("Enter customer name: ").strip()
+product_name = input("Enter product name: ").strip()
+quantity = int(input("Enter quantity: "))
+unit_price = float(input("Enter unit price: "))
+
+total_amount = quantity * unit_price
+
+print("\n----- NovaMart Order Summary -----")
+print(f"Customer: {customer_name}")
+print(f"Product: {product_name}")
+print(f"Quantity: {quantity}")
+print(f"Unit Price: ₹{unit_price:,.2f}")
+print(f"Total Amount: ₹{total_amount:,.2f}")
+
+Example interaction:
+
+Enter customer name: Rahul
+Enter product name: Keyboard
+Enter quantity: 2
+Enter unit price: 1499
+
+----- NovaMart Order Summary -----
+Customer: Rahul
+Product: Keyboard
+Quantity: 2
+Unit Price: ₹1,499.00
+Total Amount: ₹2,998.00
+What This Program Demonstrates
+
+This example combines:
+
+input()
+
+print()
+
+strip()
+
+int()
+
+float()
+
+Arithmetic operators.
+
+F-strings.
+
+Number formatting.
+
+User-friendly output.
+
+These concepts are frequently used in command-line tools and data-processing scripts.
+
+6.12 Improving the NovaMart Program
+
+The previous implementation assumes that the user enters valid values.
+
+We can add basic validation.
+
+customer_name = input("Enter customer name: ").strip()
+product_name = input("Enter product name: ").strip()
+
+if not customer_name:
+    print("Customer name cannot be empty.")
+
+elif not product_name:
+    print("Product name cannot be empty.")
+
+else:
+    quantity_text = input("Enter quantity: ").strip()
+    price_text = input("Enter unit price: ").strip()
+
+    if not quantity_text.isdigit():
+        print("Quantity must be a whole number.")
+
+    else:
+        quantity = int(quantity_text)
+
+        if quantity <= 0:
+            print("Quantity must be greater than zero.")
+
+        else:
+            try:
+                unit_price = float(price_text)
+
+                if unit_price <= 0:
+                    print("Unit price must be greater than zero.")
+
+                else:
+                    total_amount = quantity * unit_price
+
+                    print("\n----- NovaMart Order Summary -----")
+                    print(f"Customer: {customer_name}")
+                    print(f"Product: {product_name}")
+                    print(f"Quantity: {quantity}")
+                    print(f"Unit Price: ₹{unit_price:,.2f}")
+                    print(f"Total Amount: ₹{total_amount:,.2f}")
+
+            except ValueError:
+                print("Unit price must be a valid number.")
+
+This version is longer, but it handles common invalid inputs.
+
+Later, we will learn better ways to organize validation using:
+
+Functions.
+
+Loops.
+
+Exceptions.
+
+Custom validation logic.
+
+6.13 Practical Implementation
+
+Create the following file:
+
+code\01-python-foundations\01-python-fundamentals\06_input_and_output.py
+
+Add the following code:
+
+"""
+Section 6: Input and Output
+
+This program demonstrates:
+- print()
+- sep
+- end
+- input()
+- Type conversion
+- split()
+- Basic validation
+- Formatted output
+"""
+
+
+# --------------------------------------------------
+# 1. Basic print()
+# --------------------------------------------------
+
+print("Hello, Python!")
+
+print(100)
+print(25.5)
+print(10 + 20)
+
+
+# --------------------------------------------------
+# 2. Printing variables
+# --------------------------------------------------
+
+name = "Chirag"
+age = 25
+
+print(name)
+print(age)
+
+print("Name:", name)
+print("Age:", age)
+
+
+# --------------------------------------------------
+# 3. sep parameter
+# --------------------------------------------------
+
+print("Python", "SQL", "Spark", sep=" | ")
+
+
+# --------------------------------------------------
+# 4. end parameter
+# --------------------------------------------------
+
+print("Hello", end=" ")
+print("World")
+
+
+# --------------------------------------------------
+# 5. Formatted output
+# --------------------------------------------------
+
+salary = 50000
+
+print(f"Employee: {name}, Salary: ₹{salary:,}")
+
+
+# --------------------------------------------------
+# 6. Number formatting
+# --------------------------------------------------
+
+price = 1499.5678
+
+print(f"Price: ₹{price:,.2f}")
+
+
+# --------------------------------------------------
+# 7. Basic input
+# --------------------------------------------------
+
+user_name = input("Enter your name: ").strip()
+
+if user_name:
+    print(f"Hello, {user_name}!")
+else:
+    print("Name cannot be empty.")
+
+
+# --------------------------------------------------
+# 8. Numeric input
+# --------------------------------------------------
+
+age_text = input("Enter your age: ").strip()
+
+if age_text.isdigit():
+    user_age = int(age_text)
+    print(f"Next year, you will be {user_age + 1}.")
+else:
+    print("Age must be a whole number.")
+
+
+# --------------------------------------------------
+# 9. Multiple inputs
+# --------------------------------------------------
+
+try:
+    first_number, second_number = map(
+        int,
+        input("Enter two numbers separated by space: ").split()
+    )
+
+    print(f"Sum: {first_number + second_number}")
+
+except ValueError:
+    print("Please enter exactly two whole numbers.")
+
+
+# --------------------------------------------------
+# 10. Boolean input
+# --------------------------------------------------
+
+notification_input = input(
+    "Do you want email notifications? yes/no: "
+).strip().lower()
+
+enabled_values = {"yes", "y", "true", "1"}
+
+email_notifications = notification_input in enabled_values
+
+print(f"Email notifications enabled: {email_notifications}")
+
+
+# --------------------------------------------------
+# 11. NovaMart order summary
+# --------------------------------------------------
+
+customer_name = input("Enter customer name: ").strip()
+product_name = input("Enter product name: ").strip()
+quantity_text = input("Enter quantity: ").strip()
+unit_price_text = input("Enter unit price: ").strip()
+
+if not customer_name or not product_name:
+    print("Customer name and product name are required.")
+
+elif not quantity_text.isdigit():
+    print("Quantity must be a whole number.")
+
+else:
+    quantity = int(quantity_text)
+
+    try:
+        unit_price = float(unit_price_text)
+
+        if quantity <= 0:
+            print("Quantity must be greater than zero.")
+
+        elif unit_price <= 0:
+            print("Unit price must be greater than zero.")
+
+        else:
+            total_amount = quantity * unit_price
+
+            print("\n----- NovaMart Order Summary -----")
+            print(f"Customer: {customer_name}")
+            print(f"Product: {product_name}")
+            print(f"Quantity: {quantity}")
+            print(f"Unit Price: ₹{unit_price:,.2f}")
+            print(f"Total Amount: ₹{total_amount:,.2f}")
+
+    except ValueError:
+        print("Unit price must be a valid number.")
+6.14 Running the Implementation
+
+Open the terminal from the project root:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey
+
+Run:
+
+python code\01-python-foundations\01-python-fundamentals\06_input_and_output.py
+
+The program will ask for different values.
+
+Example:
+
+Enter your name: Chirag
+Enter your age: 25
+Enter two numbers separated by space: 10 20
+Do you want email notifications? yes/no: yes
+Enter customer name: Rahul
+Enter product name: Keyboard
+Enter quantity: 2
+Enter unit price: 1499
+
+Expected order output:
+
+----- NovaMart Order Summary -----
+Customer: Rahul
+Product: Keyboard
+Quantity: 2
+Unit Price: ₹1,499.00
+Total Amount: ₹2,998.00
+6.15 Common Mistakes
+Mistake 1: Treating input() as a number
+
+Incorrect:
+
+age = input("Enter age: ")
+
+print(age + 1)
+
+Correct:
+
+age = int(input("Enter age: "))
+
+print(age + 1)
+Mistake 2: Forgetting to convert decimal input
+
+Incorrect:
+
+price = int(input("Enter price: "))
+
+This fails for:
+
+1499.50
+
+Correct:
+
+price = float(input("Enter price: "))
+Mistake 3: Using bool() directly on user input
+
+Incorrect:
+
+answer = bool(input("Continue? "))
+
+The string "False" is non-empty and therefore truthy.
+
+Better:
+
+answer = input("Continue? ").strip().lower()
+
+if answer == "yes":
+    print("Continuing...")
+else:
+    print("Stopping...")
+Mistake 4: Not handling invalid numeric input
+
+Risky:
+
+quantity = int(input("Enter quantity: "))
+
+If the user enters text, the program crashes.
+
+Safer:
+
+try:
+    quantity = int(input("Enter quantity: "))
+except ValueError:
+    print("Invalid quantity.")
+Mistake 5: Forgetting strip()
+
+Without strip():
+
+name = input("Enter name: ")
+
+The user may accidentally enter extra spaces.
+
+Better:
+
+name = input("Enter name: ").strip()
+Mistake 6: Incorrect f-string formatting
+
+Incorrect:
+
+price = 1499.5
+
+print(f"₹{price.2f}")
+
+Correct:
+
+print(f"₹{price:.2f}")
+Mistake 7: Expecting split() to convert values
+a, b = input().split()
+
+Both values are strings.
+
+For integers:
+
+a, b = map(int, input().split())
+6.16 Testing and Production Considerations
+
+Input and output code should be tested with different types of values.
+
+Test Case 1: Valid Input
+Customer: Rahul
+Product: Keyboard
+Quantity: 2
+Unit Price: 1499
+
+Expected:
+
+Total Amount: ₹2,998.00
+Test Case 2: Empty Customer Name
+Customer:
+
+Expected:
+
+Customer name and product name are required.
+Test Case 3: Invalid Quantity
+Quantity: two
+
+Expected:
+
+Quantity must be a whole number.
+Test Case 4: Negative Quantity
+Quantity: -2
+
+Expected behavior:
+
+Quantity must be a whole number.
+
+Note: .isdigit() does not accept negative numbers. Later, we will implement more flexible validation.
+
+Test Case 5: Decimal Unit Price
+Unit Price: 1499.75
+
+Expected:
+
+Unit Price: ₹1,499.75
+Production Considerations
+
+In production applications:
+
+Do not assume user input is valid.
+
+Validate all external input.
+
+Use clear error messages.
+
+Avoid exposing technical tracebacks to end users.
+
+Keep input validation separate from business logic.
+
+Use logging for unexpected failures.
+
+Use functions to avoid repeating validation code.
+
+Use appropriate data types for financial calculations.
+
+Consider Decimal instead of float for financial amounts.
+
+For example:
+
+from decimal import Decimal
+
+price = Decimal("1499.50")
+quantity = 2
+
+total = price * quantity
+
+print(total)
+
+Output:
+
+2999.00
+6.17 Exercises
+Exercise 1: Personal Introduction
+
+Write a program that accepts:
+
+Name.
+
+Age.
+
+City.
+
+Display:
+
+My name is Chirag.
+I am 25 years old.
+I live in Pune.
+Exercise 2: Simple Calculator
+
+Accept two numbers and display:
+
+Addition.
+
+Subtraction.
+
+Multiplication.
+
+Division.
+
+Example:
+
+Enter first number: 20
+Enter second number: 5
+
+Addition: 25
+Subtraction: 15
+Multiplication: 100
+Division: 4.0
+Exercise 3: Temperature Converter
+
+Accept temperature in Celsius and convert it to Fahrenheit.
+
+Formula:
+
+F=(C×
+5
+9
+	​
+
+)+32
+Exercise 4: Employee Salary Summary
+
+Accept:
+
+Employee name.
+
+Monthly salary.
+
+Number of working months.
+
+Calculate annual salary.
+
+Example:
+
+Employee: Chirag
+Monthly Salary: ₹50,000
+Annual Salary: ₹600,000
+Exercise 5: Shopping Bill
+
+Accept:
+
+Product name.
+
+Quantity.
+
+Price.
+
+Display the total bill using two decimal places.
+
+Exercise 6: Data Engineering Tools
+
+Accept three tool names from the user:
+
+Python
+SQL
+Spark
+
+Display them in this format:
+
+Python | SQL | Spark
+Exercise 7: Input Validation
+
+Accept an age and check whether it is:
+
+Empty.
+
+Invalid.
+
+Less than zero.
+
+A valid age.
+
+6.18 Interview Questions
+Question 1
+
+What is the difference between print() and input()?
+
+Answer:
+
+print() displays output.
+
+input() receives user input and returns it as a string.
+
+Question 2
+
+What data type does input() return?
+
+Answer:
+
+input() always returns a string.
+
+Question 3
+
+How do you accept an integer from the user?
+
+age = int(input("Enter age: "))
+Question 4
+
+What is the purpose of sep in print()?
+
+Answer:
+
+sep defines the separator between multiple values.
+
+print("A", "B", "C", sep="-")
+
+Output:
+
+A-B-C
+Question 5
+
+What is the purpose of end in print()?
+
+Answer:
+
+end defines what is printed after the output.
+
+print("Hello", end=" ")
+print("World")
+
+Output:
+
+Hello World
+Question 6
+
+What does split() do?
+
+Answer:
+
+It divides a string into a list of smaller strings.
+
+"Python SQL Spark".split()
+
+Result:
+
+['Python', 'SQL', 'Spark']
+Question 7
+
+How do you accept two integers in one line?
+
+a, b = map(int, input().split())
+Question 8
+
+Why is bool("False") equal to True?
+
+Answer:
+
+Because "False" is a non-empty string, and all non-empty strings are truthy in Python.
+
+Question 9
+
+How do you format a number to two decimal places?
+
+price = 1499.5678
+
+print(f"{price:.2f}")
+
+Output:
+
+1499.57
+Question 10
+
+How can invalid numeric input be handled?
+
+Answer:
+
+Use try-except.
+
+try:
+    number = int(input("Enter number: "))
+except ValueError:
+    print("Invalid number.")
+6.19 Summary
+
+In this section, we learned how Python programs communicate with users.
+
+Important concepts included:
+
+Using print() to display output.
+
+Printing multiple values.
+
+Using sep to control separators.
+
+Using end to control line endings.
+
+Formatting output with f-strings.
+
+Formatting currency, percentages, and decimals.
+
+Using input() to receive user input.
+
+Understanding that input() returns a string.
+
+Converting input using int() and float().
+
+Converting values to Boolean values.
+
+Understanding truthy and falsy values.
+
+Taking multiple inputs using split().
+
+Validating empty and invalid input.
+
+Building a NovaMart order summary.
+
+Handling input errors using try-except.
+
+Input and output are foundational skills for command-line applications, automation scripts, ETL tools, and data engineering workflows.
+
+6.20 Completion Checklist
+
+Before moving to the next section, confirm that you can:
+
+Use print() to display values.
+Print variables and expressions.
+Print multiple values.
+Use sep to control separators.
+Use end to control line endings.
+Format strings using f-strings.
+Format decimal numbers.
+Format currency values.
+Format percentages.
+Use input() to accept user input.
+Understand that input() returns a string.
+Convert strings to integers.
+Convert strings to floats.
+Convert values to Boolean values.
+Understand truthy and falsy values.
+Use strip() to remove extra spaces.
+Use split() to divide input into multiple values.
+Use map() to convert multiple inputs.
+Check for empty input.
+Validate numeric input.
+Handle invalid input using try-except.
+Build a simple order summary program.
+Format output in a user-friendly way.
+Run the implementation file successfully.
+6.21 Final Section Practice
+
+Complete the following mini-project without directly copying the previous NovaMart implementation.
+
+Mini-Project: NovaMart Customer Order
+
+Create a program that accepts:
+
+Customer name.
+
+Product name.
+
+Quantity.
+
+Unit price.
+
+Whether the customer wants delivery notifications.
+
+The program should:
+
+Remove unnecessary spaces from text input.
+
+Convert quantity into an integer.
+
+Convert unit price into a float.
+
+Convert the notification response into a Boolean value.
+
+Calculate the total amount.
+
+Display a formatted order summary.
+
+Expected Output
+----- NovaMart Customer Order -----
+
+Customer: Chirag
+Product: Wireless Mouse
+Quantity: 2
+Unit Price: ₹799.00
+Total Amount: ₹1,598.00
+Delivery Notifications: True
+Additional Requirements
+
+Your program should also:
+
+Reject an empty customer name.
+
+Reject an empty product name.
+
+Reject a quantity less than or equal to zero.
+
+Reject a unit price less than or equal to zero.
+
+Display a message for invalid notification input.
+
+Avoid crashing when the user enters invalid numeric values.
+
+6.22 Section Review
+
+Input and output are the connection between a Python program and the outside world.
+
+The main flow is:
+
+Receive Input
+     ↓
+Clean Input
+     ↓
+Convert Data Type
+     ↓
+Validate Input
+     ↓
+Process Data
+     ↓
+Format Output
+     ↓
+Display Result
+
+For example, in a shopping application:
+
+Customer enters quantity
+     ↓
+Convert quantity to integer
+     ↓
+Check quantity is greater than zero
+     ↓
+Calculate total price
+     ↓
+Display formatted bill
+
+This pattern is used in many real-world applications, including:
+
+Command-line tools.
+
+Data ingestion scripts.
+
+ETL pipelines.
+
+Configuration utilities.
+
+Automation scripts.
+
+Data validation programs.
+
+Interactive applications.
+
+6.23 Important Concepts to Remember
+print()
+
+Used to display output.
+
+print("Hello Python")
+input()
+
+Used to receive user input.
+
+name = input("Enter name: ")
+int()
+
+Converts a value into an integer.
+
+age = int("25")
+float()
+
+Converts a value into a floating-point number.
+
+price = float("1499.50")
+bool()
+
+Converts a value into True or False.
+
+print(bool(1))
+print(bool(0))
+strip()
+
+Removes leading and trailing spaces.
+
+name = input().strip()
+split()
+
+Divides a string into multiple parts.
+
+values = "10 20 30".split()
+map()
+
+Applies a conversion function to multiple values.
+
+numbers = map(int, input().split())
+try-except
+
+Handles errors without immediately crashing the program.
+
+try:
+    number = int(input("Enter number: "))
+except ValueError:
+    print("Invalid number.")
+6.24 Key Takeaways
+
+print() is used to display information.
+
+input() always returns a string.
+
+Numeric input must be converted before performing calculations.
+
+int() is used for whole numbers.
+
+float() is used for decimal numbers.
+
+bool() converts values based on truthiness.
+
+A non-empty string such as "False" is truthy.
+
+strip() helps clean text input.
+
+split() helps process multiple values.
+
+map() is useful for converting multiple inputs.
+
+Input validation prevents incorrect data from entering a program.
+
+try-except helps handle conversion errors.
+
+F-strings make output easier to read.
+
+Currency and decimal values should be formatted carefully.
+
+Production applications should separate input validation from business logic.
+
+6.25 Section Completion
+
+Section 6 — Input and Output is now complete.
+
+You have learned how to:
+
+Display information.
+
+Accept user input.
+
+Convert input values.
+
+Work with Boolean input.
+
+Validate values.
+
+Handle invalid input.
+
+Format output.
+
+Build a basic customer order program.
+
+The next section will introduce None and Basic Missing Values. This topic was briefly introduced earlier, but we will now explore it in more detail and understand why missing values matter in data engineering.
+
+Save Your Work
+
+Run the implementation file:
+
+python code\01-python-foundations\01-python-fundamentals\06_input_and_output.py
+
+Check that the program executes successfully.
