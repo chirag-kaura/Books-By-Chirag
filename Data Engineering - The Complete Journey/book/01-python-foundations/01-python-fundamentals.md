@@ -12858,3 +12858,6715 @@ cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
 Execute the Python file:
 
 python code\01-python-foundations\01-python-fundamentals\08_conditional_statements.py
+
+9. Loops and Iteration
+
+Loops are used to execute a block of code repeatedly.
+
+In real-world programming, we often need to perform the same operation on multiple values.
+
+For example:
+
+Print every customer name.
+
+Process every order.
+
+Read every row from a dataset.
+
+Validate every record.
+
+Calculate the total sales.
+
+Process files inside a folder.
+
+Iterate through API responses.
+
+Instead of writing the same code repeatedly, we use loops.
+
+9.1 Why Do We Need Loops?
+
+Without a loop:
+
+print("Processing order 1")
+print("Processing order 2")
+print("Processing order 3")
+print("Processing order 4")
+print("Processing order 5")
+
+This approach becomes inefficient when there are thousands or millions of records.
+
+With a loop:
+
+for order_id in range(1, 6):
+    print(f"Processing order {order_id}")
+
+Output:
+
+Processing order 1
+Processing order 2
+Processing order 3
+Processing order 4
+Processing order 5
+
+The loop reduces repeated code and makes the program easier to maintain.
+
+9.2 Types of Loops in Python
+
+Python mainly provides two types of loops:
+
+for loop
+
+while loop
+
+for Loop
+
+A for loop is used when we want to iterate over a sequence or collection.
+
+Examples:
+
+List
+
+Tuple
+
+String
+
+Dictionary
+
+Set
+
+Range of numbers
+
+for item in collection:
+    # Code to execute
+    pass
+while Loop
+
+A while loop is used when code should continue running as long as a condition remains true.
+
+while condition:
+    # Code to execute
+    pass
+9.3 The for Loop
+
+The basic syntax of a for loop is:
+
+for variable in iterable:
+    statement
+
+Here:
+
+for is the loop keyword.
+
+variable stores the current item.
+
+in connects the variable to the iterable.
+
+iterable is the collection being processed.
+
+The indented block executes for every item.
+
+Example:
+
+customers = ["Amit", "Priya", "Rahul"]
+
+for customer in customers:
+    print(customer)
+
+Output:
+
+Amit
+Priya
+Rahul
+How It Works
+
+The loop executes as follows:
+
+customer receives "Amit".
+
+The print statement runs.
+
+customer receives "Priya".
+
+The print statement runs.
+
+customer receives "Rahul".
+
+The print statement runs.
+
+The loop ends.
+
+9.4 Iterating Over a List
+
+A list contains multiple values.
+
+products = ["Laptop", "Mouse", "Keyboard"]
+
+for product in products:
+    print(product)
+
+Output:
+
+Laptop
+Mouse
+Keyboard
+Practical Example
+orders = [101, 102, 103, 104]
+
+for order_id in orders:
+    print(f"Processing order: {order_id}")
+
+Output:
+
+Processing order: 101
+Processing order: 102
+Processing order: 103
+Processing order: 104
+9.5 Iterating Over a String
+
+A string is also iterable.
+
+name = "Python"
+
+for character in name:
+    print(character)
+
+Output:
+
+P
+y
+t
+h
+o
+n
+
+Each loop iteration processes one character.
+
+Practical Example
+word = "Data"
+
+for character in word:
+    print(f"Character: {character}")
+
+Output:
+
+Character: D
+Character: a
+Character: t
+Character: a
+9.6 Iterating Over a Tuple
+coordinates = (10, 20, 30)
+
+for coordinate in coordinates:
+    print(coordinate)
+
+Output:
+
+10
+20
+30
+
+Tuples can be iterated over in the same way as lists.
+
+9.7 Iterating Over a Set
+unique_regions = {"North", "South", "East", "West"}
+
+for region in unique_regions:
+    print(region)
+
+The output order may vary because sets are unordered collections.
+
+Example output:
+
+South
+West
+North
+East
+
+Do not depend on a particular order when iterating over a set.
+
+9.8 Iterating Over a Dictionary
+
+Dictionaries contain key-value pairs.
+
+customer = {
+    "customer_id": 101,
+    "name": "Amit",
+    "city": "Mumbai"
+}
+Iterating Over Keys
+for key in customer:
+    print(key)
+
+Output:
+
+customer_id
+name
+city
+
+The following is equivalent:
+
+for key in customer.keys():
+    print(key)
+Iterating Over Values
+for value in customer.values():
+    print(value)
+
+Output:
+
+101
+Amit
+Mumbai
+Iterating Over Key-Value Pairs
+
+Use .items():
+
+for key, value in customer.items():
+    print(f"{key}: {value}")
+
+Output:
+
+customer_id: 101
+name: Amit
+city: Mumbai
+
+This is very useful when processing JSON-like records.
+
+9.9 The range() Function
+
+The range() function generates a sequence of numbers.
+
+Basic Example
+for number in range(5):
+    print(number)
+
+Output:
+
+0
+1
+2
+3
+4
+
+Important:
+
+range(5) starts at 0 and stops before 5.
+
+range(start, stop)
+for number in range(2, 6):
+    print(number)
+
+Output:
+
+2
+3
+4
+5
+
+The stop value is excluded.
+
+range(start, stop, step)
+for number in range(2, 11, 2):
+    print(number)
+
+Output:
+
+2
+4
+6
+8
+10
+
+Here:
+
+Start = 2
+
+Stop = 11
+
+Step = 2
+
+Counting Backward
+for number in range(5, 0, -1):
+    print(number)
+
+Output:
+
+5
+4
+3
+2
+1
+9.10 Practical Example: Processing Customer IDs
+for customer_id in range(1001, 1006):
+    print(f"Processing customer: {customer_id}")
+
+Output:
+
+Processing customer: 1001
+Processing customer: 1002
+Processing customer: 1003
+Processing customer: 1004
+Processing customer: 1005
+
+This pattern can be used for:
+
+Generating test records.
+
+Processing batches.
+
+Creating sample IDs.
+
+Running repeated operations.
+
+9.11 Practical Example: Calculating Total Sales
+
+Suppose we have sales values:
+
+sales = [1200, 2500, 1800, 3200]
+
+We can calculate the total using a loop.
+
+sales = [1200, 2500, 1800, 3200]
+
+total_sales = 0
+
+for sale in sales:
+    total_sales += sale
+
+print(f"Total sales: {total_sales}")
+
+Output:
+
+Total sales: 8700
+Explanation
+
+Initially:
+
+total_sales = 0
+
+During each iteration:
+
+total_sales += sale
+
+The values are added one by one:
+
+Sale
+
+	
+
+Running Total
+
+
+
+
+1200
+
+	
+
+1200
+
+
+
+
+2500
+
+	
+
+3700
+
+
+
+
+1800
+
+	
+
+5500
+
+
+
+
+3200
+
+	
+
+8700
+
+9.12 Practical Example: Counting Valid Records
+records = [
+    {"id": 1, "is_valid": True},
+    {"id": 2, "is_valid": False},
+    {"id": 3, "is_valid": True},
+    {"id": 4, "is_valid": True}
+]
+
+valid_count = 0
+
+for record in records:
+    if record["is_valid"]:
+        valid_count += 1
+
+print(f"Valid records: {valid_count}")
+
+Output:
+
+Valid records: 3
+
+This combines:
+
+A for loop.
+
+A conditional statement.
+
+A counter variable.
+
+9.13 Practical Example: Filtering Failed Orders
+orders = [
+    {"order_id": 101, "status": "success"},
+    {"order_id": 102, "status": "failed"},
+    {"order_id": 103, "status": "success"},
+    {"order_id": 104, "status": "failed"}
+]
+
+for order in orders:
+    if order["status"] == "failed":
+        print(f"Failed order: {order['order_id']}")
+
+Output:
+
+Failed order: 102
+Failed order: 104
+
+This is a common pattern in data processing pipelines.
+
+9.14 The while Loop
+
+A while loop repeatedly executes a block of code as long as its condition is true.
+
+Syntax:
+
+while condition:
+    statement
+
+Example:
+
+counter = 1
+
+while counter <= 5:
+    print(counter)
+    counter += 1
+
+Output:
+
+1
+2
+3
+4
+5
+How It Works
+
+counter starts at 1.
+
+Python checks whether counter <= 5.
+
+The value is printed.
+
+counter increases by 1.
+
+The condition is checked again.
+
+The loop stops when the condition becomes false.
+
+9.15 Practical Example: Processing Batches
+
+Imagine a system processing records in batches.
+
+batch_number = 1
+total_batches = 4
+
+while batch_number <= total_batches:
+    print(f"Processing batch {batch_number}")
+    batch_number += 1
+
+Output:
+
+Processing batch 1
+Processing batch 2
+Processing batch 3
+Processing batch 4
+
+A while loop can be useful when the number of iterations depends on a changing condition.
+
+9.16 Avoiding Infinite Loops
+
+An infinite loop never stops.
+
+Example:
+
+counter = 1
+
+while counter <= 5:
+    print(counter)
+
+This loop is infinite because counter never changes.
+
+Correct version:
+
+counter = 1
+
+while counter <= 5:
+    print(counter)
+    counter += 1
+
+Always ensure that the loop condition can eventually become false.
+
+9.17 Comparing for and while
+
+Feature
+
+	
+
+for Loop
+
+	
+
+while Loop
+
+
+
+
+Main use
+
+	
+
+Iterate over a sequence
+
+	
+
+Repeat while condition is true
+
+
+
+
+Common input
+
+	
+
+List, tuple, string, range
+
+	
+
+Boolean condition
+
+
+
+
+Number of iterations
+
+	
+
+Often known or collection-based
+
+	
+
+Often condition-based
+
+
+
+
+Risk of infinite loop
+
+	
+
+Low
+
+	
+
+Higher
+
+
+
+
+Common use
+
+	
+
+Processing records
+
+	
+
+Waiting or repeated condition checks
+
+Example: for
+for number in range(5):
+    print(number)
+Example: while
+number = 0
+
+while number < 5:
+    print(number)
+    number += 1
+
+Both produce the same output.
+
+9.18 The break Statement
+
+The break statement immediately terminates a loop.
+
+for number in range(1, 11):
+    if number == 6:
+        break
+
+    print(number)
+
+Output:
+
+1
+2
+3
+4
+5
+
+When number becomes 6, the loop stops.
+
+Practical Example: Finding an Order
+orders = [101, 102, 103, 104, 105]
+target_order = 103
+
+for order_id in orders:
+    print(f"Checking order {order_id}")
+
+    if order_id == target_order:
+        print("Order found.")
+        break
+
+Output:
+
+Checking order 101
+Checking order 102
+Checking order 103
+Order found.
+
+break is useful when the required item has been found and further processing is unnecessary.
+
+9.19 The continue Statement
+
+The continue statement skips the current iteration and moves to the next iteration.
+
+for number in range(1, 6):
+    if number == 3:
+        continue
+
+    print(number)
+
+Output:
+
+1
+2
+4
+5
+
+When number is 3, the print statement is skipped.
+
+Practical Example: Skipping Invalid Records
+records = [
+    {"id": 1, "is_valid": True},
+    {"id": 2, "is_valid": False},
+    {"id": 3, "is_valid": True}
+]
+
+for record in records:
+    if not record["is_valid"]:
+        continue
+
+    print(f"Processing record {record['id']}")
+
+Output:
+
+Processing record 1
+Processing record 3
+
+9.20 The pass Statement
+
+The pass statement is a placeholder. It tells Python:
+
+“Do nothing for now, but keep this block syntactically valid.”
+
+Unlike break and continue, pass does not change the flow of a loop.
+
+Example
+for number in range(5):
+    pass
+
+The loop executes five times, but nothing happens inside the loop.
+
+Example: Placeholder for Future Logic
+sales = [1200, 2500, 1800, 3200]
+
+for sale in sales:
+    if sale > 3000:
+        pass
+    else:
+        print(f"Sale amount: {sale}")
+
+Output:
+
+Sale amount: 1200
+Sale amount: 2500
+Sale amount: 1800
+
+When the sale is greater than 3000, Python executes pass, which means no action is performed.
+
+pass vs continue
+
+These statements behave differently.
+
+Using pass
+for number in range(5):
+    if number == 2:
+        pass
+
+    print(number)
+
+Output:
+
+0
+1
+2
+3
+4
+
+The loop continues normally after pass.
+
+Using continue
+for number in range(5):
+    if number == 2:
+        continue
+
+    print(number)
+
+Output:
+
+0
+1
+3
+4
+
+The continue statement skips the remaining code in the current iteration.
+
+Comparison
+
+Statement
+
+	
+
+Purpose
+
+
+
+
+pass
+
+	
+
+Do nothing
+
+
+
+
+continue
+
+	
+
+Skip the current iteration
+
+
+
+
+break
+
+	
+
+Exit the loop completely
+
+9.21 Nested Loops
+
+A nested loop is a loop inside another loop.
+
+The outer loop runs once, and for each outer-loop iteration, the inner loop runs completely.
+
+Basic Example
+for outer_number in range(3):
+    for inner_number in range(2):
+        print(outer_number, inner_number)
+
+Output:
+
+0 0
+0 1
+1 0
+1 1
+2 0
+2 1
+
+The inner loop runs two times for every outer-loop iteration.
+
+Execution Flow
+
+For:
+
+for outer_number in range(3):
+    for inner_number in range(2):
+        print(outer_number, inner_number)
+
+The execution is:
+
+Outer = 0
+    Inner = 0
+    Inner = 1
+
+Outer = 1
+    Inner = 0
+    Inner = 1
+
+Outer = 2
+    Inner = 0
+    Inner = 1
+Example: Multiplication Table
+number = 5
+
+for multiplier in range(1, 11):
+    result = number * multiplier
+    print(f"{number} x {multiplier} = {result}")
+
+Output:
+
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+Example: Tables from 1 to 3
+for number in range(1, 4):
+    print(f"\nMultiplication table of {number}")
+
+    for multiplier in range(1, 6):
+        result = number * multiplier
+        print(f"{number} x {multiplier} = {result}")
+
+Output:
+
+Multiplication table of 1
+1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+1 x 4 = 4
+1 x 5 = 5
+
+Multiplication table of 2
+2 x 1 = 2
+2 x 2 = 4
+2 x 3 = 6
+2 x 4 = 8
+2 x 5 = 10
+
+Multiplication table of 3
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+3 x 4 = 12
+3 x 5 = 15
+Example: Printing a Pattern
+for row in range(1, 6):
+    for column in range(row):
+        print("*", end=" ")
+
+    print()
+
+Output:
+
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+Explanation
+
+The outer loop controls the number of rows.
+
+The inner loop controls the number of stars in each row.
+
+end=" " keeps the output on the same line.
+
+The final print() moves to the next line.
+
+9.22 Loop else Clause
+
+Python allows an else block with both for and while loops.
+
+The else block executes when the loop finishes normally.
+
+It does not execute if the loop is terminated using break.
+
+Example with for
+for number in range(5):
+    print(number)
+else:
+    print("Loop completed successfully")
+
+Output:
+
+0
+1
+2
+3
+4
+Loop completed successfully
+Example with break
+for number in range(5):
+    print(number)
+
+    if number == 2:
+        break
+else:
+    print("Loop completed successfully")
+
+Output:
+
+0
+1
+2
+
+The else block does not execute because the loop was stopped by break.
+
+Practical Example: Searching for a Product
+products = ["Laptop", "Mouse", "Keyboard", "Monitor"]
+search_product = "Keyboard"
+
+for product in products:
+    if product == search_product:
+        print("Product found")
+        break
+else:
+    print("Product not found")
+
+Output:
+
+Product found
+Example: Product Not Found
+products = ["Laptop", "Mouse", "Keyboard", "Monitor"]
+search_product = "Printer"
+
+for product in products:
+    if product == search_product:
+        print("Product found")
+        break
+else:
+    print("Product not found")
+
+Output:
+
+Product not found
+
+This pattern is useful when searching for an item.
+
+9.23 Practical Example: Processing Sales Records
+
+Consider a list of sales records:
+
+sales = [1200, 2500, 1800, 3200, 4500]
+
+We want to calculate:
+
+Total sales
+
+Number of transactions
+
+Average sale
+
+Highest sale
+
+Lowest sale
+
+Solution
+sales = [1200, 2500, 1800, 3200, 4500]
+
+total_sales = 0
+highest_sale = sales[0]
+lowest_sale = sales[0]
+
+for sale in sales:
+    total_sales += sale
+
+    if sale > highest_sale:
+        highest_sale = sale
+
+    if sale < lowest_sale:
+        lowest_sale = sale
+
+number_of_transactions = len(sales)
+average_sale = total_sales / number_of_transactions
+
+print(f"Total sales: {total_sales}")
+print(f"Number of transactions: {number_of_transactions}")
+print(f"Average sale: {average_sale}")
+print(f"Highest sale: {highest_sale}")
+print(f"Lowest sale: {lowest_sale}")
+
+Output:
+
+Total sales: 13200
+Number of transactions: 5
+Average sale: 2640.0
+Highest sale: 4500
+Lowest sale: 1200
+Explanation
+total_sales += sale
+
+is equivalent to:
+
+total_sales = total_sales + sale
+
+The variable total_sales acts as an accumulator.
+
+An accumulator stores a running total while the loop executes.
+
+9.24 Practical Example: Counting Positive and Negative Numbers
+numbers = [10, -5, 20, -8, 0, 15, -2]
+
+positive_count = 0
+negative_count = 0
+zero_count = 0
+
+for number in numbers:
+    if number > 0:
+        positive_count += 1
+    elif number < 0:
+        negative_count += 1
+    else:
+        zero_count += 1
+
+print(f"Positive numbers: {positive_count}")
+print(f"Negative numbers: {negative_count}")
+print(f"Zeros: {zero_count}")
+
+Output:
+
+Positive numbers: 3
+Negative numbers: 3
+Zeros: 1
+
+This is a common pattern in data preprocessing and exploratory data analysis.
+
+9.25 Practical Example: Validating User Input
+
+A while loop can repeatedly ask for input until the user enters a valid value.
+
+while True:
+    age = int(input("Enter your age: "))
+
+    if age >= 18:
+        print("You are eligible")
+        break
+
+    print("You must be at least 18 years old")
+
+Example execution:
+
+Enter your age: 15
+You must be at least 18 years old
+Enter your age: 16
+You must be at least 18 years old
+Enter your age: 21
+You are eligible
+
+The loop continues until the user enters an age greater than or equal to 18.
+
+Safer Version with Exception Handling
+while True:
+    try:
+        age = int(input("Enter your age: "))
+
+        if age < 0:
+            print("Age cannot be negative")
+            continue
+
+        print(f"Your age is {age}")
+        break
+
+    except ValueError:
+        print("Please enter a valid number")
+
+This example combines:
+
+while
+
+if
+
+continue
+
+break
+
+try
+
+except
+
+9.26 Practical Example: Processing a List of Files
+
+Suppose a data engineering pipeline needs to process several files.
+
+file_names = [
+    "sales_january.csv",
+    "sales_february.csv",
+    "sales_march.csv",
+    "sales_april.txt",
+    "sales_may.csv"
+]
+
+for file_name in file_names:
+    if not file_name.endswith(".csv"):
+        print(f"Skipping unsupported file: {file_name}")
+        continue
+
+    print(f"Processing file: {file_name}")
+
+Output:
+
+Processing file: sales_january.csv
+Processing file: sales_february.csv
+Processing file: sales_march.csv
+Skipping unsupported file: sales_april.txt
+Processing file: sales_may.csv
+
+This pattern is useful when:
+
+Reading multiple CSV files
+
+Processing log files
+
+Validating file extensions
+
+Building ETL pipelines
+
+Filtering unsupported inputs
+
+9.27 Practical Example: Batch Processing
+
+In data engineering, records are often processed in batches instead of processing everything at once.
+
+records = list(range(1, 21))
+batch_size = 5
+
+for start_index in range(0, len(records), batch_size):
+    batch = records[start_index:start_index + batch_size]
+
+    print(f"Processing batch: {batch}")
+
+Output:
+
+Processing batch: [1, 2, 3, 4, 5]
+Processing batch: [6, 7, 8, 9, 10]
+Processing batch: [11, 12, 13, 14, 15]
+Processing batch: [16, 17, 18, 19, 20]
+Explanation
+range(0, len(records), batch_size)
+
+generates:
+
+0, 5, 10, 15
+
+Each value is used as the starting index of a batch.
+
+records[start_index:start_index + batch_size]
+
+extracts the current batch.
+
+Why Batch Processing Is Useful
+
+Batch processing can help:
+
+Reduce memory usage
+
+Control processing size
+
+Improve pipeline organization
+
+Handle large datasets
+
+Retry failed batches independently
+
+9.28 Practical Example: Processing NovaMart Transactions
+
+Assume NovaMart has transaction records:
+
+transactions = [
+    {"customer": "Amit", "amount": 1200, "status": "completed"},
+    {"customer": "Riya", "amount": 2500, "status": "completed"},
+    {"customer": "Karan", "amount": 1800, "status": "failed"},
+    {"customer": "Neha", "amount": 3200, "status": "completed"},
+]
+
+We want to calculate the total amount of completed transactions.
+
+transactions = [
+    {"customer": "Amit", "amount": 1200, "status": "completed"},
+    {"customer": "Riya", "amount": 2500, "status": "completed"},
+    {"customer": "Karan", "amount": 1800, "status": "failed"},
+    {"customer": "Neha", "amount": 3200, "status": "completed"},
+]
+
+completed_total = 0
+completed_count = 0
+
+for transaction in transactions:
+    if transaction["status"] != "completed":
+        continue
+
+    completed_total += transaction["amount"]
+    completed_count += 1
+
+print(f"Completed transactions: {completed_count}")
+print(f"Completed transaction value: {completed_total}")
+
+Output:
+
+Completed transactions: 3
+Completed transaction value: 6900
+Finding the First Failed Transaction
+for transaction in transactions:
+    if transaction["status"] == "failed":
+        print("First failed transaction found:")
+        print(transaction)
+        break
+
+Output:
+
+First failed transaction found:
+{'customer': 'Karan', 'amount': 1800, 'status': 'failed'}
+9.29 Common Loop Mistakes
+Mistake 1: Forgetting to Update a while Loop Variable
+
+Incorrect:
+
+number = 1
+
+while number <= 5:
+    print(number)
+
+This creates an infinite loop because number never changes.
+
+Correct:
+
+number = 1
+
+while number <= 5:
+    print(number)
+    number += 1
+Mistake 2: Using the Wrong Range
+for number in range(1, 5):
+    print(number)
+
+Output:
+
+1
+2
+3
+4
+
+The value 5 is not included.
+
+To include 5, write:
+
+for number in range(1, 6):
+    print(number)
+Mistake 3: Accidentally Using break
+for number in range(10):
+    if number == 5:
+        break
+
+    print(number)
+
+Output:
+
+0
+1
+2
+3
+4
+
+The loop ends completely when number becomes 5.
+
+If you only want to skip 5, use continue:
+
+for number in range(10):
+    if number == 5:
+        continue
+
+    print(number)
+Mistake 4: Modifying a List While Iterating
+
+Avoid directly removing elements from a list while iterating over it.
+
+Problematic example:
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+for number in numbers:
+    if number % 2 == 0:
+        numbers.remove(number)
+
+print(numbers)
+
+This may skip elements because the list changes during iteration.
+
+A safer approach is to create a new list:
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+odd_numbers = []
+
+for number in numbers:
+    if number % 2 != 0:
+        odd_numbers.append(number)
+
+print(odd_numbers)
+
+Output:
+
+[1, 3, 5]
+Mistake 5: Incorrect Indentation
+
+Incorrect:
+
+for number in range(5):
+print(number)
+
+Correct:
+
+for number in range(5):
+    print(number)
+
+Python uses indentation to define code blocks.
+
+Mistake 6: Creating an Unnecessary Nested Loop
+
+Incorrect approach:
+
+numbers = [1, 2, 3, 4, 5]
+
+for number in numbers:
+    for another_number in numbers:
+        print(number, another_number)
+
+This prints every possible pair and performs 25 iterations.
+
+Use nested loops only when the problem actually requires combinations, comparisons, or multi-dimensional processing.
+
+9.30 Loop Performance and Complexity
+
+Loops are essential for processing data, but the number of iterations affects program performance.
+
+When working with large datasets, understanding loop complexity helps us write efficient programs.
+
+9.30.1 Single Loop
+
+Consider:
+
+for number in range(n):
+    print(number)
+
+If n is 10, the loop runs 10 times.
+
+If n is 1,000, the loop runs 1,000 times.
+
+The number of operations grows approximately in proportion to the input size.
+
+Time Complexity
+O(n)
+
+This is called linear time complexity.
+
+Example
+numbers = [10, 20, 30, 40, 50]
+
+for number in numbers:
+    print(number)
+
+The loop runs once for each item in the list.
+
+If the list contains:
+
+5 items → approximately 5 iterations
+
+100 items → approximately 100 iterations
+
+1,000 items → approximately 1,000 iterations
+
+9.30.2 Nested Loops
+
+A nested loop is a loop inside another loop.
+
+n = 5
+
+for first in range(n):
+    for second in range(n):
+        print(first, second)
+
+The outer loop runs 5 times.
+
+For every outer-loop iteration, the inner loop also runs 5 times.
+
+Total iterations:
+
+5 × 5 = 25
+Time Complexity
+O(n²)
+
+This is called quadratic time complexity.
+
+Example with n = 100
+
+A single loop performs approximately:
+
+100 iterations
+
+A nested loop performs approximately:
+
+100 × 100 = 10,000 iterations
+
+As the dataset grows, the difference becomes significant.
+
+9.30.3 Three Nested Loops
+
+Consider:
+
+n = 10
+
+for first in range(n):
+    for second in range(n):
+        for third in range(n):
+            print(first, second, third)
+
+Total iterations:
+
+10 × 10 × 10 = 1,000
+Time Complexity
+O(n³)
+
+This is called cubic time complexity.
+
+Nested loops are not always bad, but they should be used carefully when processing large datasets.
+
+9.30.4 Comparing Loop Complexities
+
+Code Structure
+
+	
+
+Complexity
+
+	
+
+Example for n = 100
+
+
+
+
+No loop
+
+	
+
+O(1)
+
+	
+
+1 operation
+
+
+
+
+One loop
+
+	
+
+O(n)
+
+	
+
+100 operations
+
+
+
+
+Two nested loops
+
+	
+
+O(n²)
+
+	
+
+10,000 operations
+
+
+
+
+Three nested loops
+
+	
+
+O(n³)
+
+	
+
+1,000,000 operations
+
+These are simplified estimates. Actual execution time also depends on the operation performed inside the loop.
+
+9.30.5 Avoiding Unnecessary Nested Loops
+
+Suppose we want to check whether a number exists in a list.
+
+Less Efficient Approach
+numbers = [10, 20, 30, 40, 50]
+search_numbers = [20, 40, 60]
+
+for search_number in search_numbers:
+    for number in numbers:
+        if search_number == number:
+            print(f"{search_number} found")
+
+This compares every search value with every item in the list.
+
+More Efficient Approach Using a Set
+numbers = [10, 20, 30, 40, 50]
+search_numbers = [20, 40, 60]
+
+number_set = set(numbers)
+
+for search_number in search_numbers:
+    if search_number in number_set:
+        print(f"{search_number} found")
+
+Output:
+
+20 found
+40 found
+
+A set provides efficient membership checking for most normal use cases.
+
+9.30.6 Use Built-in Functions When Appropriate
+
+Python's built-in functions are often implemented efficiently and can make code shorter and clearer.
+
+Instead of:
+
+numbers = [10, 20, 30, 40, 50]
+
+total = 0
+
+for number in numbers:
+    total += number
+
+print(total)
+
+We can use:
+
+numbers = [10, 20, 30, 40, 50]
+
+print(sum(numbers))
+
+Instead of:
+
+numbers = [10, 20, 30, 40, 50]
+
+largest = numbers[0]
+
+for number in numbers:
+    if number > largest:
+        largest = number
+
+print(largest)
+
+We can use:
+
+print(max(numbers))
+
+Built-in functions improve readability and often reduce the amount of code we need to maintain.
+
+9.31 Common Loop Mistakes
+9.31.1 Forgetting to Update a while Loop Variable
+
+Incorrect:
+
+number = 1
+
+while number <= 5:
+    print(number)
+
+The condition always remains true because number never changes.
+
+This creates an infinite loop.
+
+Correct:
+
+number = 1
+
+while number <= 5:
+    print(number)
+    number += 1
+
+Output:
+
+1
+2
+3
+4
+5
+9.31.2 Using the Wrong range() Stop Value
+
+Consider:
+
+for number in range(1, 5):
+    print(number)
+
+Output:
+
+1
+2
+3
+4
+
+The stop value 5 is excluded.
+
+To include 5, use:
+
+for number in range(1, 6):
+    print(number)
+
+Output:
+
+1
+2
+3
+4
+5
+
+Remember:
+
+range(start, stop)
+
+includes start but excludes stop.
+
+9.31.3 Accidentally Using break
+for number in range(10):
+    if number == 5:
+        break
+
+    print(number)
+
+Output:
+
+0
+1
+2
+3
+4
+
+The loop stops completely when number becomes 5.
+
+If we only want to skip 5, use continue:
+
+for number in range(10):
+    if number == 5:
+        continue
+
+    print(number)
+
+Output:
+
+0
+1
+2
+3
+4
+6
+7
+8
+9
+9.31.4 Modifying a List While Iterating
+
+Avoid removing items directly from a list while iterating over it.
+
+Problematic example:
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+for number in numbers:
+    if number % 2 == 0:
+        numbers.remove(number)
+
+print(numbers)
+
+Changing the list during iteration can cause elements to be skipped.
+
+A safer approach is to create a new list:
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+odd_numbers = []
+
+for number in numbers:
+    if number % 2 != 0:
+        odd_numbers.append(number)
+
+print(odd_numbers)
+
+Output:
+
+[1, 3, 5]
+
+Another option is to iterate over a copy:
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+for number in numbers.copy():
+    if number % 2 == 0:
+        numbers.remove(number)
+
+print(numbers)
+9.31.5 Incorrect Indentation
+
+Incorrect:
+
+for number in range(5):
+print(number)
+
+Correct:
+
+for number in range(5):
+    print(number)
+
+Python uses indentation to identify the body of a loop.
+
+9.31.6 Creating an Unnecessary Nested Loop
+
+Consider:
+
+numbers = [1, 2, 3, 4, 5]
+
+for number in numbers:
+    for another_number in numbers:
+        print(number, another_number)
+
+This performs:
+
+5 × 5 = 25 iterations
+
+Use nested loops only when the problem requires combinations, comparisons, or multi-dimensional processing.
+
+9.31.7 Forgetting That Strings Are Iterable
+
+Strings can be iterated character by character.
+
+name = "Python"
+
+for character in name:
+    print(character)
+
+Output:
+
+P
+y
+t
+h
+o
+n
+
+If the intention is to process the entire string as one value, do not accidentally loop over it.
+
+9.32 Practical Example: Processing Sales Records
+
+Consider the following sales data:
+
+sales = [1200, 2500, 1800, 3200, 4500]
+
+We want to calculate:
+
+Total sales
+
+Number of transactions
+
+Average sale
+
+Highest sale
+
+Lowest sale
+
+Solution
+sales = [1200, 2500, 1800, 3200, 4500]
+
+total_sales = 0
+highest_sale = sales[0]
+lowest_sale = sales[0]
+
+for sale in sales:
+    total_sales += sale
+
+    if sale > highest_sale:
+        highest_sale = sale
+
+    if sale < lowest_sale:
+        lowest_sale = sale
+
+number_of_transactions = len(sales)
+average_sale = total_sales / number_of_transactions
+
+print(f"Total sales: {total_sales}")
+print(f"Number of transactions: {number_of_transactions}")
+print(f"Average sale: {average_sale}")
+print(f"Highest sale: {highest_sale}")
+print(f"Lowest sale: {lowest_sale}")
+
+Output:
+
+Total sales: 13200
+Number of transactions: 5
+Average sale: 2640.0
+Highest sale: 4500
+Lowest sale: 1200
+Explanation
+
+The variable total_sales is an accumulator.
+
+total_sales += sale
+
+is equivalent to:
+
+total_sales = total_sales + sale
+
+The accumulator stores the running total during the loop.
+
+9.33 Practical Example: Counting Positive and Negative Numbers
+numbers = [10, -5, 20, -8, 0, 15, -2]
+
+positive_count = 0
+negative_count = 0
+zero_count = 0
+
+for number in numbers:
+    if number > 0:
+        positive_count += 1
+    elif number < 0:
+        negative_count += 1
+    else:
+        zero_count += 1
+
+print(f"Positive numbers: {positive_count}")
+print(f"Negative numbers: {negative_count}")
+print(f"Zeros: {zero_count}")
+
+Output:
+
+Positive numbers: 3
+Negative numbers: 3
+Zeros: 1
+
+This pattern is useful in:
+
+Data cleaning
+
+Data profiling
+
+Exploratory data analysis
+
+Validation checks
+
+Numerical analysis
+
+9.34 Practical Example: Validating User Input
+
+A while loop can repeatedly ask for input until the user enters a valid value.
+
+while True:
+    age = int(input("Enter your age: "))
+
+    if age >= 18:
+        print("You are eligible")
+        break
+
+    print("You must be at least 18 years old")
+
+Example execution:
+
+Enter your age: 15
+You must be at least 18 years old
+Enter your age: 16
+You must be at least 18 years old
+Enter your age: 21
+You are eligible
+Safer Version
+
+The previous example assumes that the user enters a number. If the user enters text, int() raises a ValueError.
+
+A safer version is:
+
+while True:
+    try:
+        age = int(input("Enter your age: "))
+
+        if age < 0:
+            print("Age cannot be negative")
+            continue
+
+        if age >= 18:
+            print("You are eligible")
+        else:
+            print("You are not eligible")
+
+        break
+
+    except ValueError:
+        print("Please enter a valid number")
+
+This example combines:
+
+while
+
+if
+
+continue
+
+break
+
+try
+
+except
+
+9.35 Practical Example: Processing a List of Files
+
+Suppose a data engineering pipeline needs to process several files.
+
+file_names = [
+    "sales_january.csv",
+    "sales_february.csv",
+    "sales_march.csv",
+    "sales_april.txt",
+    "sales_may.csv",
+]
+
+for file_name in file_names:
+    if not file_name.endswith(".csv"):
+        print(f"Skipping unsupported file: {file_name}")
+        continue
+
+    print(f"Processing file: {file_name}")
+
+Output:
+
+Processing file: sales_january.csv
+Processing file: sales_february.csv
+Processing file: sales_march.csv
+Skipping unsupported file: sales_april.txt
+Processing file: sales_may.csv
+
+This pattern is useful when:
+
+Reading multiple CSV files
+
+Processing log files
+
+Validating file extensions
+
+Building ETL pipelines
+
+Filtering unsupported inputs
+
+9.36 Practical Example: Batch Processing
+
+In data engineering, records are often processed in batches instead of processing everything at once.
+
+records = list(range(1, 21))
+batch_size = 5
+
+for start_index in range(0, len(records), batch_size):
+    batch = records[start_index:start_index + batch_size]
+
+    print(f"Processing batch: {batch}")
+
+Output:
+
+Processing batch: [1, 2, 3, 4, 5]
+Processing batch: [6, 7, 8, 9, 10]
+Processing batch: [11, 12, 13, 14, 15]
+Processing batch: [16, 17, 18, 19, 20]
+Explanation
+range(0, len(records), batch_size)
+
+generates:
+
+0, 5, 10, 15
+
+Each value becomes the starting index of a batch.
+
+records[start_index:start_index + batch_size]
+
+extracts the current batch.
+
+Why Batch Processing Is Useful
+
+Batch processing can help:
+
+Reduce memory usage
+
+Control processing size
+
+Improve pipeline organization
+
+Handle large datasets
+
+Retry failed batches independently
+
+9.37 Practical Example: NovaMart Transaction Processing
+
+Assume NovaMart has the following transaction records:
+
+transactions = [
+    {"customer": "Amit", "amount": 1200, "status": "completed"},
+    {"customer": "Riya", "amount": 2500, "status": "completed"},
+    {"customer": "Karan", "amount": 1800, "status": "failed"},
+    {"customer": "Neha", "amount": 3200, "status": "completed"},
+]
+
+We want to calculate the total value of completed transactions.
+
+transactions = [
+    {"customer": "Amit", "amount": 1200, "status": "completed"},
+    {"customer": "Riya", "amount": 2500, "status": "completed"},
+    {"customer": "Karan", "amount": 1800, "status": "failed"},
+    {"customer": "Neha", "amount": 3200, "status": "completed"},
+]
+
+completed_total = 0
+completed_count = 0
+
+for transaction in transactions:
+    if transaction["status"] != "completed":
+        continue
+
+    completed_total += transaction["amount"]
+    completed_count += 1
+
+print(f"Completed transactions: {completed_count}")
+print(f"Completed transaction value: {completed_total}")
+
+Output:
+
+Completed transactions: 3
+Completed transaction value: 6900
+Finding the First Failed Transaction
+for transaction in transactions:
+    if transaction["status"] == "failed":
+        print("First failed transaction found:")
+        print(transaction)
+        break
+
+Output:
+
+First failed transaction found:
+{'customer': 'Karan', 'amount': 1800, 'status': 'failed'}
+
+9.38 Practice Exercises
+
+The following exercises are designed to strengthen your understanding of loops and iteration.
+
+Try solving each problem yourself before checking the solution.
+
+Exercise 1: Print Numbers from 1 to 20
+
+Write a for loop that prints numbers from 1 to 20.
+
+Expected Output
+1
+2
+3
+...
+20
+Solution
+for number in range(1, 21):
+    print(number)
+Exercise 2: Print Even Numbers
+
+Print all even numbers between 1 and 50.
+
+Solution
+for number in range(1, 51):
+    if number % 2 == 0:
+        print(number)
+Alternative Solution
+for number in range(2, 51, 2):
+    print(number)
+
+The second solution is more direct because the loop increases by 2.
+
+Exercise 3: Print Odd Numbers
+
+Print all odd numbers between 1 and 50.
+
+Solution
+for number in range(1, 51):
+    if number % 2 != 0:
+        print(number)
+Alternative Solution
+for number in range(1, 51, 2):
+    print(number)
+Exercise 4: Calculate the Sum of Numbers
+
+Calculate the sum of numbers from 1 to 100.
+
+Expected Output
+5050
+Solution
+total = 0
+
+for number in range(1, 101):
+    total += number
+
+print(total)
+Exercise 5: Calculate the Factorial of a Number
+
+The factorial of a number is the product of all positive integers from 1 to that number.
+
+For example:
+
+5! = 5 × 4 × 3 × 2 × 1 = 120
+Solution
+number = 5
+factorial = 1
+
+for value in range(1, number + 1):
+    factorial *= value
+
+print(f"Factorial of {number}: {factorial}")
+
+Output:
+
+Factorial of 5: 120
+Exercise 6: Multiplication Table
+
+Ask the user for a number and print its multiplication table from 1 to 10.
+
+Solution
+number = int(input("Enter a number: "))
+
+for multiplier in range(1, 11):
+    result = number * multiplier
+    print(f"{number} x {multiplier} = {result}")
+Exercise 7: Count Vowels
+
+Count the number of vowels in a string.
+
+text = "Data Engineering"
+Solution
+text = "Data Engineering"
+vowels = "aeiouAEIOU"
+
+vowel_count = 0
+
+for character in text:
+    if character in vowels:
+        vowel_count += 1
+
+print(f"Number of vowels: {vowel_count}")
+
+Output:
+
+Number of vowels: 7
+Exercise 8: Reverse a String Using a Loop
+
+Reverse the following string without using slicing:
+
+text = "Python"
+Solution
+text = "Python"
+reversed_text = ""
+
+for character in text:
+    reversed_text = character + reversed_text
+
+print(reversed_text)
+
+Output:
+
+nohtyP
+Exercise 9: Find the Largest Number
+
+Find the largest number without using the built-in max() function.
+
+numbers = [45, 12, 89, 34, 67, 23]
+Solution
+numbers = [45, 12, 89, 34, 67, 23]
+
+largest = numbers[0]
+
+for number in numbers:
+    if number > largest:
+        largest = number
+
+print(f"Largest number: {largest}")
+
+Output:
+
+Largest number: 89
+Exercise 10: Find the Smallest Number
+
+Find the smallest number without using the built-in min() function.
+
+Solution
+numbers = [45, 12, 89, 34, 67, 23]
+
+smallest = numbers[0]
+
+for number in numbers:
+    if number < smallest:
+        smallest = number
+
+print(f"Smallest number: {smallest}")
+
+Output:
+
+Smallest number: 12
+Exercise 11: Count Positive, Negative, and Zero Values
+
+Given:
+
+numbers = [10, -5, 0, 20, -8, 15, 0]
+
+Count:
+
+Positive numbers
+
+Negative numbers
+
+Zeros
+
+Solution
+numbers = [10, -5, 0, 20, -8, 15, 0]
+
+positive_count = 0
+negative_count = 0
+zero_count = 0
+
+for number in numbers:
+    if number > 0:
+        positive_count += 1
+    elif number < 0:
+        negative_count += 1
+    else:
+        zero_count += 1
+
+print(f"Positive numbers: {positive_count}")
+print(f"Negative numbers: {negative_count}")
+print(f"Zeros: {zero_count}")
+Exercise 12: Filter Invalid Transactions
+
+Given:
+
+transactions = [1200, -500, 2500, -100, 3000]
+
+Create a new list containing only positive transaction amounts.
+
+Expected Output
+[1200, 2500, 3000]
+Solution
+transactions = [1200, -500, 2500, -100, 3000]
+
+valid_transactions = []
+
+for transaction in transactions:
+    if transaction > 0:
+        valid_transactions.append(transaction)
+
+print(valid_transactions)
+Exercise 13: Calculate Average Sales
+
+Given:
+
+sales = [1200, 2500, 1800, 3200, 4500]
+
+Calculate the average sale amount.
+
+Solution
+sales = [1200, 2500, 1800, 3200, 4500]
+
+total_sales = 0
+
+for sale in sales:
+    total_sales += sale
+
+average_sales = total_sales / len(sales)
+
+print(f"Average sales: {average_sales}")
+
+Output:
+
+Average sales: 2640.0
+Exercise 14: Password Validation
+
+Keep asking the user for a password until they enter:
+
+python123
+Solution
+correct_password = "python123"
+
+while True:
+    password = input("Enter password: ")
+
+    if password == correct_password:
+        print("Login successful")
+        break
+
+    print("Incorrect password. Try again.")
+Exercise 15: Print a Pattern
+
+Print the following pattern:
+
+*
+* *
+* * *
+* * * *
+* * * * *
+Solution
+for row in range(1, 6):
+    for column in range(row):
+        print("*", end=" ")
+
+    print()
+Exercise 16: Print a Number Pattern
+
+Print:
+
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+Solution
+for row in range(1, 6):
+    for number in range(1, row + 1):
+        print(number, end=" ")
+
+    print()
+Exercise 17: Search for a Product
+
+Search for a product in a list.
+
+products = ["Laptop", "Mouse", "Keyboard", "Monitor"]
+
+Use the loop else clause to display a message when the product is not found.
+
+Solution
+products = ["Laptop", "Mouse", "Keyboard", "Monitor"]
+search_product = "Printer"
+
+for product in products:
+    if product == search_product:
+        print("Product found")
+        break
+else:
+    print("Product not found")
+
+Output:
+
+Product not found
+Exercise 18: Process Records in Batches
+
+Split the following records into batches of three:
+
+records = list(range(1, 11))
+Expected Output
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+[10]
+Solution
+records = list(range(1, 11))
+batch_size = 3
+
+for start_index in range(0, len(records), batch_size):
+    batch = records[start_index:start_index + batch_size]
+    print(batch)
+Exercise 19: Find the First Failed Transaction
+
+Given:
+
+transactions = [
+    {"id": 1, "status": "completed"},
+    {"id": 2, "status": "completed"},
+    {"id": 3, "status": "failed"},
+    {"id": 4, "status": "completed"},
+]
+
+Find and display the first failed transaction.
+
+Solution
+transactions = [
+    {"id": 1, "status": "completed"},
+    {"id": 2, "status": "completed"},
+    {"id": 3, "status": "failed"},
+    {"id": 4, "status": "completed"},
+]
+
+for transaction in transactions:
+    if transaction["status"] == "failed":
+        print("Failed transaction found:")
+        print(transaction)
+        break
+Exercise 20: Remove Duplicate Values
+
+Given:
+
+numbers = [10, 20, 10, 30, 20, 40, 30]
+
+Create a new list containing unique values.
+
+Solution
+numbers = [10, 20, 10, 30, 20, 40, 30]
+
+unique_numbers = []
+
+for number in numbers:
+    if number not in unique_numbers:
+        unique_numbers.append(number)
+
+print(unique_numbers)
+
+Output:
+
+[10, 20, 30, 40]
+9.39 Interview Questions
+1. What is a loop?
+
+A loop is a programming structure used to execute a block of code repeatedly.
+
+Python mainly supports:
+
+for loops
+
+while loops
+
+2. What is the difference between a for loop and a while loop?
+
+A for loop is commonly used to iterate over an iterable such as a list, string, tuple, set, dictionary, or range.
+
+A while loop executes as long as its condition remains true.
+
+for number in range(5):
+    print(number)
+number = 0
+
+while number < 5:
+    print(number)
+    number += 1
+3. What does range() return?
+
+range() returns a range object representing a sequence of numbers.
+
+numbers = range(1, 5)
+
+print(list(numbers))
+
+Output:
+
+[1, 2, 3, 4]
+4. Is the stop value included in range()?
+
+No.
+
+range(1, 5)
+
+generates:
+
+1, 2, 3, 4
+
+The stop value 5 is excluded.
+
+5. What is an infinite loop?
+
+An infinite loop is a loop that never stops because its condition never becomes false.
+
+Example:
+
+number = 1
+
+while number <= 5:
+    print(number)
+
+The variable number never changes, so the condition remains true.
+
+6. How can an infinite loop be stopped?
+
+An infinite loop can be stopped by:
+
+Updating the loop condition
+
+Using break
+
+Interrupting program execution
+
+Example:
+
+while True:
+    command = input("Enter quit to stop: ")
+
+    if command == "quit":
+        break
+7. What is the difference between break and continue?
+
+Statement
+
+	
+
+Behavior
+
+
+
+
+break
+
+	
+
+Exits the loop completely
+
+
+
+
+continue
+
+	
+
+Skips the current iteration
+
+
+
+
+pass
+
+	
+
+Does nothing
+
+8. What is the purpose of pass?
+
+pass is a placeholder statement.
+
+It is used when Python requires a statement but no action is currently needed.
+
+for number in range(5):
+    pass
+9. Can a loop have an else block?
+
+Yes.
+
+The loop else block executes when the loop completes normally.
+
+It does not execute if the loop is stopped using break.
+
+10. What is a nested loop?
+
+A nested loop is a loop inside another loop.
+
+Example:
+
+for row in range(3):
+    for column in range(3):
+        print(row, column)
+
+Nested loops are commonly used for:
+
+Matrix processing
+
+Pattern printing
+
+Pair comparisons
+
+Multi-dimensional data
+
+11. What is an accumulator?
+
+An accumulator is a variable that stores a running result.
+
+total = 0
+
+for number in range(1, 6):
+    total += number
+
+print(total)
+
+Output:
+
+15
+12. What is the time complexity of a single loop?
+
+A loop that processes n items generally has:
+
+O(n)
+
+This is called linear time complexity.
+
+13. What is the time complexity of two nested loops?
+
+Two nested loops that each run n times generally have:
+
+O(n²)
+
+This is called quadratic time complexity.
+
+14. Why should nested loops be used carefully?
+
+Nested loops are loops placed inside another loop.
+
+Example:
+
+for i in range(3):
+    for j in range(3):
+        print(i, j)
+
+Output:
+
+0 0
+0 1
+0 2
+1 0
+1 1
+1 2
+2 0
+2 1
+2 2
+
+The inner loop runs completely for every iteration of the outer loop.
+
+Why can nested loops be expensive?
+
+If the outer loop runs n times and the inner loop also runs n times, the total number of operations becomes:
+
+n×n=n
+2
+
+This is called O(n²) time complexity.
+
+For example:
+
+for customer in customers:
+    for transaction in transactions:
+        process(customer, transaction)
+
+If there are:
+
+1,000 customers
+
+10,000 transactions
+
+The loop may perform:
+
+1,000×10,000=10,000,000
+
+iterations.
+
+Better approach
+
+Instead of repeatedly searching through a list, use a dictionary or set for faster lookup.
+
+Inefficient approach
+for customer in customers:
+    for transaction in transactions:
+        if customer["id"] == transaction["customer_id"]:
+            print(transaction)
+More efficient approach
+transactions_by_customer = {}
+
+for transaction in transactions:
+    customer_id = transaction["customer_id"]
+
+    if customer_id not in transactions_by_customer:
+        transactions_by_customer[customer_id] = []
+
+    transactions_by_customer[customer_id].append(transaction)
+
+for customer in customers:
+    customer_id = customer["id"]
+
+    for transaction in transactions_by_customer.get(customer_id, []):
+        print(transaction)
+Interview answer
+
+Nested loops should be used carefully because they can increase time complexity, often from O(n) to O(n²). They may be acceptable for small datasets, but for large datasets we should consider dictionaries, sets, sorting, joins, or vectorized operations to improve performance.
+
+15. What is the difference between break and continue?
+break
+
+break immediately terminates the loop.
+
+for number in range(1, 6):
+    if number == 4:
+        break
+
+    print(number)
+
+Output:
+
+1
+2
+3
+continue
+
+continue skips the current iteration and moves to the next iteration.
+
+for number in range(1, 6):
+    if number == 4:
+        continue
+
+    print(number)
+
+Output:
+
+1
+2
+3
+5
+
+Statement
+
+	
+
+Behavior
+
+
+
+
+break
+
+	
+
+Stops the entire loop
+
+
+
+
+continue
+
+	
+
+Skips only the current iteration
+
+
+
+
+pass
+
+	
+
+Does nothing; placeholder statement
+
+16. What is the purpose of the pass statement?
+
+pass is a placeholder. It allows Python code to remain syntactically valid when no action is required yet.
+
+for number in range(5):
+    if number == 3:
+        pass
+    else:
+        print(number)
+
+Output:
+
+0
+1
+2
+4
+
+Another example:
+
+def future_function():
+    pass
+
+The function is valid but does not perform any action.
+
+Important point
+
+pass does not skip an iteration. It simply does nothing.
+
+17. Can a loop have an else block?
+
+Yes. Python allows else with both for and while loops.
+
+The else block runs when the loop finishes normally, without encountering break.
+
+for number in range(1, 6):
+    print(number)
+else:
+    print("Loop completed successfully")
+
+Output:
+
+1
+2
+3
+4
+5
+Loop completed successfully
+
+If break is used, the else block does not execute.
+
+for number in range(1, 6):
+    if number == 3:
+        break
+
+    print(number)
+else:
+    print("Loop completed successfully")
+
+Output:
+
+1
+2
+Practical example: Searching for a record
+transactions = [101, 102, 103, 104]
+search_id = 103
+
+for transaction_id in transactions:
+    if transaction_id == search_id:
+        print("Transaction found")
+        break
+else:
+    print("Transaction not found")
+
+Output:
+
+Transaction found
+18. What is the difference between range(5) and range(1, 5)?
+range(5)
+
+Generates:
+
+0, 1, 2, 3, 4
+range(1, 5)
+
+Generates:
+
+1, 2, 3, 4
+
+The stop value is excluded.
+
+Examples
+print(list(range(5)))
+print(list(range(1, 5)))
+print(list(range(1, 10, 2)))
+print(list(range(10, 0, -2)))
+
+Output:
+
+[0, 1, 2, 3, 4]
+[1, 2, 3, 4]
+[1, 3, 5, 7, 9]
+[10, 8, 6, 4, 2]
+
+The structure is:
+
+range(start, stop, step)
+19. How can you iterate over a dictionary?
+Iterating over keys
+sales = {
+    "North": 120000,
+    "South": 95000,
+    "West": 110000
+}
+
+for region in sales:
+    print(region)
+Iterating over values
+for amount in sales.values():
+    print(amount)
+Iterating over keys and values
+for region, amount in sales.items():
+    print(region, amount)
+
+Output:
+
+North 120000
+South 95000
+West 110000
+20. How do you process data in batches using a loop?
+
+Batch processing means dividing a large dataset into smaller groups.
+
+records = list(range(1, 11))
+batch_size = 3
+
+for start in range(0, len(records), batch_size):
+    batch = records[start:start + batch_size]
+
+    print("Processing batch:", batch)
+
+Output:
+
+Processing batch: [1, 2, 3]
+Processing batch: [4, 5, 6]
+Processing batch: [7, 8, 9]
+Processing batch: [10]
+
+Batch processing is useful when:
+
+Data is too large to process at once.
+
+API requests have limits.
+
+Database inserts should be performed in groups.
+
+Memory usage needs to be controlled.
+
+ETL pipelines process records incrementally.
+
+9.40 Section Project: Transaction Processing Program
+Project Objective
+
+Build a small transaction-processing program that demonstrates:
+
+for loops
+
+while loops
+
+range()
+
+break
+
+continue
+
+pass
+
+Nested loops
+
+Dictionary iteration
+
+Data validation
+
+Batch processing
+
+Summary calculations
+
+The program will process sample transactions from a fictional company called NovaMart.
+
+Project Requirements
+
+The program should:
+
+Display a welcome message.
+
+Process a list of transactions.
+
+Skip invalid transactions.
+
+Calculate total sales.
+
+Count successful and failed transactions.
+
+Display sales by region.
+
+Search for a particular transaction.
+
+Process transactions in batches.
+
+Demonstrate a nested loop.
+
+Display a final summary.
+
+9.41 Implementation File
+
+Create or update this file:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\code\01-python-foundations\01-python-fundamentals\09_loops_and_iteration.py
+
+Add the following code:
+
+"""
+Section 9: Loops and Iteration
+
+Project:
+Transaction Processing Program
+
+This file demonstrates:
+- for loops
+- while loops
+- range()
+- break
+- continue
+- pass
+- nested loops
+- dictionary iteration
+- batch processing
+"""
+
+
+print("=" * 60)
+print("NOVAMART TRANSACTION PROCESSING SYSTEM")
+print("=" * 60)
+
+
+# ---------------------------------------------------------
+# 1. Sample transaction data
+# ---------------------------------------------------------
+
+transactions = [
+    {
+        "transaction_id": 101,
+        "customer": "Amit",
+        "region": "North",
+        "amount": 1200,
+        "status": "success"
+    },
+    {
+        "transaction_id": 102,
+        "customer": "Priya",
+        "region": "South",
+        "amount": 2500,
+        "status": "success"
+    },
+    {
+        "transaction_id": 103,
+        "customer": "Rahul",
+        "region": "West",
+        "amount": 0,
+        "status": "failed"
+    },
+    {
+        "transaction_id": 104,
+        "customer": "Neha",
+        "region": "North",
+        "amount": 1800,
+        "status": "success"
+    },
+    {
+        "transaction_id": 105,
+        "customer": "Karan",
+        "region": "East",
+        "amount": -500,
+        "status": "failed"
+    },
+    {
+        "transaction_id": 106,
+        "customer": "Sneha",
+        "region": "South",
+        "amount": 3200,
+        "status": "success"
+    }
+]
+
+
+# ---------------------------------------------------------
+# 2. Process transactions using a for loop
+# ---------------------------------------------------------
+
+print("\nPROCESSING TRANSACTIONS")
+
+total_sales = 0
+successful_transactions = 0
+failed_transactions = 0
+
+for transaction in transactions:
+
+    transaction_id = transaction["transaction_id"]
+    amount = transaction["amount"]
+    status = transaction["status"]
+
+    # Skip invalid transaction amounts
+    if amount <= 0:
+        failed_transactions += 1
+        print(
+            f"Transaction {transaction_id} skipped: "
+            f"invalid amount {amount}"
+        )
+        continue
+
+    # Skip failed transactions
+    if status != "success":
+        failed_transactions += 1
+        print(
+            f"Transaction {transaction_id} skipped: "
+            f"status is {status}"
+        )
+        continue
+
+    total_sales += amount
+    successful_transactions += 1
+
+    print(
+        f"Transaction {transaction_id} processed successfully: "
+        f"₹{amount}"
+    )
+
+
+# ---------------------------------------------------------
+# 3. Calculate average transaction value
+# ---------------------------------------------------------
+
+if successful_transactions > 0:
+    average_transaction_value = (
+        total_sales / successful_transactions
+    )
+else:
+    average_transaction_value = 0
+
+print("\nSALES SUMMARY")
+print("-" * 40)
+print(f"Total sales: ₹{total_sales}")
+print(f"Successful transactions: {successful_transactions}")
+print(f"Failed transactions: {failed_transactions}")
+print(
+    f"Average transaction value: "
+    f"₹{average_transaction_value:.2f}"
+)
+
+
+# ---------------------------------------------------------
+# 4. Calculate sales by region
+# ---------------------------------------------------------
+
+sales_by_region = {}
+
+for transaction in transactions:
+
+    if transaction["status"] != "success":
+        continue
+
+    if transaction["amount"] <= 0:
+        continue
+
+    region = transaction["region"]
+    amount = transaction["amount"]
+
+    if region not in sales_by_region:
+        sales_by_region[region] = 0
+
+    sales_by_region[region] += amount
+
+
+print("\nSALES BY REGION")
+print("-" * 40)
+
+for region, amount in sales_by_region.items():
+    print(f"{region}: ₹{amount}")
+
+
+# ---------------------------------------------------------
+# 5. Search for a transaction using break
+# ---------------------------------------------------------
+
+search_transaction_id = 104
+transaction_found = False
+
+print("\nTRANSACTION SEARCH")
+
+for transaction in transactions:
+
+    if transaction["transaction_id"] == search_transaction_id:
+        print("Transaction found:")
+        print(transaction)
+
+        transaction_found = True
+        break
+
+if not transaction_found:
+    print("Transaction not found")
+
+
+# ---------------------------------------------------------
+# 6. Demonstrate loop else
+# ---------------------------------------------------------
+
+print("\nSEARCH USING LOOP ELSE")
+
+search_transaction_id = 999
+
+for transaction in transactions:
+
+    if transaction["transaction_id"] == search_transaction_id:
+        print("Transaction found")
+        break
+else:
+    print("Transaction not found")
+
+
+# ---------------------------------------------------------
+# 7. Demonstrate while loop
+# ---------------------------------------------------------
+
+print("\nWHILE LOOP DEMONSTRATION")
+
+attempt = 1
+maximum_attempts = 3
+
+while attempt <= maximum_attempts:
+    print(f"Processing attempt {attempt}")
+    attempt += 1
+
+
+# ---------------------------------------------------------
+# 8. Demonstrate pass
+# ---------------------------------------------------------
+
+print("\nPASS STATEMENT DEMONSTRATION")
+
+for transaction in transactions:
+
+    if transaction["status"] == "pending":
+        pass
+    else:
+        print(
+            f"Transaction {transaction['transaction_id']} "
+            f"does not require pending review"
+        )
+
+
+# ---------------------------------------------------------
+# 9. Batch processing
+# ---------------------------------------------------------
+
+print("\nBATCH PROCESSING")
+
+batch_size = 2
+
+for start in range(0, len(transactions), batch_size):
+
+    batch = transactions[start:start + batch_size]
+
+    print(
+        f"Processing batch starting at index {start}: "
+        f"{len(batch)} transactions"
+    )
+
+    for transaction in batch:
+        print(
+            f"  Processing transaction "
+            f"{transaction['transaction_id']}"
+        )
+
+
+# ---------------------------------------------------------
+# 10. Nested loop demonstration
+# ---------------------------------------------------------
+
+print("\nNESTED LOOP DEMONSTRATION")
+
+regions = ["North", "South"]
+transaction_statuses = ["success", "failed"]
+
+for region in regions:
+
+    for status in transaction_statuses:
+
+        print(
+            f"Region: {region}, "
+            f"Status: {status}"
+        )
+
+
+# ---------------------------------------------------------
+# 11. Final report
+# ---------------------------------------------------------
+
+print("\nFINAL REPORT")
+print("=" * 60)
+print(f"Total transactions received: {len(transactions)}")
+print(f"Successful transactions: {successful_transactions}")
+print(f"Failed transactions: {failed_transactions}")
+print(f"Total valid sales: ₹{total_sales}")
+print("=" * 60)
+9.42 Running the Implementation
+
+Open PowerShell and run:
+
+cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
+
+Execute the file:
+
+python .\code\01-python-foundations\01-python-fundamentals\09_loops_and_iteration.py
+
+You should see output similar to:
+
+============================================================
+NOVAMART TRANSACTION PROCESSING SYSTEM
+============================================================
+
+PROCESSING TRANSACTIONS
+Transaction 101 processed successfully: ₹1200
+Transaction 102 processed successfully: ₹2500
+Transaction 103 skipped: invalid amount 0
+Transaction 104 processed successfully: ₹1800
+Transaction 105 skipped: invalid amount -500
+Transaction 106 processed successfully: ₹3200
+
+SALES SUMMARY
+----------------------------------------
+Total sales: ₹8700
+Successful transactions: 4
+Failed transactions: 2
+Average transaction value: ₹2175.00
+
+The exact formatting may vary slightly depending on your terminal.
+
+9.43 Important Concepts Demonstrated
+for loop
+
+Used to process each transaction:
+
+for transaction in transactions:
+    print(transaction)
+continue
+
+Used to skip invalid records:
+
+if amount <= 0:
+    continue
+break
+
+Used to stop searching after finding a transaction:
+
+if transaction["transaction_id"] == search_transaction_id:
+    break
+while loop
+
+Used to repeat processing while a condition remains true:
+
+while attempt <= maximum_attempts:
+    attempt += 1
+range()
+
+Used for batch start positions:
+
+for start in range(0, len(transactions), batch_size):
+    ...
+Nested loop
+
+Used to combine regions and transaction statuses:
+
+for region in regions:
+    for status in transaction_statuses:
+        print(region, status)
+Dictionary iteration
+
+Used to display regional sales:
+
+for region, amount in sales_by_region.items():
+    print(region, amount)
+9.44 Documentation Update
+
+For the book project, update:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\book\01-python-foundations\01-python-fundamentals.md
+
+9.45 Section 9 Completion Checklist
+Understood for loops.
+Understood while loops.
+Used range().
+Iterated over strings.
+Iterated over lists.
+Iterated over dictionaries.
+Used break.
+Used continue.
+Used pass.
+Understood loop else.
+Practiced nested loops.
+Understood nested-loop performance.
+Practiced batch processing.
+Completed loop-related interview questions.
+Built the transaction-processing project.
+Created the implementation file.
+Ran the implementation successfully.
+Updated the book documentation.
+Committed and pushed the changes to GitHub.
+
+Section 10 — Python Collections
+
+Python collections are used to store, organize, access, and process multiple values.
+
+In data engineering and data science, collections are essential because real-world data usually contains multiple records, transactions, customers, products, and measurements.
+
+For example:
+
+customer_name = "Amit"
+customer_age = 28
+customer_city = "Delhi"
+
+This stores information about only one customer.
+
+If we have many customers, storing every value in a separate variable becomes difficult:
+
+customer_1 = "Amit"
+customer_2 = "Priya"
+customer_3 = "Rahul"
+customer_4 = "Neha"
+
+Instead, we can use a collection:
+
+customers = ["Amit", "Priya", "Rahul", "Neha"]
+
+Now all customer names are stored in one structure.
+
+10.1 Learning Objectives
+
+By the end of this section, you will understand:
+
+What Python collections are.
+
+The difference between lists, tuples, sets, and dictionaries.
+
+Mutable and immutable collections.
+
+Ordered and unordered collections.
+
+Indexing and slicing.
+
+Collection methods.
+
+Nested collections.
+
+List comprehensions.
+
+Dictionary comprehensions.
+
+Collection unpacking.
+
+Shallow and deep copying.
+
+Collection performance.
+
+Practical data-processing use cases.
+
+10.2 What Are Python Collections?
+
+A collection is a data structure that stores multiple values in a single variable.
+
+Python provides four main built-in collection types:
+
+Collection
+
+	
+
+Description
+
+	
+
+Example
+
+
+
+
+List
+
+	
+
+Ordered and changeable collection
+
+	
+
+[10, 20, 30]
+
+
+
+
+Tuple
+
+	
+
+Ordered and unchangeable collection
+
+	
+
+(10, 20, 30)
+
+
+
+
+Set
+
+	
+
+Unordered collection of unique values
+
+	
+
+{10, 20, 30}
+
+
+
+
+Dictionary
+
+	
+
+Collection of key-value pairs
+
+	
+
+{"name": "Amit"}
+
+Example
+numbers_list = [10, 20, 30]
+numbers_tuple = (10, 20, 30)
+numbers_set = {10, 20, 30}
+
+student = {
+    "name": "Amit",
+    "age": 22
+}
+10.3 Why Are Collections Important?
+
+Collections are used in almost every programming and data-processing task.
+
+Common use cases
+
+Storing customer records.
+
+Storing transaction amounts.
+
+Removing duplicate values.
+
+Grouping data by category.
+
+Counting values.
+
+Reading JSON data.
+
+Processing API responses.
+
+Preparing data for Pandas.
+
+Creating lookup tables.
+
+Managing configuration values.
+
+Example:
+
+transactions = [1200, 2500, 1800, 3200]
+
+total_sales = sum(transactions)
+
+print(total_sales)
+
+Output:
+
+8700
+
+Without a collection, we would need separate variables:
+
+transaction_1 = 1200
+transaction_2 = 2500
+transaction_3 = 1800
+transaction_4 = 3200
+
+total_sales = (
+    transaction_1
+    + transaction_2
+    + transaction_3
+    + transaction_4
+)
+
+Collections make the code shorter, cleaner, and easier to maintain.
+
+10.4 List
+
+A list is an ordered and mutable collection.
+
+Lists can contain:
+
+Integers
+
+Floats
+
+Strings
+
+Booleans
+
+Other lists
+
+Dictionaries
+
+Mixed data types
+
+10.4.1 Creating a List
+numbers = [10, 20, 30, 40, 50]
+
+print(numbers)
+
+Output:
+
+[10, 20, 30, 40, 50]
+
+A list can contain strings:
+
+cities = ["Delhi", "Mumbai", "Pune", "Bengaluru"]
+
+print(cities)
+
+A list can contain mixed data types:
+
+mixed_data = [
+    101,
+    "Amit",
+    85.5,
+    True
+]
+
+print(mixed_data)
+
+An empty list can be created using:
+
+empty_list = []
+
+print(empty_list)
+
+Or:
+
+empty_list = list()
+
+print(empty_list)
+10.4.2 Accessing List Elements
+
+List elements are accessed using indexes.
+
+Python indexing starts from 0.
+
+cities = ["Delhi", "Mumbai", "Pune", "Bengaluru"]
+
+Element
+
+	
+
+Index
+
+
+
+
+Delhi
+
+	
+
+0
+
+
+
+
+Mumbai
+
+	
+
+1
+
+
+
+
+Pune
+
+	
+
+2
+
+
+
+
+Bengaluru
+
+	
+
+3
+
+cities = ["Delhi", "Mumbai", "Pune", "Bengaluru"]
+
+print(cities[0])
+print(cities[1])
+print(cities[2])
+print(cities[3])
+
+Output:
+
+Delhi
+Mumbai
+Pune
+Bengaluru
+Negative indexing
+
+Negative indexes access elements from the end.
+
+Element
+
+	
+
+Negative index
+
+
+
+
+Bengaluru
+
+	
+
+-1
+
+
+
+
+Pune
+
+	
+
+-2
+
+
+
+
+Mumbai
+
+	
+
+-3
+
+
+
+
+Delhi
+
+	
+
+-4
+
+print(cities[-1])
+print(cities[-2])
+
+Output:
+
+Bengaluru
+Pune
+10.4.3 Updating List Elements
+
+Lists are mutable, meaning their elements can be changed.
+
+cities = ["Delhi", "Mumbai", "Pune"]
+
+cities[1] = "Jaipur"
+
+print(cities)
+
+Output:
+
+['Delhi', 'Jaipur', 'Pune']
+
+This is not possible with tuples because tuples are immutable.
+
+10.4.4 Adding Elements to a List
+append()
+
+Adds one element to the end of the list.
+
+cities = ["Delhi", "Mumbai"]
+
+cities.append("Pune")
+
+print(cities)
+
+Output:
+
+['Delhi', 'Mumbai', 'Pune']
+insert()
+
+Adds an element at a specific index.
+
+cities = ["Delhi", "Mumbai", "Pune"]
+
+cities.insert(1, "Jaipur")
+
+print(cities)
+
+Output:
+
+['Delhi', 'Jaipur', 'Mumbai', 'Pune']
+extend()
+
+Adds multiple elements to the list.
+
+cities = ["Delhi", "Mumbai"]
+
+cities.extend(["Pune", "Jaipur"])
+
+print(cities)
+
+Output:
+
+['Delhi', 'Mumbai', 'Pune', 'Jaipur']
+Difference between append() and extend()
+cities = ["Delhi", "Mumbai"]
+
+cities.append(["Pune", "Jaipur"])
+
+print(cities)
+
+Output:
+
+['Delhi', 'Mumbai', ['Pune', 'Jaipur']]
+
+The entire list is added as one element.
+
+Using extend():
+
+cities = ["Delhi", "Mumbai"]
+
+cities.extend(["Pune", "Jaipur"])
+
+print(cities)
+
+Output:
+
+['Delhi', 'Mumbai', 'Pune', 'Jaipur']
+
+Method
+
+	
+
+Behavior
+
+
+
+
+append()
+
+	
+
+Adds one object as one element
+
+
+
+
+extend()
+
+	
+
+Adds elements from another iterable
+
+
+
+
+insert()
+
+	
+
+Adds an element at a specific position
+
+10.4.5 Removing Elements from a List
+remove()
+
+Removes the first matching value.
+
+numbers = [10, 20, 30, 20, 40]
+
+numbers.remove(20)
+
+print(numbers)
+
+Output:
+
+[10, 30, 20, 40]
+pop()
+
+Removes and returns an element by index.
+
+numbers = [10, 20, 30, 40]
+
+removed_value = numbers.pop(1)
+
+print(removed_value)
+print(numbers)
+
+Output:
+
+20
+[10, 30, 40]
+
+If no index is provided, pop() removes the last element.
+
+numbers = [10, 20, 30]
+
+last_value = numbers.pop()
+
+print(last_value)
+print(numbers)
+
+Output:
+
+30
+[10, 20]
+del
+
+Deletes an element or a slice.
+
+numbers = [10, 20, 30, 40]
+
+del numbers[1]
+
+print(numbers)
+
+Output:
+
+[10, 30, 40]
+clear()
+
+Removes all elements.
+
+numbers = [10, 20, 30]
+
+numbers.clear()
+
+print(numbers)
+
+Output:
+
+[]
+10.4.6 List Slicing
+
+Slicing extracts a part of a list.
+
+The syntax is:
+
+list[start:stop:step]
+
+The stop index is excluded.
+
+numbers = [10, 20, 30, 40, 50, 60]
+
+print(numbers[1:4])
+
+Output:
+
+[20, 30, 40]
+Examples
+numbers = [10, 20, 30, 40, 50, 60]
+
+print(numbers[:3])
+print(numbers[3:])
+print(numbers[::2])
+print(numbers[::-1])
+
+Output:
+
+[10, 20, 30]
+[40, 50, 60]
+[10, 30, 50]
+[60, 50, 40, 30, 20, 10]
+10.4.7 Useful List Methods
+
+Method
+
+	
+
+Purpose
+
+
+
+
+append()
+
+	
+
+Adds one element
+
+
+
+
+extend()
+
+	
+
+Adds multiple elements
+
+
+
+
+insert()
+
+	
+
+Adds an element at an index
+
+
+
+
+remove()
+
+	
+
+Removes the first matching value
+
+
+
+
+pop()
+
+	
+
+Removes and returns an element
+
+
+
+
+clear()
+
+	
+
+Removes all elements
+
+
+
+
+index()
+
+	
+
+Returns the index of a value
+
+
+
+
+count()
+
+	
+
+Counts occurrences
+
+
+
+
+sort()
+
+	
+
+Sorts the list
+
+
+
+
+reverse()
+
+	
+
+Reverses the list
+
+
+
+
+copy()
+
+	
+
+Creates a shallow copy
+
+Example
+numbers = [40, 10, 30, 20, 10]
+
+print(numbers.count(10))
+print(numbers.index(30))
+
+numbers.sort()
+
+print(numbers)
+
+numbers.reverse()
+
+print(numbers)
+
+Output:
+
+2
+2
+[10, 10, 20, 30, 40]
+[40, 30, 20, 10, 10]
+10.4.8 Sorting Lists
+Ascending order
+numbers = [50, 10, 40, 20, 30]
+
+numbers.sort()
+
+print(numbers)
+
+Output:
+
+[10, 20, 30, 40, 50]
+Descending order
+numbers = [50, 10, 40, 20, 30]
+
+numbers.sort(reverse=True)
+
+print(numbers)
+
+Output:
+
+[50, 40, 30, 20, 10]
+Using sorted()
+
+The sorted() function returns a new sorted list.
+
+numbers = [50, 10, 40, 20, 30]
+
+sorted_numbers = sorted(numbers)
+
+print(sorted_numbers)
+print(numbers)
+
+Output:
+
+[10, 20, 30, 40, 50]
+[50, 10, 40, 20, 30]
+Difference between sort() and sorted()
+
+sort()
+
+	
+
+sorted()
+
+
+
+
+Modifies the original list
+
+	
+
+Returns a new sorted list
+
+
+
+
+Works on lists
+
+	
+
+Works on many iterables
+
+
+
+
+Returns None
+
+	
+
+Returns a sorted list
+
+10.4.9 Iterating Over a List
+sales = [1200, 2500, 1800, 3200]
+
+for amount in sales:
+    print(amount)
+
+Output:
+
+1200
+2500
+1800
+3200
+
+Calculating total sales:
+
+sales = [1200, 2500, 1800, 3200]
+
+total_sales = 0
+
+for amount in sales:
+    total_sales += amount
+
+print(total_sales)
+
+Output:
+
+8700
+
+Python also provides the built-in sum() function:
+
+total_sales = sum(sales)
+
+print(total_sales)
+10.4.10 Checking Membership
+
+Use in to check whether a value exists in a list.
+
+cities = ["Delhi", "Mumbai", "Pune"]
+
+print("Mumbai" in cities)
+print("Chennai" in cities)
+
+Output:
+
+True
+False
+
+Use not in to check whether a value does not exist.
+
+print("Chennai" not in cities)
+
+Output:
+
+True
+10.4.11 Nested Lists
+
+A list can contain other lists.
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print(matrix)
+print(matrix[0])
+print(matrix[1][2])
+
+Output:
+
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+[1, 2, 3]
+6
+
+Nested lists are useful for:
+
+Matrices.
+
+Tabular data.
+
+Rows and columns.
+
+Grouped records.
+
+Batch processing.
+
+10.4.12 List of Dictionaries
+
+A list of dictionaries stores multiple records where each record is represented by a dictionary.
+
+This is one of the most common data structures used when working with:
+
+JSON data.
+
+REST APIs.
+
+MongoDB documents.
+
+Customer records.
+
+Transaction data.
+
+Data engineering pipelines.
+
+customers = [
+    {
+        "id": 101,
+        "name": "Amit",
+        "city": "Delhi"
+    },
+    {
+        "id": 102,
+        "name": "Priya",
+        "city": "Mumbai"
+    },
+    {
+        "id": 103,
+        "name": "Rahul",
+        "city": "Pune"
+    }
+]
+Accessing a complete record
+print(customers[0])
+
+Output:
+
+{'id': 101, 'name': 'Amit', 'city': 'Delhi'}
+Accessing a specific field
+print(customers[0]["name"])
+
+Output:
+
+Amit
+Iterating over records
+for customer in customers:
+    print(customer["name"])
+
+Output:
+
+Amit
+Priya
+Rahul
+Filtering records
+for customer in customers:
+    if customer["city"] == "Delhi":
+        print(customer)
+
+Output:
+
+{'id': 101, 'name': 'Amit', 'city': 'Delhi'}
+Updating a record
+customers[0]["city"] = "Jaipur"
+
+print(customers[0])
+Adding a new field
+customers[0]["status"] = "active"
+
+print(customers[0])
+Adding a new record
+customers.append(
+    {
+        "id": 104,
+        "name": "Neha",
+        "city": "Bengaluru"
+    }
+)
+Finding a customer
+search_id = 102
+
+for customer in customers:
+    if customer["id"] == search_id:
+        print("Customer found:", customer)
+        break
+Converting records into a lookup dictionary
+
+Searching a list repeatedly can be inefficient. We can create a dictionary using the customer ID as the key.
+
+customers_by_id = {}
+
+for customer in customers:
+    customers_by_id[customer["id"]] = customer
+
+print(customers_by_id[102])
+
+Output:
+
+{'id': 102, 'name': 'Priya', 'city': 'Mumbai'}
+
+This is useful when we need frequent lookups by ID.
+
+10.5 Tuple
+
+A tuple is an ordered and immutable collection.
+
+A tuple is similar to a list, but its elements cannot be changed after creation.
+
+10.5.1 Creating a Tuple
+numbers = (10, 20, 30, 40)
+
+print(numbers)
+
+Output:
+
+(10, 20, 30, 40)
+
+A tuple can contain mixed data types:
+
+employee = (101, "Amit", "Data Engineer", 75000)
+
+print(employee)
+
+An empty tuple:
+
+empty_tuple = ()
+Single-element tuple
+
+A comma is required:
+
+single_value = (10,)
+
+print(type(single_value))
+
+Without the comma:
+
+not_a_tuple = (10,)
+
+print(type(not_a_tuple))
+
+The comma is what makes it a tuple.
+
+10.5.2 Accessing Tuple Elements
+
+Tuples use indexing like lists.
+
+coordinates = (28.6139, 77.2090)
+
+print(coordinates[0])
+print(coordinates[1])
+
+Output:
+
+28.6139
+77.209
+
+Negative indexing also works:
+
+print(coordinates[-1])
+10.5.3 Tuple Immutability
+
+The following code causes an error:
+
+numbers = (10, 20, 30)
+
+numbers[0] = 100
+
+Error:
+
+TypeError: 'tuple' object does not support item assignment
+
+A tuple cannot be modified after creation.
+
+10.5.4 Tuple Unpacking
+
+Tuple unpacking assigns tuple values to separate variables.
+
+employee = (101, "Amit", "Data Engineer")
+
+employee_id, name, role = employee
+
+print(employee_id)
+print(name)
+print(role)
+
+Output:
+
+101
+Amit
+Data Engineer
+Extended unpacking
+numbers = (10, 20, 30, 40, 50)
+
+first, *middle, last = numbers
+
+print(first)
+print(middle)
+print(last)
+
+Output:
+
+10
+[20, 30, 40]
+50
+10.5.5 Tuple Methods
+
+Tuples provide two main methods:
+
+Method
+
+	
+
+Purpose
+
+
+
+
+count()
+
+	
+
+Counts occurrences
+
+
+
+
+index()
+
+	
+
+Returns the index of a value
+
+numbers = (10, 20, 10, 30, 10)
+
+print(numbers.count(10))
+print(numbers.index(30))
+
+Output:
+
+3
+3
+10.5.6 When Should Tuples Be Used?
+
+Use tuples when:
+
+The values should not change.
+
+You are storing fixed configuration.
+
+You are representing coordinates.
+
+You are returning multiple values from a function.
+
+You want to communicate that the data is fixed.
+
+Example:
+
+DATABASE_CONFIG = (
+    "localhost",
+    27017,
+    "vehicle_insurance"
+)
+
+A tuple communicates that these configuration values are not expected to change.
+
+10.6 Set
+
+A set is an unordered collection of unique values.
+
+Sets are useful for:
+
+Removing duplicates.
+
+Membership testing.
+
+Comparing groups of values.
+
+Finding common elements.
+
+Finding missing elements.
+
+10.6.1 Creating a Set
+numbers = {10, 20, 30, 40}
+
+print(numbers)
+
+Sets do not maintain duplicates:
+
+numbers = {10, 20, 20, 30, 30, 30}
+
+print(numbers)
+
+Output:
+
+{10, 20, 30}
+
+The order of set output should not be relied upon.
+
+Empty set
+
+An empty set must be created using set():
+
+empty_set = set()
+
+This creates an empty dictionary:
+
+empty_dictionary = {}
+10.6.2 Adding and Removing Set Elements
+add()
+cities = {"Delhi", "Mumbai"}
+
+cities.add("Pune")
+
+print(cities)
+update()
+cities.update(["Jaipur", "Bengaluru"])
+
+print(cities)
+remove()
+cities.remove("Mumbai")
+
+If the value does not exist, remove() raises a KeyError.
+
+discard()
+cities.discard("Chennai")
+
+discard() does not raise an error if the value is missing.
+
+pop()
+cities.pop()
+
+Because sets are unordered, pop() removes an arbitrary element.
+
+clear()
+cities.clear()
+10.6.3 Set Operations
+
+Suppose we have two sets:
+
+python_students = {"Amit", "Priya", "Rahul"}
+sql_students = {"Priya", "Rahul", "Neha"}
+Union
+
+Combines all unique values.
+
+all_students = python_students.union(sql_students)
+
+print(all_students)
+
+Output:
+
+{'Amit', 'Priya', 'Rahul', 'Neha'}
+
+Using the operator:
+
+all_students = python_students | sql_students
+Intersection
+
+Returns values common to both sets.
+
+common_students = python_students.intersection(sql_students)
+
+print(common_students)
+
+Output:
+
+{'Priya', 'Rahul'}
+
+Using the operator:
+
+common_students = python_students & sql_students
+Difference
+
+Returns values present in the first set but not in the second.
+
+only_python = python_students.difference(sql_students)
+
+print(only_python)
+
+Output:
+
+{'Amit'}
+
+Using the operator:
+
+only_python = python_students - sql_students
+Symmetric difference
+
+Returns values that exist in either set, but not in both.
+
+different_students = python_students.symmetric_difference(
+    sql_students
+)
+
+print(different_students)
+
+Using the operator:
+
+different_students = python_students ^ sql_students
+10.6.4 Removing Duplicates from a List
+numbers = [10, 20, 20, 30, 30, 40]
+
+unique_numbers = list(set(numbers))
+
+print(unique_numbers)
+
+This removes duplicates, but the original order may not be preserved.
+
+Order-preserving approach
+numbers = [10, 20, 20, 30, 30, 40]
+
+unique_numbers = list(dict.fromkeys(numbers))
+
+print(unique_numbers)
+
+Output:
+
+[10, 20, 30, 40]
+10.6.5 Set Membership Testing
+
+Set membership is generally faster than list membership for large collections.
+
+customer_ids = {101, 102, 103, 104}
+
+print(102 in customer_ids)
+print(999 in customer_ids)
+
+Output:
+
+True
+False
+
+This is useful for validating whether an ID exists.
+
+10.7 Dictionary
+
+A dictionary stores data in key-value pairs.
+
+Example:
+
+customer = {
+    "id": 101,
+    "name": "Amit",
+    "city": "Delhi"
+}
+
+Here:
+
+Key	Value
+id	101
+name	"Amit"
+city	"Delhi"
+
+Dictionaries are especially important in data engineering because JSON documents, API responses, configuration files, and many database records naturally map to Python dictionaries.
+
+10.7.1 Creating a Dictionary
+student = {
+    "name": "Amit",
+    "age": 22,
+    "course": "Data Science"
+}
+
+print(student)
+
+Output:
+
+{'name': 'Amit', 'age': 22, 'course': 'Data Science'}
+
+An empty dictionary can be created using:
+
+student = {}
+
+or:
+
+student = dict()
+10.7.2 Accessing Dictionary Values
+
+Use the key to access its corresponding value.
+
+student = {
+    "name": "Amit",
+    "age": 22,
+    "course": "Data Science"
+}
+
+print(student["name"])
+print(student["age"])
+
+Output:
+
+Amit
+22
+
+If the key does not exist:
+
+print(student["city"])
+
+Python raises:
+
+KeyError
+10.7.3 Using get()
+
+The get() method provides a safer way to access dictionary values.
+
+student = {
+    "name": "Amit",
+    "age": 22
+}
+
+print(student.get("name"))
+print(student.get("city"))
+
+Output:
+
+Amit
+None
+
+We can also provide a default value:
+
+print(student.get("city", "Unknown"))
+
+Output:
+
+Unknown
+[] vs get()
+Approach	Missing key
+dictionary["key"]	Raises KeyError
+dictionary.get("key")	Returns None
+dictionary.get("key", default)	Returns specified default
+
+This distinction is particularly useful when processing real-world data where fields may be missing.
+
+10.7.4 Adding and Updating Dictionary Values
+
+Dictionaries are mutable.
+
+customer = {
+    "id": 101,
+    "name": "Amit"
+}
+
+customer["city"] = "Delhi"
+
+print(customer)
+
+Output:
+
+{'id': 101, 'name': 'Amit', 'city': 'Delhi'}
+
+If the key already exists, its value is updated:
+
+customer["city"] = "Mumbai"
+
+print(customer)
+
+Output:
+
+{'id': 101, 'name': 'Amit', 'city': 'Mumbai'}
+10.7.5 Updating Multiple Values
+
+The update() method can add or modify multiple key-value pairs.
+
+customer = {
+    "id": 101,
+    "name": "Amit"
+}
+
+customer.update({
+    "city": "Delhi",
+    "age": 28
+})
+
+print(customer)
+
+Output:
+
+{'id': 101, 'name': 'Amit', 'city': 'Delhi', 'age': 28}
+10.7.6 Removing Dictionary Elements
+pop()
+
+Removes a specified key and returns its value.
+
+customer = {
+    "id": 101,
+    "name": "Amit",
+    "city": "Delhi"
+}
+
+removed_city = customer.pop("city")
+
+print(removed_city)
+print(customer)
+
+Output:
+
+Delhi
+{'id': 101, 'name': 'Amit'}
+popitem()
+
+Removes and returns the last inserted key-value pair.
+
+customer = {
+    "id": 101,
+    "name": "Amit",
+    "city": "Delhi"
+}
+
+item = customer.popitem()
+
+print(item)
+print(customer)
+del
+customer = {
+    "id": 101,
+    "name": "Amit",
+    "city": "Delhi"
+}
+
+del customer["city"]
+
+print(customer)
+clear()
+
+Removes all key-value pairs.
+
+customer.clear()
+
+print(customer)
+
+Output:
+
+{}
+10.7.7 Dictionary Methods
+
+Some important dictionary methods are:
+
+Method	Purpose
+keys()	Returns dictionary keys
+values()	Returns dictionary values
+items()	Returns key-value pairs
+get()	Safely retrieves a value
+update()	Adds or updates values
+pop()	Removes a specified key
+popitem()	Removes the last inserted pair
+clear()	Removes all items
+copy()	Creates a shallow copy
+setdefault()	Gets a value and optionally creates a key
+10.7.8 Getting Dictionary Keys
+customer = {
+    "id": 101,
+    "name": "Amit",
+    "city": "Delhi"
+}
+
+print(customer.keys())
+
+We can convert the result into a list:
+
+print(list(customer.keys()))
+
+Output:
+
+['id', 'name', 'city']
+10.7.9 Getting Dictionary Values
+print(customer.values())
+
+Or:
+
+print(list(customer.values()))
+
+Output:
+
+[101, 'Amit', 'Delhi']
+10.7.10 Getting Keys and Values Together
+
+The items() method returns key-value pairs.
+
+print(customer.items())
+
+More commonly, we iterate through the pairs:
+
+for key, value in customer.items():
+    print(key, value)
+
+Output:
+
+id 101
+name Amit
+city Delhi
+
+This is one of the most common dictionary patterns in Python.
+
+10.7.11 Checking Whether a Key Exists
+
+Use in:
+
+customer = {
+    "id": 101,
+    "name": "Amit"
+}
+
+print("name" in customer)
+print("city" in customer)
+
+Output:
+
+True
+False
+
+Important: in checks keys, not values.
+
+print("Amit" in customer)
+
+Output:
+
+False
+
+To check values:
+
+print("Amit" in customer.values())
+
+Output:
+
+True
+10.8 Nested Dictionaries
+
+A dictionary can contain another dictionary.
+
+company = {
+    "employee": {
+        "id": 101,
+        "name": "Amit",
+        "role": "Data Engineer"
+    }
+}
+
+Access nested values:
+
+print(company["employee"]["name"])
+
+Output:
+
+Amit
+
+A more realistic example:
+
+sales = {
+    "North": {
+        "revenue": 120000,
+        "orders": 150
+    },
+    "South": {
+        "revenue": 95000,
+        "orders": 120
+    }
+}
+
+Access:
+
+print(sales["North"]["revenue"])
+
+Output:
+
+120000
+10.9 Dictionary of Lists
+
+Dictionaries can also contain lists.
+
+department_employees = {
+    "Data Engineering": [
+        "Amit",
+        "Priya",
+        "Rahul"
+    ],
+    "Data Science": [
+        "Neha",
+        "Karan"
+    ]
+}
+
+Access:
+
+print(department_employees["Data Engineering"])
+
+Output:
+
+['Amit', 'Priya', 'Rahul']
+
+Iterate through the employees:
+
+for employee in department_employees["Data Engineering"]:
+    print(employee)
+10.10 List of Dictionaries vs Dictionary of Lists
+
+These two structures are both useful, but they represent data differently.
+
+List of dictionaries
+customers = [
+    {"id": 101, "name": "Amit"},
+    {"id": 102, "name": "Priya"},
+    {"id": 103, "name": "Rahul"}
+]
+
+This is useful when each dictionary represents one complete record.
+
+It resembles rows in a table:
+
+id	name
+101	Amit
+102	Priya
+103	Rahul
+Dictionary of lists
+customers = {
+    "id": [101, 102, 103],
+    "name": ["Amit", "Priya", "Rahul"]
+}
+
+This groups values by field.
+
+The first structure is often more natural when processing records from APIs or JSON.
+
+10.11 Dictionary Comprehension
+
+Dictionary comprehensions provide a concise way to create dictionaries.
+
+Traditional approach
+squares = {}
+
+for number in range(1, 6):
+    squares[number] = number ** 2
+
+print(squares)
+
+Output:
+
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+Dictionary comprehension
+squares = {
+    number: number ** 2
+    for number in range(1, 6)
+}
+
+print(squares)
+
+Same output:
+
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+
+The general syntax is:
+
+{key_expression: value_expression for item in iterable}
+10.12 Conditional Dictionary Comprehension
+
+We can include conditions.
+
+numbers = range(1, 11)
+
+even_squares = {
+    number: number ** 2
+    for number in numbers
+    if number % 2 == 0
+}
+
+print(even_squares)
+
+Output:
+
+{2: 4, 4: 16, 6: 36, 8: 64, 10: 100}
+
+This is useful when filtering and transforming data simultaneously.
+
+10.13 List Comprehension
+
+A list comprehension creates a list using a compact syntax.
+
+Traditional approach:
+
+numbers = [1, 2, 3, 4, 5]
+
+squares = []
+
+for number in numbers:
+    squares.append(number ** 2)
+
+print(squares)
+
+List comprehension:
+
+squares = [
+    number ** 2
+    for number in numbers
+]
+
+print(squares)
+
+Output:
+
+[1, 4, 9, 16, 25]
+10.13.1 Conditional List Comprehension
+numbers = range(1, 11)
+
+even_numbers = [
+    number
+    for number in numbers
+    if number % 2 == 0
+]
+
+print(even_numbers)
+
+Output:
+
+[2, 4, 6, 8, 10]
+10.13.2 Practical Data Example
+
+Suppose we have transaction amounts:
+
+transactions = [500, 1200, 300, 2500, 800]
+
+We want transactions greater than ₹1,000:
+
+large_transactions = [
+    amount
+    for amount in transactions
+    if amount > 1000
+]
+
+print(large_transactions)
+
+Output:
+
+[1200, 2500]
+10.14 Set Comprehension
+
+Set comprehensions work similarly to list comprehensions.
+
+numbers = [1, 2, 2, 3, 3, 4]
+
+squares = {
+    number ** 2
+    for number in numbers
+}
+
+print(squares)
+
+Output:
+
+{1, 4, 9, 16}
+
+Duplicate results are automatically removed because the result is a set.
+
+10.15 Collection Unpacking
+
+Python allows values from collections to be assigned to variables.
+
+numbers = [10, 20, 30]
+
+a, b, c = numbers
+
+print(a)
+print(b)
+print(c)
+
+Output:
+
+10
+20
+30
+Using *
+numbers = [10, 20, 30, 40, 50]
+
+first, *middle, last = numbers
+
+print(first)
+print(middle)
+print(last)
+
+Output:
+
+10
+[20, 30, 40]
+50
+
+This is useful when the number of middle elements is variable.
+
+10.16 Shallow Copy vs Deep Copy
+
+Copying collections is an important concept because nested collections can behave unexpectedly.
+
+10.16.1 Assignment Does Not Create a Copy
+numbers = [10, 20, 30]
+
+new_numbers = numbers
+
+new_numbers.append(40)
+
+print(numbers)
+print(new_numbers)
+
+Output:
+
+[10, 20, 30, 40]
+[10, 20, 30, 40]
+
+Both variables refer to the same list.
+
+10.16.2 Shallow Copy
+
+A shallow copy creates a new outer collection.
+
+numbers = [10, 20, 30]
+
+new_numbers = numbers.copy()
+
+new_numbers.append(40)
+
+print(numbers)
+print(new_numbers)
+
+Output:
+
+[10, 20, 30]
+[10, 20, 30, 40]
+
+For a simple list, this behaves as expected.
+
+However, nested objects are still shared.
+
+data = [
+    [1, 2],
+    [3, 4]
+]
+
+new_data = data.copy()
+
+new_data[0].append(100)
+
+print(data)
+print(new_data)
+
+Output:
+
+[[1, 2, 100], [3, 4]]
+[[1, 2, 100], [3, 4]]
+
+The inner list is shared.
+
+10.16.3 Deep Copy
+
+A deep copy recursively copies nested objects.
+
+import copy
+
+data = [
+    [1, 2],
+    [3, 4]
+]
+
+new_data = copy.deepcopy(data)
+
+new_data[0].append(100)
+
+print(data)
+print(new_data)
+
+Output:
+
+[[1, 2], [3, 4]]
+[[1, 2, 100], [3, 4]]
+Comparison
+Operation	Outer collection	Nested objects
+Assignment	Same	Same
+Shallow copy	New	Shared
+Deep copy	New	New
+10.17 Mutable vs Immutable Collections
+
+Mutability determines whether an object can be changed after creation.
+
+Mutable
+
+These can be modified:
+
+List
+Set
+Dictionary
+
+Example:
+
+numbers = [10, 20, 30]
+
+numbers[0] = 100
+
+print(numbers)
+Immutable
+
+These cannot be modified after creation:
+
+Tuple
+String
+
+Example:
+
+numbers = (10, 20, 30)
+
+# numbers[0] = 100
+
+This raises a TypeError if uncommented.
+
+Summary
+Type	Mutable
+List	Yes
+Tuple	No
+Set	Yes
+Dictionary	Yes
+String	No
+10.18 Collection Comparison
+Feature	List	Tuple	Set	Dictionary
+Ordered	Yes	Yes	No*	Yes**
+Mutable	Yes	No	Yes	Yes
+Duplicates	Yes	Yes	No	Keys: No
+Indexing	Yes	Yes	No	By key
+Key-value pairs	No	No	No	Yes
+Main use	Sequence	Fixed sequence	Unique values	Mappings
+
+* Sets are unordered collections and should not be relied upon for positional order.
+
+** Dictionaries preserve insertion order in modern Python versions.
+
+10.19 Choosing the Right Collection
+
+The choice depends on the problem.
+
+Use a list when:
+
+You need an ordered collection that can change.
+
+transactions = [1200, 1500, 2200]
+Use a tuple when:
+
+The values represent a fixed collection.
+
+coordinates = (28.6139, 77.2090)
+Use a set when:
+
+You need unique values or fast membership testing.
+
+customer_ids = {101, 102, 103}
+Use a dictionary when:
+
+You need key-value relationships.
+
+customer = {
+    "id": 101,
+    "name": "Amit"
+}
+10.20 Collection Performance
+
+Performance becomes important when processing large datasets.
+
+Typical average-case behavior:
+
+Operation	List	Set	Dictionary
+Membership search	O(n)	O(1)	O(1)
+Index access	O(1)	Not supported	O(1) by key
+Append/add	O(1)*	O(1)*	O(1)*
+Delete by value/key	O(n)	O(1)*	O(1)*
+
+* Average/amortized behavior; exact performance depends on the operation and implementation.
+
+Example
+
+For a list:
+
+customer_ids = [101, 102, 103, 104, 105]
+
+if 105 in customer_ids:
+    print("Customer found")
+
+Python may need to check multiple elements.
+
+With a set:
+
+customer_ids = {101, 102, 103, 104, 105}
+
+if 105 in customer_ids:
+    print("Customer found")
+
+Set membership is generally much faster for large collections.
+
+10.21 Practical Data Engineering Example
+
+Consider transaction records:
+
+transactions = [
+    {
+        "transaction_id": 101,
+        "customer_id": 501,
+        "amount": 1200
+    },
+    {
+        "transaction_id": 102,
+        "customer_id": 502,
+        "amount": 2500
+    },
+    {
+        "transaction_id": 103,
+        "customer_id": 501,
+        "amount": 1800
+    }
+]
+Calculate total sales
+total_sales = sum(
+    transaction["amount"]
+    for transaction in transactions
+)
+
+print(total_sales)
+
+Output:
+
+5500
+Get unique customers
+customer_ids = {
+    transaction["customer_id"]
+    for transaction in transactions
+}
+
+print(customer_ids)
+
+Output:
+
+{501, 502}
+Create a customer-to-transactions mapping
+transactions_by_customer = {}
+
+for transaction in transactions:
+
+    customer_id = transaction["customer_id"]
+
+    if customer_id not in transactions_by_customer:
+        transactions_by_customer[customer_id] = []
+
+    transactions_by_customer[customer_id].append(transaction)
+
+Result:
+
+{
+    501: [
+        {
+            "transaction_id": 101,
+            "customer_id": 501,
+            "amount": 1200
+        },
+        {
+            "transaction_id": 103,
+            "customer_id": 501,
+            "amount": 1800
+        }
+    ],
+    502: [
+        {
+            "transaction_id": 102,
+            "customer_id": 502,
+            "amount": 2500
+        }
+    ]
+}
+
+This demonstrates how Python collections can be combined to solve realistic data-processing problems.
+
+10.22 JSON-Like Data
+
+Python dictionaries and lists closely resemble JSON structures.
+
+Example JSON-like Python object:
+
+customer = {
+    "customer_id": 101,
+    "name": "Amit",
+    "orders": [
+        {
+            "order_id": 1001,
+            "amount": 1200
+        },
+        {
+            "order_id": 1002,
+            "amount": 2500
+        }
+    ]
+}
+
+Accessing nested data:
+
+print(customer["name"])
+
+for order in customer["orders"]:
+    print(order["order_id"], order["amount"])
+
+Output:
+
+Amit
+1001 1200
+1002 2500
+
+This structure is extremely common when working with REST APIs and document databases.
+
+10.23 Practice Exercises
+
+Try solving these before looking at the solutions.
+
+Exercise 1 — Create a List
+
+Create a list containing five programming languages and print it.
+
+Exercise 2 — List Indexing
+
+Given:
+
+languages = ["Python", "SQL", "Java", "Scala", "R"]
+
+Print:
+
+First element
+Last element
+Third element
+Exercise 3 — List Modification
+
+Add "Spark" to the list.
+
+Then remove "Java".
+
+Exercise 4 — List Filtering
+
+Given:
+
+numbers = [10, 15, 20, 25, 30, 35, 40]
+
+Create a list containing only even numbers.
+
+Exercise 5 — Tuple
+
+Create a tuple containing:
+
+101, "Amit", "Data Engineer"
+
+Unpack it into three variables.
+
+Exercise 6 — Remove Duplicates
+
+Given:
+
+numbers = [10, 20, 20, 30, 40, 40, 50]
+
+Create a collection containing only unique values.
+
+Exercise 7 — Set Intersection
+
+Find the common elements between:
+
+python_users = {"Amit", "Priya", "Rahul"}
+sql_users = {"Priya", "Rahul", "Neha"}
+Exercise 8 — Dictionary
+
+Create a dictionary representing an employee with:
+
+ID
+Name
+Department
+Salary
+Exercise 9 — Dictionary Filtering
+
+Given:
+
+sales = {
+    "North": 120000,
+    "South": 95000,
+    "East": 85000,
+    "West": 110000
+}
+
+Create a new dictionary containing regions with sales greater than 100000.
+
+Exercise 10 — List of Dictionaries
+
+Given:
+
+employees = [
+    {"name": "Amit", "salary": 70000},
+    {"name": "Priya", "salary": 85000},
+    {"name": "Rahul", "salary": 65000}
+]
+
+Print employees whose salary is greater than 70000.
+
+Exercise 11 — Dictionary Comprehension
+
+Create a dictionary mapping numbers from 1 to 5 to their squares.
+
+Exercise 12 — Transaction Data
+
+Given:
+
+transactions = [
+    {"id": 101, "amount": 1200},
+    {"id": 102, "amount": 800},
+    {"id": 103, "amount": 2500}
+]
+
+Calculate total transaction value.
+
+Exercise 13 — Unique Customer IDs
+
+Given a list of transactions, extract unique customer IDs using a set.
+
+Exercise 14 — Frequency Counter
+
+Given:
+
+products = [
+    "Laptop",
+    "Phone",
+    "Laptop",
+    "Tablet",
+    "Phone",
+    "Laptop"
+]
+
+Create a dictionary containing the frequency of each product.
+
+Exercise 15 — Nested Dictionary
+
+Create a dictionary representing two departments and their employees.
+
+Exercise 16 — Shallow Copy
+
+Create a list, make a copy using .copy(), modify the copied list, and verify that the original list remains unchanged.
+
+Exercise 17 — List Comprehension
+
+Create a list of squares for numbers from 1 to 10.
+
+Exercise 18 — Conditional Comprehension
+
+Create a list containing only numbers greater than 50:
+
+numbers = [20, 55, 70, 30, 90, 45]
+Exercise 19 — Data Filtering
+
+Given a list of transaction dictionaries, create a new list containing only transactions with amount greater than 1000.
+
+Exercise 20 — Combined Collections
+
+Build a program that:
+
+Stores transactions in a list of dictionaries.
+Extracts unique customer IDs into a set.
+Calculates total sales.
+Creates a dictionary mapping customer IDs to their total sales.
+10.24 Practice Exercise Solutions
+Solution 1
+languages = ["Python", "SQL", "Java", "Scala", "R"]
+
+print(languages)
+Solution 2
+languages = ["Python", "SQL", "Java", "Scala", "R"]
+
+print(languages[0])
+print(languages[-1])
+print(languages[2])
+Solution 3
+languages = ["Python", "SQL", "Java", "Scala", "R"]
+
+languages.append("Spark")
+languages.remove("Java")
+
+print(languages)
+Solution 4
+numbers = [10, 15, 20, 25, 30, 35, 40]
+
+even_numbers = [
+    number
+    for number in numbers
+    if number % 2 == 0
+]
+
+print(even_numbers)
+Solution 5
+employee = (101, "Amit", "Data Engineer")
+
+employee_id, name, role = employee
+
+print(employee_id)
+print(name)
+print(role)
+Solution 6
+numbers = [10, 20, 20, 30, 40, 40, 50]
+
+unique_numbers = set(numbers)
+
+print(unique_numbers)
+Solution 7
+python_users = {"Amit", "Priya", "Rahul"}
+sql_users = {"Priya", "Rahul", "Neha"}
+
+common_users = python_users & sql_users
+
+print(common_users)
+Solution 8
+employee = {
+    "id": 101,
+    "name": "Amit",
+    "department": "Data Engineering",
+    "salary": 75000
+}
+
+print(employee)
+Solution 9
+sales = {
+    "North": 120000,
+    "South": 95000,
+    "East": 85000,
+    "West": 110000
+}
+
+high_sales_regions = {
+    region: amount
+    for region, amount in sales.items()
+    if amount > 100000
+}
+
+print(high_sales_regions)
+
+Output:
+
+{'North': 120000, 'West': 110000}
+Solution 10
+employees = [
+    {"name": "Amit", "salary": 70000},
+    {"name": "Priya", "salary": 85000},
+    {"name": "Rahul", "salary": 65000}
+]
+
+for employee in employees:
+    if employee["salary"] > 70000:
+        print(employee["name"])
+
+Output:
+
+Priya
+Solution 11
+squares = {
+    number: number ** 2
+    for number in range(1, 6)
+}
+
+print(squares)
+Solution 12
+transactions = [
+    {"id": 101, "amount": 1200},
+    {"id": 102, "amount": 800},
+    {"id": 103, "amount": 2500}
+]
+
+total = sum(
+    transaction["amount"]
+    for transaction in transactions
+)
+
+print(total)
+
+Output:
+
+4500
+Solution 13
+transactions = [
+    {"customer_id": 501, "amount": 1200},
+    {"customer_id": 502, "amount": 800},
+    {"customer_id": 501, "amount": 2500}
+]
+
+customer_ids = {
+    transaction["customer_id"]
+    for transaction in transactions
+}
+
+print(customer_ids)
+Solution 14
+products = [
+    "Laptop",
+    "Phone",
+    "Laptop",
+    "Tablet",
+    "Phone",
+    "Laptop"
+]
+
+frequency = {}
+
+for product in products:
+    frequency[product] = frequency.get(product, 0) + 1
+
+print(frequency)
+
+Output:
+
+{'Laptop': 3, 'Phone': 2, 'Tablet': 1}
+
+This is an important pattern in data processing:
+
+dictionary[key] = dictionary.get(key, 0) + 1
+
+It is frequently used for counting occurrences.
+
+Solution 15
+departments = {
+    "Data Engineering": [
+        "Amit",
+        "Priya"
+    ],
+    "Data Science": [
+        "Rahul",
+        "Neha"
+    ]
+}
+
+print(departments)
+Solution 16
+numbers = [10, 20, 30]
+
+new_numbers = numbers.copy()
+
+new_numbers.append(40)
+
+print(numbers)
+print(new_numbers)
+
+Output:
+
+[10, 20, 30]
+[10, 20, 30, 40]
+Solution 17
+squares = [
+    number ** 2
+    for number in range(1, 11)
+]
+
+print(squares)
+Solution 18
+numbers = [20, 55, 70, 30, 90, 45]
+
+large_numbers = [
+    number
+    for number in numbers
+    if number > 50
+]
+
+print(large_numbers)
+
+Output:
+
+[55, 70, 90]
+Solution 19
+transactions = [
+    {"id": 101, "amount": 1200},
+    {"id": 102, "amount": 800},
+    {"id": 103, "amount": 2500}
+]
+
+large_transactions = [
+    transaction
+    for transaction in transactions
+    if transaction["amount"] > 1000
+]
+
+print(large_transactions)
+Solution 20
+transactions = [
+    {
+        "id": 101,
+        "customer_id": 501,
+        "amount": 1200
+    },
+    {
+        "id": 102,
+        "customer_id": 502,
+        "amount": 800
+    },
+    {
+        "id": 103,
+        "customer_id": 501,
+        "amount": 2500
+    },
+    {
+        "id": 104,
+        "customer_id": 503,
+        "amount": 1500
+    }
+]
+
+# Unique customer IDs
+customer_ids = {
+    transaction["customer_id"]
+    for transaction in transactions
+}
+
+# Total sales
+total_sales = sum(
+    transaction["amount"]
+    for transaction in transactions
+)
+
+# Sales by customer
+sales_by_customer = {}
+
+for transaction in transactions:
+
+    customer_id = transaction["customer_id"]
+    amount = transaction["amount"]
+
+    sales_by_customer[customer_id] = (
+        sales_by_customer.get(customer_id, 0)
+        + amount
+    )
+
+print("Customer IDs:", customer_ids)
+print("Total sales:", total_sales)
+print("Sales by customer:", sales_by_customer)
+
+Output:
+
+Customer IDs: {501, 502, 503}
+Total sales: 6000
+Sales by customer: {501: 3700, 502: 800, 503: 1500}
+
+This exercise combines list + dictionary + set + iteration + aggregation and represents a pattern frequently encountered in data-processing workflows.
+
+10.25 Interview Questions
+1. What are the four main Python collection types?
+
+List, tuple, set, and dictionary.
+
+2. What is the difference between a list and a tuple?
+
+A list is mutable, while a tuple is immutable.
+
+my_list = [10, 20]
+my_tuple = (10, 20)
+3. Why would you use a set?
+
+When you need unique values or efficient membership testing.
+
+customer_ids = {101, 102, 103}
+4. Can a set contain duplicate values?
+
+No.
+
+numbers = {10, 10, 20, 20}
+
+print(numbers)
+
+The duplicates are removed.
+
+5. Can dictionary keys be duplicated?
+
+No. Assigning the same key again replaces its previous value.
+
+data = {
+    "name": "Amit",
+    "name": "Rahul"
+}
+
+print(data)
+
+Result:
+
+{'name': 'Rahul'}
+6. Can dictionary values be duplicated?
+
+Yes.
+
+data = {
+    "employee_1": "Data Engineer",
+    "employee_2": "Data Engineer"
+}
+7. What is dictionary comprehension?
+
+A concise way to create dictionaries.
+
+squares = {
+    x: x ** 2
+    for x in range(1, 6)
+}
+8. What is list comprehension?
+
+A concise way to create lists.
+
+squares = [
+    x ** 2
+    for x in range(1, 6)
+]
+9. What is the difference between append() and extend()?
+
+append() adds one object as a single element, while extend() adds elements from another iterable.
+
+10. What is the difference between remove() and pop()?
+
+remove() removes a value, while pop() removes an element by position and returns it.
+
+11. What is the difference between sort() and sorted()?
+
+sort() modifies the original list. sorted() creates and returns a new sorted list.
+
+12. What is tuple unpacking?
+
+Assigning tuple elements to multiple variables.
+
+employee = (101, "Amit", "Engineer")
+
+employee_id, name, role = employee
+13. What is mutability?
+
+Mutability describes whether an object can be modified after it has been created.
+
+Lists are mutable:
+
+numbers = [1, 2, 3]
+numbers[0] = 100
+
+Tuples are immutable:
+
+numbers = (1, 2, 3)
+14. Why are sets generally faster for membership testing than lists?
+
+Sets use hash-based lookup, which generally provides average O(1) membership testing, while list membership generally requires a sequential search and is O(n).
+
+15. Why are dictionaries important in data engineering?
+
+Dictionaries naturally represent key-value data and are commonly used for:
+
+JSON.
+API responses.
+Configuration.
+Lookup tables.
+Aggregation.
+Data transformation.
+Database documents.
+16. What is a list of dictionaries?
+
+A collection where each list element is a dictionary representing a record.
+
+employees = [
+    {"id": 101, "name": "Amit"},
+    {"id": 102, "name": "Priya"}
+]
+
+This structure is extremely common when processing JSON and API data.
+
+17. What is the difference between shallow copy and deep copy?
+
+A shallow copy creates a new outer collection but may share nested objects. A deep copy recursively creates copies of nested objects.
+
+18. What happens when you use {}?
+
+It creates an empty dictionary.
+
+For an empty set, use:
+
+set()
+10.26 Section Project — Customer and Transaction Data Management System
+
+Now we will combine everything learned in this section into a practical project.
+
+Project Objective
+
+Build a small customer and transaction management system using:
+
+Lists
+Tuples
+Sets
+Dictionaries
+Nested collections
+List comprehensions
+Dictionary comprehensions
+Data validation
+Aggregation
+Searching
+Duplicate detection
+
+The program will work with fictional NovaMart customer and transaction data.
+
+Project Requirements
+
+The program should:
+
+Store customer records.
+Store transaction records.
+Store fixed configuration using a tuple.
+Identify unique customers using a set.
+Calculate total sales.
+Calculate sales by customer.
+Identify high-value transactions.
+Detect duplicate transaction IDs.
+Create a customer lookup dictionary.
+Display a final report.
+10.27 Project Implementation
+
+Create:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\code\01-python-foundations\01-python-fundamentals\10_python_collections.py
+
+Add:
+
+"""
+Section 10: Python Collections
+
+Project:
+Customer and Transaction Data Management System
+
+Demonstrates:
+- Lists
+- Tuples
+- Sets
+- Dictionaries
+- Nested collections
+- List comprehensions
+- Dictionary comprehensions
+- Data aggregation
+- Duplicate detection
+"""
+
+print("=" * 60)
+print("NOVAMART CUSTOMER AND TRANSACTION SYSTEM")
+print("=" * 60)
+
+
+# ---------------------------------------------------------
+# 1. Fixed company configuration using a tuple
+# ---------------------------------------------------------
+
+COMPANY_CONFIG = (
+    "NovaMart",
+    "India",
+    "INR"
+)
+
+company_name, country, currency = COMPANY_CONFIG
+
+print("\nCOMPANY INFORMATION")
+print("-" * 40)
+print(f"Company: {company_name}")
+print(f"Country: {country}")
+print(f"Currency: {currency}")
+
+
+# ---------------------------------------------------------
+# 2. Customer records
+# ---------------------------------------------------------
+
+customers = [
+    {
+        "customer_id": 501,
+        "name": "Amit",
+        "city": "Delhi"
+    },
+    {
+        "customer_id": 502,
+        "name": "Priya",
+        "city": "Mumbai"
+    },
+    {
+        "customer_id": 503,
+        "name": "Rahul",
+        "city": "Pune"
+    },
+    {
+        "customer_id": 504,
+        "name": "Neha",
+        "city": "Bengaluru"
+    }
+]
+
+
+# ---------------------------------------------------------
+# 3. Transaction records
+# ---------------------------------------------------------
+
+transactions = [
+    {
+        "transaction_id": 1001,
+        "customer_id": 501,
+        "amount": 1200,
+        "status": "success"
+    },
+    {
+        "transaction_id": 1002,
+        "customer_id": 502,
+        "amount": 2500,
+        "status": "success"
+    },
+    {
+        "transaction_id": 1003,
+        "customer_id": 501,
+        "amount": 1800,
+        "status": "success"
+    },
+    {
+        "transaction_id": 1004,
+        "customer_id": 503,
+        "amount": 800,
+        "status": "failed"
+    },
+    {
+        "transaction_id": 1005,
+        "customer_id": 504,
+        "amount": 3200,
+        "status": "success"
+    },
+    {
+        "transaction_id": 1006,
+        "customer_id": 502,
+        "amount": 1500,
+        "status": "success"
+    }
+]
+
+
+# ---------------------------------------------------------
+# 4. Create customer lookup dictionary
+# ---------------------------------------------------------
+
+customers_by_id = {
+    customer["customer_id"]: customer
+    for customer in customers
+}
+
+print("\nCUSTOMER LOOKUP")
+print("-" * 40)
+
+for customer_id, customer in customers_by_id.items():
+    print(
+        customer_id,
+        customer["name"],
+        customer["city"]
+    )
+
+
+# ---------------------------------------------------------
+# 5. Extract unique customer IDs
+# ---------------------------------------------------------
+
+unique_customer_ids = {
+    transaction["customer_id"]
+    for transaction in transactions
+}
+
+print("\nUNIQUE CUSTOMERS")
+print("-" * 40)
+print(unique_customer_ids)
+
+
+# ---------------------------------------------------------
+# 6. Filter successful transactions
+# ---------------------------------------------------------
+
+successful_transactions = [
+    transaction
+    for transaction in transactions
+    if transaction["status"] == "success"
+]
+
+print("\nSUCCESSFUL TRANSACTIONS")
+print("-" * 40)
+print(len(successful_transactions))
+
+
+# ---------------------------------------------------------
+# 7. Calculate total sales
+# ---------------------------------------------------------
+
+total_sales = sum(
+    transaction["amount"]
+    for transaction in successful_transactions
+)
+
+print("\nTOTAL SALES")
+print("-" * 40)
+print(f"₹{total_sales}")
+
+
+# ---------------------------------------------------------
+# 8. Calculate sales by customer
+# ---------------------------------------------------------
+
+sales_by_customer = {}
+
+for transaction in successful_transactions:
+
+    customer_id = transaction["customer_id"]
+    amount = transaction["amount"]
+
+    sales_by_customer[customer_id] = (
+        sales_by_customer.get(customer_id, 0)
+        + amount
+    )
+
+print("\nSALES BY CUSTOMER")
+print("-" * 40)
+
+for customer_id, amount in sales_by_customer.items():
+
+    customer = customers_by_id.get(customer_id)
+
+    if customer:
+        print(
+            f"{customer['name']}: ₹{amount}"
+        )
+
+
+# ---------------------------------------------------------
+# 9. Identify high-value transactions
+# ---------------------------------------------------------
+
+high_value_transactions = [
+    transaction
+    for transaction in successful_transactions
+    if transaction["amount"] > 2000
+]
+
+print("\nHIGH-VALUE TRANSACTIONS")
+print("-" * 40)
+
+for transaction in high_value_transactions:
+    print(
+        transaction["transaction_id"],
+        transaction["amount"]
+    )
+
+
+# ---------------------------------------------------------
+# 10. Detect duplicate transaction IDs
+# ---------------------------------------------------------
+
+transaction_ids = [
+    transaction["transaction_id"]
+    for transaction in transactions
+]
+
+unique_transaction_ids = set(transaction_ids)
+
+duplicate_count = (
+    len(transaction_ids)
+    - len(unique_transaction_ids)
+)
+
+print("\nDUPLICATE TRANSACTION CHECK")
+print("-" * 40)
+
+if duplicate_count == 0:
+    print("No duplicate transaction IDs found")
+else:
+    print(
+        f"Duplicate transaction IDs detected: "
+        f"{duplicate_count}"
+    )
+
+
+# ---------------------------------------------------------
+# 11. Customer transaction counts
+# ---------------------------------------------------------
+
+transaction_count_by_customer = {}
+
+for transaction in successful_transactions:
+
+    customer_id = transaction["customer_id"]
+
+    transaction_count_by_customer[customer_id] = (
+        transaction_count_by_customer.get(customer_id, 0)
+        + 1
+    )
+
+print("\nTRANSACTION COUNT BY CUSTOMER")
+print("-" * 40)
+
+for customer_id, count in transaction_count_by_customer.items():
+
+    customer = customers_by_id.get(customer_id)
+
+    if customer:
+        print(
+            f"{customer['name']}: {count}"
+        )
+
+
+# ---------------------------------------------------------
+# 12. Final report
+# ---------------------------------------------------------
+
+print("\nFINAL REPORT")
+print("=" * 60)
+print(f"Total customers: {len(customers)}")
+print(f"Total transactions: {len(transactions)}")
+print(
+    f"Successful transactions: "
+    f"{len(successful_transactions)}"
+)
+print(f"Unique customers: {len(unique_customer_ids)}")
+print(f"Total sales: ₹{total_sales}")
+print(
+    f"High-value transactions: "
+    f"{len(high_value_transactions)}"
+)
+print("=" * 60)
+10.28 Running the Project
+
+From PowerShell:
+
+cd "E:\Books-By-Chirag\Data Engineering - The Complete Journey"
+
+Run:
+
+python .\code\01-python-foundations\01-python-fundamentals\10_python_collections.py
+
+You should see output similar to:
+
+============================================================
+NOVAMART CUSTOMER AND TRANSACTION SYSTEM
+============================================================
+
+COMPANY INFORMATION
+----------------------------------------
+Company: NovaMart
+Country: India
+Currency: INR
+
+CUSTOMER LOOKUP
+----------------------------------------
+501 Amit Delhi
+502 Priya Mumbai
+503 Rahul Pune
+504 Neha Bengaluru
+
+UNIQUE CUSTOMERS
+----------------------------------------
+{501, 502, 503, 504}
+
+SUCCESSFUL TRANSACTIONS
+----------------------------------------
+5
+
+TOTAL SALES
+----------------------------------------
+₹10200
+
+SALES BY CUSTOMER
+----------------------------------------
+Amit: ₹3000
+Priya: ₹4000
+Neha: ₹3200
+
+HIGH-VALUE TRANSACTIONS
+----------------------------------------
+1002 2500
+1005 3200
+
+DUPLICATE TRANSACTION CHECK
+----------------------------------------
+No duplicate transaction IDs found
+10.29 What the Project Demonstrates
+
+The project combines the four major collection types.
+
+List
+
+Used for records:
+
+customers = [...]
+transactions = [...]
+Tuple
+
+Used for fixed configuration:
+
+COMPANY_CONFIG = (
+    "NovaMart",
+    "India",
+    "INR"
+)
+Set
+
+Used for unique customer IDs:
+
+unique_customer_ids = {
+    transaction["customer_id"]
+    for transaction in transactions
+}
+Dictionary
+
+Used for customer lookup:
+
+customers_by_id = {
+    customer["customer_id"]: customer
+    for customer in customers
+}
+
+This combination is extremely common in real-world Python data processing.
+
+10.30 Why Collections Matter in Data Engineering
+
+Consider a typical API response:
+
+response = {
+    "status": "success",
+    "customers": [
+        {
+            "id": 101,
+            "name": "Amit",
+            "orders": [
+                {
+                    "order_id": 1001,
+                    "amount": 1200
+                }
+            ]
+        }
+    ]
+}
+
+This single object uses:
+
+Dictionary for the response.
+List for customers.
+Dictionary for each customer.
+List for orders.
+Dictionary for each order.
+
+Understanding collections therefore becomes a prerequisite for working with:
+
+REST APIs.
+JSON.
+MongoDB.
+Configuration files.
+ETL pipelines.
+Pandas.
+Spark.
+Cloud services.
+10.31 Documentation Update
+
+Update the main book file:
+
+E:\Books-By-Chirag\Data Engineering - The Complete Journey\book\01-python-foundations\01-python-fundamentals.md
+
+
+10.32 Section 10 Completion Checklist
+ Understood Python collections.
+ Learned lists.
+ Practiced list indexing.
+ Practiced list slicing.
+ Used list methods.
+ Learned tuples.
+ Practiced tuple unpacking.
+ Learned sets.
+ Practiced set operations.
+ Learned dictionaries.
+ Practiced dictionary methods.
+ Worked with nested collections.
+ Worked with lists of dictionaries.
+ Worked with dictionaries containing lists.
+ Learned list comprehensions.
+ Learned dictionary comprehensions.
+ Learned set comprehensions.
+ Learned collection unpacking.
+ Understood shallow vs deep copies.
+ Understood mutable vs immutable collections.
+ Compared collection performance.
+ Practiced data-engineering use cases.
+ Completed 20 practice exercises.
+ Completed interview questions.
+ Built the Customer and Transaction Data Management System.
+ Created the implementation file.
+ Ran the project.
+ Updated the book documentation.
+ Committed and pushed the section.
+ 
+10.33 Key Takeaways
+
+The four core Python collections should now be easy to distinguish:
+
+List       → Ordered, mutable, duplicates allowed
+Tuple      → Ordered, immutable, duplicates allowed
+Set        → Unique values, unordered, mutable
+Dictionary → Key-value pairs, mutable
+
+A practical way to remember them:
+
+Need a sequence that changes?
+→ List
+
+Need a fixed sequence?
+→ Tuple
+
+Need unique values?
+→ Set
+
+Need key → value mapping?
+→ Dictionary
+
+For data engineering, one of the most important structures is:
+
+[
+    {
+        "id": 101,
+        "name": "Amit",
+        "amount": 1200
+    },
+    {
+        "id": 102,
+        "name": "Priya",
+        "amount": 2500
+    }
+]
+
+This list of dictionaries pattern appears frequently when working with JSON, APIs, databases, and data pipelines.
