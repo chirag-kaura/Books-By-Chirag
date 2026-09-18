@@ -1907,3 +1907,1829 @@ Product Price
 Quantity
 Order Status
 Delivery Completed
+
+
+
+3. Variables and Data Types
+
+In the previous section, we learned how Python code is structured.
+
+Now we will learn about the values that Python works with.
+
+A data engineering pipeline processes many types of information, such as:
+
+Customer names
+
+Order IDs
+
+Product prices
+
+Order quantities
+
+Payment amounts
+
+Delivery status
+
+Missing values
+
+Dates and timestamps
+
+Python stores and processes these values using variables and data types.
+
+3.1 What Is a Variable?
+
+A variable is a name that refers to a value stored in a Python program.
+
+For example:
+
+customer_name = "Chirag"
+order_value = 2500
+
+Here:
+
+customer_name is a variable.
+
+"Chirag" is the value.
+
+order_value is a variable.
+
+2500 is the value.
+
+We can use the variable names later in the program.
+
+customer_name = "Chirag"
+order_value = 2500
+
+print(customer_name)
+print(order_value)
+
+Output:
+
+Chirag
+2500
+NovaMart example
+
+Imagine NovaMart receives the following order:
+
+Field
+
+	
+
+Value
+
+
+
+
+Customer name
+
+	
+
+Chirag
+
+
+
+
+Product price
+
+	
+
+1200
+
+
+
+
+Quantity
+
+	
+
+2
+
+
+
+
+Delivery charge
+
+	
+
+50
+
+We can represent this information using variables:
+
+customer_name = "Chirag"
+product_price = 1200
+quantity = 2
+delivery_charge = 50
+
+Then calculate the total:
+
+total_amount = product_price * quantity + delivery_charge
+
+print(total_amount)
+
+Output:
+
+2450
+
+The variables make the program easier to understand than using unexplained values directly.
+
+3.2 Variables Are References to Objects
+
+A useful mental model is:
+
+A variable is a label attached to an object.
+
+Consider:
+
+order_value = 2500
+
+Conceptually:
+
+order_value ───────► 2500
+
+The name order_value refers to the integer object 2500.
+
+When we assign another value:
+
+order_value = 3000
+
+The variable now refers to a different value:
+
+order_value ───────► 3000
+
+The original value is no longer referenced by order_value.
+
+Important point
+
+Python variables do not permanently have one data type.
+
+The value referred to by the variable has a type.
+
+This is why Python is called a dynamically typed language.
+
+3.3 Creating and Assigning Variables
+
+A variable is created when a value is assigned to a name.
+
+customer_name = "Chirag"
+order_count = 10
+is_delivered = True
+
+Python automatically determines the type of each value.
+
+customer_name = "Chirag"   # str
+order_count = 10           # int
+is_delivered = True        # bool
+Assignment process
+
+For this statement:
+
+order_value = 2500
+
+Python:
+
+Evaluates the value 2500.
+
+Creates or identifies the integer object.
+
+Binds the name order_value to that object.
+
+Reassigning a variable
+order_value = 2500
+print(order_value)
+
+order_value = 3000
+print(order_value)
+
+Output:
+
+2500
+3000
+
+The same variable name can refer to a new value.
+
+3.4 Dynamic Typing
+
+Python uses dynamic typing.
+
+This means a variable can refer to values of different types during the execution of a program.
+
+value = 100
+print(value)
+
+value = "One hundred"
+print(value)
+
+Output:
+
+100
+One hundred
+
+The variable value first refers to an integer and later refers to a string.
+
+Example
+data = 2500
+print(type(data))
+
+data = 2500.75
+print(type(data))
+
+data = "2500"
+print(type(data))
+
+Output:
+
+<class 'int'>
+<class 'float'>
+<class 'str'>
+Important caution
+
+Dynamic typing is flexible, but it requires care.
+
+This code is valid:
+
+order_value = 2500
+order_value = "2500"
+
+However, this can cause problems:
+
+order_value = "2500"
+delivery_charge = 50
+
+final_amount = order_value + delivery_charge
+
+Python raises a TypeError because a string and an integer cannot be added directly.
+
+3.5 Python’s Common Built-in Data Types
+
+A data type defines the kind of value stored in a variable.
+
+Common Python data types include:
+
+Data type
+
+	
+
+Python name
+
+	
+
+Example
+
+
+
+
+Integer
+
+	
+
+int
+
+	
+
+100
+
+
+
+
+Floating-point number
+
+	
+
+float
+
+	
+
+99.50
+
+
+
+
+String
+
+	
+
+str
+
+	
+
+"NovaMart"
+
+
+
+
+Boolean
+
+	
+
+bool
+
+	
+
+True
+
+
+
+
+None value
+
+	
+
+NoneType
+
+	
+
+None
+
+
+
+
+List
+
+	
+
+list
+
+	
+
+[100, 200, 300]
+
+
+
+
+Tuple
+
+	
+
+tuple
+
+	
+
+(100, 200, 300)
+
+
+
+
+Set
+
+	
+
+set
+
+	
+
+{100, 200, 300}
+
+
+
+
+Dictionary
+
+	
+
+dict
+
+	
+
+{"id": 101}
+
+In this section, we will focus mainly on the basic scalar types:
+
+int
+
+float
+
+str
+
+bool
+
+NoneType
+
+Collections such as lists, tuples, sets, and dictionaries will be covered in detail later.
+
+3.6 Integer Data Type: int
+
+An integer is a whole number without a decimal component.
+
+Examples:
+
+order_id = 101
+quantity = 3
+customer_age = 25
+total_orders = 1500
+
+Python uses the int type for these values.
+
+quantity = 3
+
+print(quantity)
+print(type(quantity))
+
+Output:
+
+3
+<class 'int'>
+Negative integers
+temperature_difference = -5
+Zero
+failed_orders = 0
+Large integers
+
+Python integers can represent very large whole numbers.
+
+large_order_id = 987654321987654321
+print(large_order_id)
+
+Python integers do not have the same small fixed range as integers in some other programming languages.
+
+NovaMart example
+order_id = 1001
+quantity = 4
+product_price = 750
+
+total_product_value = product_price * quantity
+
+print("Order ID:", order_id)
+print("Total product value:", total_product_value)
+
+Output:
+
+Order ID: 1001
+Total product value: 3000
+3.7 Floating-Point Data Type: float
+
+A floating-point number represents a number with a decimal component.
+
+Examples:
+
+product_price = 999.99
+discount_percentage = 10.5
+average_order_value = 2450.75
+
+Check the type:
+
+product_price = 999.99
+
+print(product_price)
+print(type(product_price))
+
+Output:
+
+999.99
+<class 'float'>
+Arithmetic with floats
+price = 999.99
+quantity = 2
+
+total = price * quantity
+
+print(total)
+
+Output:
+
+1999.98
+Important note about precision
+
+Floating-point numbers are stored using binary representation.
+
+Because of this, some decimal values cannot be represented exactly.
+
+Example:
+
+result = 0.1 + 0.2
+
+print(result)
+
+Output may be:
+
+0.30000000000000004
+
+This is normal floating-point behavior.
+
+Money and financial calculations
+
+For financial calculations where exact decimal precision is important, consider using Python’s Decimal type instead of relying only on float.
+
+Example:
+
+from decimal import Decimal
+
+price = Decimal("0.10")
+tax = Decimal("0.20")
+
+total = price + tax
+
+print(total)
+
+Output:
+
+0.30
+
+For this beginner section, use float to understand decimal values. Later, we will discuss Decimal and financial data processing in more detail.
+
+3.8 String Data Type: str
+
+A string is a sequence of characters used to represent text.
+
+Examples:
+
+customer_name = "Chirag"
+city = "Bengaluru"
+order_status = "Shipped"
+
+Strings can be written using:
+
+Single quotes
+
+Double quotes
+
+Triple quotes
+
+Single quotes
+customer_name = 'Chirag'
+Double quotes
+customer_name = "Chirag"
+
+Both are valid.
+
+Triple quotes
+
+Triple quotes are commonly used for multi-line strings and docstrings.
+
+message = """
+Welcome to NovaMart.
+Your order has been received.
+"""
+Checking the type
+order_status = "Shipped"
+
+print(type(order_status))
+
+Output:
+
+<class 'str'>
+Strings can contain numbers
+order_id = "1001"
+
+Although the value looks numeric, it is a string because it is enclosed in quotation marks.
+
+print(type(order_id))
+
+Output:
+
+<class 'str'>
+
+This distinction is important when reading data from CSV files, APIs, or databases.
+
+3.9 Boolean Data Type: bool
+
+A Boolean represents one of two logical values:
+
+True
+False
+
+Booleans are commonly used for:
+
+Conditions
+
+Flags
+
+Status indicators
+
+Data quality checks
+
+Feature engineering
+
+Pipeline decisions
+
+Example
+is_delivered = True
+is_cancelled = False
+
+print(is_delivered)
+print(is_cancelled)
+
+Output:
+
+True
+False
+Checking the type
+is_delivered = True
+
+print(type(is_delivered))
+
+Output:
+
+<class 'bool'>
+NovaMart example
+order_value = 2500
+is_premium_order = order_value >= 2000
+
+print(is_premium_order)
+
+Output:
+
+True
+
+The expression:
+
+order_value >= 2000
+
+produces a Boolean value.
+
+Boolean values are case-sensitive
+
+Correct:
+
+is_active = True
+
+Incorrect:
+
+is_active = true
+
+Python uses:
+
+True
+False
+
+with an uppercase first letter.
+
+3.10 The None Value
+
+Python uses None to represent the absence of a value.
+
+delivery_date = None
+
+This may mean:
+
+The delivery date is not available.
+
+The order has not been delivered.
+
+The value has not been assigned yet.
+
+The source system did not provide a value.
+
+Check the type:
+
+delivery_date = None
+
+print(type(delivery_date))
+
+Output:
+
+<class 'NoneType'>
+
+3.11 Checking Data Types with type()
+
+Python provides the built-in type() function to inspect the type of a value.
+
+customer_name = "Chirag"
+order_count = 10
+average_order_value = 2500.75
+is_delivered = True
+delivery_date = None
+
+print(type(customer_name))
+print(type(order_count))
+print(type(average_order_value))
+print(type(is_delivered))
+print(type(delivery_date))
+
+Output:
+
+<class 'str'>
+<class 'int'>
+<class 'float'>
+<class 'bool'>
+<class 'NoneType'>
+Practical inspection
+order_id = "1001"
+
+print("Value:", order_id)
+print("Type:", type(order_id))
+
+Output:
+
+Value: 1001
+Type: <class 'str'>
+
+This is useful when debugging data ingestion issues.
+
+For example, an order ID may arrive from a CSV file as a string even if it looks like a number.
+
+3.12 Type Conversion
+
+Type conversion means changing a value from one data type to another.
+
+Common conversion functions include:
+
+Function
+
+	
+
+Converts to
+
+
+
+
+int()
+
+	
+
+Integer
+
+
+
+
+float()
+
+	
+
+Float
+
+
+
+
+str()
+
+	
+
+String
+
+
+
+
+bool()
+
+	
+
+Boolean
+
+Convert string to integer
+quantity = "3"
+
+quantity = int(quantity)
+
+print(quantity)
+print(type(quantity))
+
+Output:
+
+3
+<class 'int'>
+Convert string to float
+price = "999.50"
+
+price = float(price)
+
+print(price)
+print(type(price))
+
+Output:
+
+999.5
+<class 'float'>
+Convert integer to string
+order_id = 1001
+
+order_id_text = str(order_id)
+
+print(order_id_text)
+print(type(order_id_text))
+
+Output:
+
+1001
+<class 'str'>
+Convert integer to float
+quantity = 3
+
+quantity_as_float = float(quantity)
+
+print(quantity_as_float)
+
+Output:
+
+3.0
+Convert values to Boolean
+print(bool(1))
+print(bool(0))
+print(bool("NovaMart"))
+print(bool(""))
+
+Output:
+
+True
+False
+True
+False
+3.13 Important Type Conversion Rules
+
+Not every value can be converted successfully.
+
+Valid conversion
+quantity = int("5")
+Invalid conversion
+quantity = int("five")
+
+This raises:
+
+ValueError
+Invalid float conversion
+price = float("not available")
+
+This also raises:
+
+ValueError
+Converting a float to an integer
+price = 99.99
+
+print(int(price))
+
+Output:
+
+99
+
+The decimal portion is removed. It is not rounded to the nearest integer.
+
+Example
+print(int(10.9))
+print(int(10.1))
+print(int(-10.9))
+
+Output:
+
+10
+10
+-10
+Important data engineering caution
+
+When converting raw data, values may contain:
+
+Empty strings
+
+Spaces
+
+Invalid text
+
+Null values
+
+Currency symbols
+
+Commas
+
+For example:
+
+price = "₹1,299"
+
+This cannot be directly converted using:
+
+float(price)
+
+Data cleaning is required before conversion.
+
+3.14 Multiple Assignment
+
+Python allows assigning multiple variables in one statement.
+
+customer_name, city = "Chirag", "Bengaluru"
+
+This is equivalent to:
+
+customer_name = "Chirag"
+city = "Bengaluru"
+Example
+product_price, quantity, delivery_charge = 1200, 2, 50
+
+print(product_price)
+print(quantity)
+print(delivery_charge)
+
+Output:
+
+1200
+2
+50
+Assign the same value to multiple variables
+pending_orders = completed_orders = 0
+
+print(pending_orders)
+print(completed_orders)
+
+Output:
+
+0
+0
+Swapping variables
+
+Python supports simple variable swapping.
+
+first_value = 10
+second_value = 20
+
+first_value, second_value = second_value, first_value
+
+print(first_value)
+print(second_value)
+
+Output:
+
+20
+10
+
+This is useful when rearranging values without creating a temporary variable.
+
+3.15 Variable Naming Best Practices
+
+Use names that clearly communicate the meaning of the value.
+
+Good names
+customer_name = "Chirag"
+order_value = 2500
+delivery_charge = 50
+number_of_orders = 150
+Poor names
+x = "Chirag"
+a = 2500
+n = 50
+d = 150
+
+Short names may be acceptable for small mathematical calculations, but business and pipeline code should generally use descriptive names.
+
+Avoid ambiguous names
+
+Instead of:
+
+data = 2500
+
+Prefer:
+
+average_order_value = 2500
+
+Instead of:
+
+status = True
+
+Prefer:
+
+is_delivery_completed = True
+Avoid shadowing built-in functions
+
+Do not use names such as:
+
+list = [1, 2, 3]
+str = "NovaMart"
+type = "order"
+
+These names override access to Python’s built-in functions or types within the current scope.
+
+Prefer:
+
+order_list = [1, 2, 3]
+order_text = "NovaMart"
+order_type = "online"
+3.16 Practical Project: NovaMart Order Record
+
+Create the following file:
+
+code\01-python-foundations\01-python-fundamentals\03_variables_and_data_types.py
+
+Add this code:
+
+"""
+Practice variables and data types using a NovaMart order.
+"""
+
+# Order information
+order_id = 1001
+customer_name = "Chirag"
+product_name = "Wireless Mouse"
+product_price = 799.50
+quantity = 2
+
+# Order status
+is_delivered = False
+delivery_date = None
+
+# Calculate order value
+total_order_value = product_price * quantity
+
+# Display order details
+print("Order ID:", order_id)
+print("Customer:", customer_name)
+print("Product:", product_name)
+print("Product price:", product_price)
+print("Quantity:", quantity)
+print("Total order value:", total_order_value)
+print("Delivered:", is_delivered)
+print("Delivery date:", delivery_date)
+
+# Display data types
+print("\nData types:")
+print("Order ID:", type(order_id))
+print("Customer name:", type(customer_name))
+print("Product price:", type(product_price))
+print("Quantity:", type(quantity))
+print("Delivered:", type(is_delivered))
+print("Delivery date:", type(delivery_date))
+
+Run the file from the project root:
+
+python code\01-python-foundations\01-python-fundamentals\03_variables_and_data_types.py
+
+Expected output:
+
+Order ID: 1001
+Customer: Chirag
+Product: Wireless Mouse
+Product price: 799.5
+Quantity: 2
+Total order value: 1599.0
+Delivered: False
+Delivery date: None
+
+Data types:
+Order ID: <class 'int'>
+Customer name: <class 'str'>
+Product price: <class 'float'>
+Quantity: <class 'int'>
+Delivered: <class 'bool'>
+Delivery date: <class 'NoneType'>
+3.17 Practical Project: Handling Raw Order Data
+
+Data engineering systems often receive data as strings.
+
+For example:
+
+raw_product_price = "799.50"
+raw_quantity = "2"
+
+Before performing calculations, convert the values.
+
+raw_product_price = "799.50"
+raw_quantity = "2"
+
+product_price = float(raw_product_price)
+quantity = int(raw_quantity)
+
+total_order_value = product_price * quantity
+
+print("Total order value:", total_order_value)
+
+Output:
+
+Total order value: 1599.0
+Why conversion matters
+
+This code does not work as intended:
+
+raw_product_price = "799.50"
+raw_quantity = "2"
+
+total_order_value = raw_product_price * raw_quantity
+
+Python cannot multiply two strings in the way required for order calculations.
+
+Correct conversion is required before applying business logic.
+
+3.18 Common Mistakes
+Mistake 1: Treating numeric text as a number
+quantity = "3"
+price = 500
+
+total = quantity * price
+
+This raises a TypeError.
+
+Correct:
+
+quantity = int("3")
+price = 500
+
+total = quantity * price
+Mistake 2: Forgetting quotation marks
+
+Incorrect:
+
+customer_name = Chirag
+
+Python interprets Chirag as a variable name.
+
+Correct:
+
+customer_name = "Chirag"
+Mistake 3: Using lowercase Boolean values
+
+Incorrect:
+
+is_delivered = true
+
+Correct:
+
+is_delivered = True
+Mistake 4: Comparing None incorrectly
+
+Prefer:
+
+if delivery_date is None:
+    print("Date unavailable")
+
+Instead of:
+
+if delivery_date == None:
+    print("Date unavailable")
+Mistake 5: Assuming int() rounds numbers
+price = 99.99
+
+print(int(price))
+
+Output:
+
+99
+
+int() removes the decimal part. It does not perform normal rounding.
+
+Mistake 6: Overwriting a Useful Variable
+
+A variable can be reassigned at any time. However, overwriting a useful value may make the code difficult to understand or cause incorrect results.
+
+Example
+order_total = 2499.00
+
+# Later, the same variable is reused for a different purpose
+order_total = "Pending"
+
+Now order_total no longer contains the numeric order amount.
+
+print(order_total)
+
+Output:
+
+Pending
+Better Approach
+
+Use separate variables for separate meanings:
+
+order_total = 2499.00
+payment_status = "Pending"
+
+print(order_total)
+print(payment_status)
+
+Output:
+
+2499.0
+Pending
+NovaMart Example
+
+Avoid this:
+
+customer_data = 1500
+customer_data = "Chirag"
+
+Prefer:
+
+customer_id = 1500
+customer_name = "Chirag"
+
+Rule: A variable should have one clear meaning throughout its useful lifetime.
+
+Mistake 7: Confusing = with ==
+
+The single equals sign = is used for assignment.
+
+The double equals sign == is used for comparison.
+
+Assignment
+order_status = "Delivered"
+
+This stores "Delivered" in the variable.
+
+Comparison
+order_status == "Delivered"
+
+This checks whether the value is equal to "Delivered".
+
+Output:
+
+True
+Example
+order_status = "Delivered"
+
+if order_status == "Delivered":
+    print("Order completed")
+
+Output:
+
+Order completed
+Common Mistake
+if order_status = "Delivered":
+    print("Order completed")
+
+This causes a SyntaxError because assignment cannot be used in this position.
+
+Mistake 8: Assuming All Input Values Are Numbers
+
+Values received from users or external systems often arrive as strings.
+
+quantity = input("Enter quantity: ")
+
+print(type(quantity))
+
+If the user enters 5, the output is still:
+
+<class 'str'>
+Incorrect Calculation
+quantity = input("Enter quantity: ")
+price = 500
+
+total = quantity * price
+
+This does not perform numeric multiplication because quantity is a string.
+
+Correct Approach
+
+Convert the input before performing calculations:
+
+quantity = int(input("Enter quantity: "))
+price = 500
+
+total = quantity * price
+
+print("Total:", total)
+
+If the user enters 5, the output is:
+
+Total: 2500
+
+Rule: Always verify and convert data types before calculations.
+
+Mistake 9: Using bool() Carelessly
+
+Many beginners assume that bool() converts strings such as "False" into the Boolean value False.
+
+That is not correct.
+
+print(bool("True"))
+print(bool("False"))
+
+Output:
+
+True
+True
+
+Both strings are non-empty, so both are considered truthy.
+
+Correct Boolean Conversion
+
+If a value comes from text, handle it explicitly:
+
+status = "False"
+
+is_active = status.strip().lower() == "true"
+
+print(is_active)
+
+Output:
+
+False
+Empty Values
+print(bool(""))
+print(bool(0))
+print(bool(None))
+
+Output:
+
+False
+False
+False
+
+Data engineering caution: Boolean fields from CSV files, APIs, or databases may contain values such as:
+
+"True"
+"False"
+"Y"
+"N"
+"1"
+"0"
+"yes"
+"no"
+
+These values should be normalized using clear rules instead of blindly calling bool().
+
+Mistake 10: Ignoring Floating-Point Precision
+
+Floating-point numbers may not always represent decimal values exactly.
+
+price = 0.1
+tax = 0.2
+
+print(price + tax)
+
+Output may look like:
+
+0.30000000000000004
+
+This happens because of the way floating-point numbers are represented internally.
+
+Better Approach for Currency
+
+For simple learning examples, rounding may be sufficient:
+
+total = round(price + tax, 2)
+
+print(total)
+
+Output:
+
+0.3
+
+For financial systems, use the Decimal type:
+
+from decimal import Decimal
+
+price = Decimal("0.10")
+tax = Decimal("0.20")
+
+total = price + tax
+
+print(total)
+
+Output:
+
+0.30
+
+Production rule: Do not depend on raw floating-point arithmetic for sensitive financial calculations.
+
+3.18 Testing the Variables and Data Types Implementation
+
+Create the following file:
+
+code\01-python-foundations\01-python-fundamentals\03_variables_and_data_types.py
+
+Add this code:
+
+"""
+Practice file for Python variables and data types.
+
+NovaMart example:
+Working with customer, product, order, and payment data.
+"""
+
+
+# 1. Basic variables
+customer_name = "Chirag"
+customer_age = 25
+is_registered = True
+account_balance = 1250.75
+
+print("Customer Name:", customer_name)
+print("Customer Age:", customer_age)
+print("Registered:", is_registered)
+print("Account Balance:", account_balance)
+
+
+# 2. Checking data types
+print("\nData Types:")
+print(type(customer_name))
+print(type(customer_age))
+print(type(is_registered))
+print(type(account_balance))
+
+
+# 3. Order data
+product_name = "Wireless Mouse"
+quantity = 2
+unit_price = 799.50
+
+order_total = quantity * unit_price
+
+print("\nOrder Details:")
+print("Product:", product_name)
+print("Quantity:", quantity)
+print("Unit Price:", unit_price)
+print("Order Total:", order_total)
+
+
+# 4. Type conversion
+quantity_text = "3"
+price_text = "450.50"
+
+quantity_number = int(quantity_text)
+price_number = float(price_text)
+
+converted_total = quantity_number * price_number
+
+print("\nConverted Order:")
+print("Quantity:", quantity_number)
+print("Price:", price_number)
+print("Total:", converted_total)
+
+
+# 5. None value
+delivery_date = None
+
+print("\nDelivery Date:", delivery_date)
+print("Delivery Date Type:", type(delivery_date))
+
+
+# 6. Multiple assignment
+product_id, category, stock_available = 101, "Electronics", True
+
+print("\nProduct Information:")
+print("Product ID:", product_id)
+print("Category:", category)
+print("Stock Available:", stock_available)
+
+
+# 7. Boolean conversion
+payment_status = "Paid"
+is_paid = payment_status == "Paid"
+
+print("\nPayment Status:")
+print("Payment Status:", payment_status)
+print("Is Paid:", is_paid)
+
+
+# 8. Currency calculation using Decimal
+from decimal import Decimal
+
+item_price = Decimal("199.99")
+shipping_charge = Decimal("40.00")
+
+final_amount = item_price + shipping_charge
+
+print("\nFinal Amount:")
+print(final_amount)
+Run the File
+
+From the project root:
+
+python code\01-python-foundations\01-python-fundamentals\03_variables_and_data_types.py
+
+Check that:
+
+Customer details are printed.
+
+Data types are displayed.
+
+Order total is calculated.
+
+String values are converted into numbers.
+
+None is displayed correctly.
+
+Multiple assignment works.
+
+Boolean comparison works.
+
+Decimal calculates the final amount.
+
+3.19 Failure Scenarios and Production Considerations
+
+In real data engineering systems, data may be incomplete, incorrectly formatted, or inconsistent.
+
+Failure Scenario
+
+	
+
+Example
+
+	
+
+Possible Solution
+
+
+
+
+Missing customer name
+
+	
+
+None
+
+	
+
+Apply validation or default handling
+
+
+
+
+Invalid quantity
+
+	
+
+"two"
+
+	
+
+Validate before converting to int
+
+
+
+
+Empty price
+
+	
+
+""
+
+	
+
+Handle missing values
+
+
+
+
+Incorrect Boolean value
+
+	
+
+"False" converted with bool()
+
+	
+
+Normalize explicitly
+
+
+
+
+Currency precision issue
+
+	
+
+0.1 + 0.2
+
+	
+
+Use Decimal where required
+
+
+
+
+Variable overwritten
+
+	
+
+order_total = "Pending"
+
+	
+
+Use meaningful variable names
+
+
+
+
+Wrong data type
+
+	
+
+"500" + 100
+
+	
+
+Convert data before calculation
+
+
+
+
+Unexpected null value
+
+	
+
+Missing delivery date
+
+	
+
+Handle None safely
+
+Example: Basic Validation
+quantity_text = "5"
+
+if quantity_text.isdigit():
+    quantity = int(quantity_text)
+    print("Valid quantity:", quantity)
+else:
+    print("Invalid quantity")
+
+Output:
+
+Valid quantity: 5
+Example: Handling Missing Values
+delivery_date = None
+
+if delivery_date is None:
+    print("Delivery date is not available")
+else:
+    print("Delivery date:", delivery_date)
+
+Output:
+
+Delivery date is not available
+Important Production Principle
+
+Do not assume that incoming data is clean.
+
+Data engineers must check:
+
+Data type
+
+Missing values
+
+Allowed values
+
+Numeric ranges
+
+Formatting
+
+Business rules
+
+3.20 Exercises
+Exercise 1: Customer Profile
+
+Create variables for:
+
+Customer ID
+
+Customer name
+
+Customer age
+
+Customer email
+
+Whether the customer is active
+
+Print each value and its data type.
+
+Exercise 2: Product Calculation
+
+Create variables for:
+
+Product name
+
+Quantity
+
+Unit price
+
+Discount
+
+Calculate the final amount.
+
+Example:
+
+Quantity = 3
+Unit Price = 500
+Discount = 50
+
+Expected result:
+
+Final Amount = 1450
+Exercise 3: Type Conversion
+
+Start with the following values:
+
+quantity = "4"
+price = "299.99"
+
+Convert them into suitable numeric types and calculate the total price.
+
+Exercise 4: Missing Delivery Date
+
+Create a variable:
+
+delivery_date = None
+
+Print:
+
+Delivery date is not available
+
+when the value is None.
+
+Exercise 5: Boolean Normalization
+
+Convert these text values into Boolean values:
+
+"True"
+"False"
+"true"
+"false"
+
+The result should be correct regardless of capitalization.
+
+Exercise 6: Data Quality Check
+
+Create variables for:
+
+quantity = -2
+price = 500
+
+Write a validation check that identifies the quantity as invalid because it is negative.
+
+3.21 Interview Questions
+Beginner Questions
+
+What is a variable in Python?
+
+How do you check the data type of a variable?
+
+What is the difference between int, float, and str?
+
+What is the use of None?
+
+Is Python statically typed or dynamically typed?
+
+What is the difference between = and ==?
+
+How do you convert a string into an integer?
+
+What happens when you convert 3.8 into an integer?
+
+What is multiple assignment?
+
+What are valid Python variable names?
+
+Data Engineering Questions
+
+Why is data type validation important in data pipelines?
+
+Why can bool("False") return True?
+
+Why should currency calculations sometimes use Decimal?
+
+How would you handle missing values represented by None?
+
+How would you convert a column containing numeric strings into numbers?
+
+What problems can occur when a variable is overwritten?
+
+How would you validate that an order quantity is positive?
+
+What is the difference between missing data and an empty string?
+
+Why should raw input data not be trusted?
+
+How can incorrect data types affect downstream transformations?
+
+3.22 Section Summary
+
+In this section, you learned:
+
+How variables store values.
+
+How Python uses dynamic typing.
+
+Common Python data types.
+
+How to inspect types using type().
+
+How to convert between data types.
+
+How to use None for missing values.
+
+How to assign multiple variables.
+
+How to avoid naming mistakes.
+
+How to handle Boolean values.
+
+Why floating-point precision matters.
+
+How to use Decimal for currency calculations.
+
+How variables and data types appear in data engineering workflows.
+
+Why validation is necessary before processing incoming data.
+
+Python variables and data types are the foundation for working with:
+
+CSV records
+
+JSON documents
+
+Database rows
+
+API responses
+
+DataFrames
+
+ETL pipelines
+
+Data validation systems
+
+In the next section, you will learn how Python performs calculations and makes decisions using operators and expressions.
+
+3.23 Completion Checklist
+
+Before moving to the next section, confirm that you have:
+
+Completed all explanations in Section 3.
+Created 03_variables_and_data_types.py.
+Run the file successfully.
+Practiced type conversion.
+Practiced handling None.
+Practiced Boolean conversion.
+Practiced currency calculations.
+Completed the exercises.
+Reviewed the interview questions.
+Updated the book documentation if required.
+Committed and pushed the changes to GitHub.
