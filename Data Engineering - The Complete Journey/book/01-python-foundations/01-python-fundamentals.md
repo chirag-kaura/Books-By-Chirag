@@ -3733,3 +3733,1824 @@ Completed the exercises.
 Reviewed the interview questions.
 Updated the book documentation if required.
 Committed and pushed the changes to GitHub.
+
+
+# 4. Operators and Expressions
+
+## 4.1 What Are Operators?
+
+Operators are symbols or keywords used to perform operations on values and variables.
+
+In data engineering, operators are used to:
+
+- Calculate order totals.
+- Compare values.
+- Validate records.
+- Combine conditions.
+- Update counters.
+- Check whether values exist in collections.
+
+Example:
+
+```python
+quantity = 3
+unit_price = 500
+
+order_total = quantity * unit_price
+
+print(order_total)
+
+Output:
+
+1500
+
+Here:
+
+quantity and unit_price are operands.
+
+* is the multiplication operator.
+
+quantity * unit_price is an expression.
+
+order_total = ... stores the result.
+
+Python provides several types of operators:
+
+Arithmetic operators
+
+Comparison operators
+
+Logical operators
+
+Assignment operators
+
+Membership operators
+
+Identity operators
+
+Bitwise operators
+
+We will focus first on the operators most commonly used in data engineering.
+
+4.2 Arithmetic Operators
+
+Arithmetic operators perform mathematical calculations.
+
+Operator
+
+	
+
+Meaning
+
+	
+
+Example
+
+	
+
+Result
+
+
+
+
++
+
+	
+
+Addition
+
+	
+
+10 + 3
+
+	
+
+13
+
+
+
+
+-
+
+	
+
+Subtraction
+
+	
+
+10 - 3
+
+	
+
+7
+
+
+
+
+*
+
+	
+
+Multiplication
+
+	
+
+10 * 3
+
+	
+
+30
+
+
+
+
+/
+
+	
+
+Division
+
+	
+
+10 / 3
+
+	
+
+3.333...
+
+
+
+
+//
+
+	
+
+Floor division
+
+	
+
+10 // 3
+
+	
+
+3
+
+
+
+
+%
+
+	
+
+Modulus/remainder
+
+	
+
+10 % 3
+
+	
+
+1
+
+
+
+
+**
+
+	
+
+Exponentiation
+
+	
+
+10 ** 3
+
+	
+
+1000
+
+Addition
+subtotal = 1000
+shipping_charge = 100
+
+total = subtotal + shipping_charge
+
+print(total)
+
+Output:
+
+1100
+Subtraction
+order_amount = 1500
+discount = 200
+
+final_amount = order_amount - discount
+
+print(final_amount)
+
+Output:
+
+1300
+Multiplication
+quantity = 4
+unit_price = 250
+
+total = quantity * unit_price
+
+print(total)
+
+Output:
+
+1000
+Division
+total_sales = 1000
+number_of_orders = 4
+
+average_order_value = total_sales / number_of_orders
+
+print(average_order_value)
+
+Output:
+
+250.0
+
+The / operator always returns a floating-point result.
+
+Floor Division
+items = 10
+boxes = 3
+
+items_per_box = items // boxes
+
+print(items_per_box)
+
+Output:
+
+3
+
+Floor division returns the quotient rounded down to the nearest whole number.
+
+Modulus
+items = 10
+box_capacity = 3
+
+remaining_items = items % box_capacity
+
+print(remaining_items)
+
+Output:
+
+1
+
+The modulus operator is useful for identifying:
+
+Remaining items.
+
+Odd and even numbers.
+
+Batch boundaries.
+
+Partitioning logic.
+
+Exponentiation
+base = 2
+power = 3
+
+result = base ** power
+
+print(result)
+
+Output:
+
+8
+4.3 Comparison Operators
+
+Comparison operators compare two values and return a Boolean result:
+
+True
+False
+
+Operator
+
+	
+
+Meaning
+
+
+
+
+==
+
+	
+
+Equal to
+
+
+
+
+!=
+
+	
+
+Not equal to
+
+
+
+
+>
+
+	
+
+Greater than
+
+
+
+
+<
+
+	
+
+Less than
+
+
+
+
+>=
+
+	
+
+Greater than or equal to
+
+
+
+
+<=
+
+	
+
+Less than or equal to
+
+Examples
+order_amount = 2500
+
+print(order_amount == 2500)
+print(order_amount != 1000)
+print(order_amount > 2000)
+print(order_amount < 3000)
+print(order_amount >= 2500)
+print(order_amount <= 2500)
+
+Output:
+
+True
+True
+True
+True
+True
+True
+NovaMart Validation Example
+quantity = 5
+
+is_valid_quantity = quantity > 0
+
+print(is_valid_quantity)
+
+Output:
+
+True
+
+A quantity of zero or a negative quantity may be invalid for a normal order.
+
+4.4 Logical Operators
+
+Logical operators combine or reverse conditions.
+
+Operator
+
+	
+
+Meaning
+
+
+
+
+and
+
+	
+
+Both conditions must be true
+
+
+
+
+or
+
+	
+
+At least one condition must be true
+
+
+
+
+not
+
+	
+
+Reverses a Boolean result
+
+and
+order_amount = 2500
+is_customer_active = True
+
+can_process_order = order_amount > 0 and is_customer_active
+
+print(can_process_order)
+
+Output:
+
+True
+
+Both conditions must be true.
+
+or
+payment_status = "Pending"
+order_status = "Processing"
+
+needs_attention = payment_status == "Pending" or order_status == "Cancelled"
+
+print(needs_attention)
+
+Output:
+
+True
+
+At least one condition is true.
+
+not
+is_delivered = False
+
+print(not is_delivered)
+
+Output:
+
+True
+
+not reverses the Boolean value.
+
+4.5 Assignment Operators
+
+Assignment operators assign or update values.
+
+Operator
+
+	
+
+Example
+
+	
+
+Equivalent To
+
+
+
+
+=
+
+	
+
+x = 10
+
+	
+
+Assign 10
+
+
+
+
++=
+
+	
+
+x += 5
+
+	
+
+x = x + 5
+
+
+
+
+-=
+
+	
+
+x -= 5
+
+	
+
+x = x - 5
+
+
+
+
+*=
+
+	
+
+x *= 5
+
+	
+
+x = x * 5
+
+
+
+
+/=
+
+	
+
+x /= 5
+
+	
+
+x = x / 5
+
+
+
+
+//=
+
+	
+
+x //= 5
+
+	
+
+x = x // 5
+
+
+
+
+%=
+
+	
+
+x %= 5
+
+	
+
+x = x % 5
+
+
+
+
+**=
+
+	
+
+x **= 5
+
+	
+
+x = x ** 5
+
+Example
+total_sales = 1000
+
+total_sales += 500
+print(total_sales)
+
+total_sales -= 200
+print(total_sales)
+
+Output:
+
+1500
+1300
+NovaMart Counter Example
+processed_orders = 0
+
+processed_orders += 1
+processed_orders += 1
+processed_orders += 1
+
+print(processed_orders)
+
+Output:
+
+3
+
+This pattern is common when processing records in a loop.
+
+4.6 Membership Operators
+
+Membership operators check whether a value exists inside a collection.
+
+Operator
+
+	
+
+Meaning
+
+
+
+
+in
+
+	
+
+Value exists
+
+
+
+
+not in
+
+	
+
+Value does not exist
+
+Example with a List
+available_categories = ["Electronics", "Books", "Clothing"]
+
+print("Books" in available_categories)
+print("Furniture" in available_categories)
+
+Output:
+
+True
+False
+Example with a String
+order_status = "Order Delivered"
+
+print("Delivered" in order_status)
+print("Cancelled" not in order_status)
+
+Output:
+
+True
+True
+
+Membership checks are useful when validating:
+
+Allowed categories.
+
+Accepted statuses.
+
+Required columns.
+
+Supported file extensions.
+
+4.7 Identity Operators
+
+Identity operators check whether two variables refer to the same object.
+
+Operator
+
+	
+
+Meaning
+
+
+
+
+is
+
+	
+
+Same object
+
+
+
+
+is not
+
+	
+
+Different objects
+
+Identity is different from equality.
+
+Equality
+first_value = [1, 2, 3]
+second_value = [1, 2, 3]
+
+print(first_value == second_value)
+
+Output:
+
+True
+
+The contents are equal.
+
+Identity
+print(first_value is second_value)
+
+Output:
+
+False
+
+They are separate list objects.
+
+Correct Use with None
+delivery_date = None
+
+if delivery_date is None:
+    print("Delivery date is missing")
+
+Use:
+
+is None
+
+instead of:
+
+== None
+
+when checking for None.
+
+4.8 Operator Precedence
+
+Operator precedence determines the order in which Python evaluates an expression.
+
+result = 10 + 5 * 2
+
+print(result)
+
+Output:
+
+20
+
+Multiplication happens before addition.
+
+Using Parentheses
+result = (10 + 5) * 2
+
+print(result)
+
+Output:
+
+30
+
+Parentheses make the intended order explicit.
+
+Common Precedence Order
+
+A simplified order is:
+
+Parentheses: ()
+
+Exponentiation: **
+
+Multiplication, division, floor division, modulus: * / // %
+
+Addition and subtraction: + -
+
+Comparisons: == != > < >= <=
+
+not
+
+and
+
+or
+
+Best Practice
+
+Use parentheses when an expression may be difficult to read.
+
+is_valid_order = (quantity > 0) and (unit_price > 0)
+
+Readable expressions are easier to debug and maintain.
+
+4.9 Expressions vs Statements
+
+An expression produces a value.
+
+quantity * unit_price
+
+A statement performs an action.
+
+order_total = quantity * unit_price
+
+Other examples of statements include:
+
+if order_total > 1000:
+    print("High-value order")
+
+Expressions can appear inside statements:
+
+if quantity * unit_price > 1000:
+    print("High-value order")
+
+Understanding this difference helps when reading Python code and debugging errors.
+
+4.10 NovaMart Order Calculation
+
+NovaMart wants to calculate the final payable amount.
+
+The calculation includes:
+
+Product quantity
+
+Unit price
+
+Subtotal
+
+Discount
+
+Shipping charge
+
+Final amount
+
+quantity = 3
+unit_price = 799.50
+discount = 100
+shipping_charge = 50
+
+subtotal = quantity * unit_price
+final_amount = subtotal - discount + shipping_charge
+
+print("Subtotal:", subtotal)
+print("Discount:", discount)
+print("Shipping Charge:", shipping_charge)
+print("Final Amount:", final_amount)
+
+Output:
+
+Subtotal: 2398.5
+Discount: 100
+Shipping Charge: 50
+Final Amount: 2348.5
+Adding a Discount Percentage
+subtotal = 3000
+discount_percentage = 10
+
+discount_amount = subtotal * discount_percentage / 100
+final_amount = subtotal - discount_amount
+
+print("Discount Amount:", discount_amount)
+print("Final Amount:", final_amount)
+
+Output:
+
+Discount Amount: 300.0
+Final Amount: 2700.0
+Checking a Free-Shipping Rule
+subtotal = 2500
+
+if subtotal >= 2000:
+    shipping_charge = 0
+else:
+    shipping_charge = 100
+
+final_amount = subtotal + shipping_charge
+
+print("Shipping Charge:", shipping_charge)
+print("Final Amount:", final_amount)
+
+Output:
+
+Shipping Charge: 0
+Final Amount: 2500
+4.11 Practical Implementation
+
+Create this file:
+
+code\01-python-foundations\01-python-fundamentals\04_operators_and_expressions.py
+
+Add the following code:
+
+"""
+Practice file for Python operators and expressions.
+
+NovaMart example:
+Calculating order amounts and validating order information.
+"""
+
+
+# 1. Arithmetic operators
+quantity = 3
+unit_price = 799.50
+
+subtotal = quantity * unit_price
+
+print("Subtotal:", subtotal)
+print("Addition:", subtotal + 100)
+print("Subtraction:", subtotal - 100)
+print("Multiplication:", quantity * unit_price)
+print("Division:", subtotal / quantity)
+print("Floor Division:", 10 // 3)
+print("Remainder:", 10 % 3)
+print("Power:", 2 ** 3)
+
+
+# 2. Comparison operators
+print("\nComparison Operators:")
+print(subtotal == 2398.50)
+print(subtotal != 1000)
+print(subtotal > 2000)
+print(subtotal < 3000)
+print(subtotal >= 2398.50)
+print(subtotal <= 2398.50)
+
+
+# 3. Logical operators
+is_customer_active = True
+is_payment_confirmed = True
+
+can_process_order = (
+    quantity > 0
+    and unit_price > 0
+    and is_customer_active
+    and is_payment_confirmed
+)
+
+print("\nCan Process Order:", can_process_order)
+
+
+# 4. Assignment operators
+processed_orders = 0
+
+processed_orders += 1
+processed_orders += 1
+processed_orders += 1
+
+print("Processed Orders:", processed_orders)
+
+
+# 5. Membership operators
+allowed_statuses = ["Pending", "Processing", "Delivered"]
+
+current_status = "Processing"
+
+print("\nStatus Allowed:", current_status in allowed_statuses)
+print("Status Not Cancelled:", current_status not in ["Cancelled"])
+
+
+# 6. Identity operator
+delivery_date = None
+
+print("Delivery Date Missing:", delivery_date is None)
+
+
+# 7. Discount calculation
+discount_percentage = 10
+discount_amount = subtotal * discount_percentage / 100
+
+amount_after_discount = subtotal - discount_amount
+
+print("\nDiscount Amount:", discount_amount)
+print("Amount After Discount:", amount_after_discount)
+
+
+# 8. Shipping calculation
+if amount_after_discount >= 2000:
+    shipping_charge = 0
+else:
+    shipping_charge = 100
+
+final_amount = amount_after_discount + shipping_charge
+
+print("Shipping Charge:", shipping_charge)
+print("Final Amount:", final_amount)
+
+
+# 9. Order validation
+is_valid_order = (
+    quantity > 0
+    and unit_price > 0
+    and final_amount >= 0
+)
+
+print("Is Valid Order:", is_valid_order)
+4.12 Running the Implementation
+
+From the project root, run:
+
+python code\01-python-foundations\01-python-fundamentals\04_operators_and_expressions.py
+
+Verify that:
+
+Arithmetic operations produce expected values.
+
+Comparison operators return Boolean results.
+
+Logical conditions work correctly.
+
+Assignment operators update values.
+
+Membership operators check allowed statuses.
+
+is None correctly identifies missing values.
+
+Discount and shipping calculations work.
+
+Order validation returns True.
+
+Mistake 1: Using / When Integer Division Is Required
+
+The / operator performs normal division and returns a floating-point number.
+
+items = 10
+boxes = 3
+
+print(items / boxes)
+
+Output:
+
+3.3333333333333335
+
+However, sometimes we only need the number of complete groups.
+
+For example, NovaMart has 10 items and wants to place 3 items in each box. The number of complete boxes is 3.
+
+Use the floor division operator //:
+
+items = 10
+boxes = 3
+
+complete_boxes = items // boxes
+
+print(complete_boxes)
+
+Output:
+
+3
+Difference Between / and //
+
+Operator
+
+	
+
+Purpose
+
+	
+
+Example
+
+	
+
+Result
+
+
+
+
+/
+
+	
+
+Normal division
+
+	
+
+10 / 3
+
+	
+
+3.333...
+
+
+
+
+//
+
+	
+
+Floor division
+
+	
+
+10 // 3
+
+	
+
+3
+
+NovaMart Batch Processing Example
+
+Suppose NovaMart receives 105 records and processes 20 records per batch.
+
+total_records = 105
+batch_size = 20
+
+complete_batches = total_records // batch_size
+remaining_records = total_records % batch_size
+
+print("Complete Batches:", complete_batches)
+print("Remaining Records:", remaining_records)
+
+Output:
+
+Complete Batches: 5
+Remaining Records: 5
+
+Here:
+
+// calculates the number of complete batches.
+
+% calculates the remaining records.
+
+Important Note
+
+Floor division rounds down, not simply toward zero.
+
+print(7 // 2)
+print(-7 // 2)
+
+Output:
+
+3
+-4
+
+For positive values, // often behaves like integer division. For negative values, it rounds toward negative infinity.
+
+Rule: Use / when you need an exact division result. Use // when you need the number of complete groups or batches.
+
+Mistake 2: Forgetting Operator Precedence
+
+Python follows a specific order when evaluating expressions.
+
+result = 10 + 5 * 2
+
+print(result)
+
+Output:
+
+20
+
+Multiplication happens before addition.
+
+If addition should happen first, use parentheses:
+
+result = (10 + 5) * 2
+
+print(result)
+
+Output:
+
+30
+Best Practice
+
+Use parentheses when the intended calculation is not immediately clear.
+
+is_valid_order = (quantity > 0) and (unit_price > 0)
+
+Parentheses improve readability and reduce calculation mistakes.
+
+Mistake 3: Using is Instead of ==
+
+The == operator compares values.
+
+The is operator checks whether two variables refer to the same object.
+
+Incorrect Example
+status = "Delivered"
+
+if status is "Delivered":
+    print("Order delivered")
+
+This should not be used for normal value comparison.
+
+Correct Example
+status = "Delivered"
+
+if status == "Delivered":
+    print("Order delivered")
+
+Output:
+
+Order delivered
+Correct Use of is
+
+Use is when checking for None:
+
+delivery_date = None
+
+if delivery_date is None:
+    print("Delivery date is missing")
+
+Output:
+
+Delivery date is missing
+
+Rule:
+
+Use == to compare values.
+
+Use is to compare object identity.
+
+Use is None to check for None.
+
+Mistake 4: Dividing by Zero
+
+Division by zero causes a ZeroDivisionError.
+
+total_sales = 1000
+number_of_orders = 0
+
+average_order_value = total_sales / number_of_orders
+
+This produces an error:
+
+ZeroDivisionError
+Safer Approach
+total_sales = 1000
+number_of_orders = 0
+
+if number_of_orders > 0:
+    average_order_value = total_sales / number_of_orders
+else:
+    average_order_value = 0
+
+print("Average Order Value:", average_order_value)
+
+Output:
+
+Average Order Value: 0
+Production Consideration
+
+In a data pipeline, the denominator may be zero because:
+
+No records were received.
+
+A filter removed all records.
+
+A file was empty.
+
+A database query returned no rows.
+
+Always validate the denominator before division.
+
+Mistake 5: Allowing Negative Order Values
+
+A negative quantity may produce an incorrect order total.
+
+quantity = -2
+unit_price = 500
+
+total = quantity * unit_price
+
+print(total)
+
+Output:
+
+-1000
+
+The calculation is mathematically valid but does not represent a normal customer order.
+
+Correct Approach
+quantity = -2
+unit_price = 500
+
+if quantity <= 0:
+    print("Invalid quantity")
+else:
+    total = quantity * unit_price
+    print("Order Total:", total)
+
+Output:
+
+Invalid quantity
+Additional Validation
+quantity = 3
+unit_price = 500
+
+if quantity <= 0:
+    print("Quantity must be greater than zero")
+elif unit_price <= 0:
+    print("Unit price must be greater than zero")
+else:
+    total = quantity * unit_price
+    print("Order Total:", total)
+
+Rule: Mathematical operations do not automatically enforce business rules. Add validation explicitly.
+
+Mistake 6: Mixing Strings and Numbers
+
+Python does not allow direct addition between a string and an integer.
+
+quantity = "5"
+price = 100
+
+total = quantity + price
+
+This causes:
+
+TypeError
+Correct Approach
+
+Convert the string into a number:
+
+quantity = "5"
+price = 100
+
+total = int(quantity) * price
+
+print(total)
+
+Output:
+
+500
+Important Difference
+
+String addition performs concatenation:
+
+print("10" + "20")
+
+Output:
+
+1020
+
+Numeric addition performs arithmetic:
+
+print(10 + 20)
+
+Output:
+
+30
+
+Always verify the data type before performing calculations.
+
+Mistake 7: Using Floating-Point Values for Sensitive Currency Calculations
+
+Floating-point numbers may produce unexpected decimal results.
+
+price = 0.1
+tax = 0.2
+
+print(price + tax)
+
+Output may be:
+
+0.30000000000000004
+Simple Solution: round()
+total = round(price + tax, 2)
+
+print(total)
+
+Output:
+
+0.3
+Better Solution: Decimal
+from decimal import Decimal
+
+price = Decimal("0.10")
+tax = Decimal("0.20")
+
+total = price + tax
+
+print(total)
+
+Output:
+
+0.30
+
+For financial systems, use Decimal when exact decimal arithmetic is required.
+
+Mistake 8: Writing Very Complex Conditions
+
+Complex conditions can become difficult to read and debug.
+
+Difficult to Read
+if quantity > 0 and unit_price > 0 and is_customer_active and is_payment_confirmed and order_status != "Cancelled":
+    print("Order can be processed")
+Better Approach
+
+Break the condition into meaningful variables:
+
+has_valid_quantity = quantity > 0
+has_valid_price = unit_price > 0
+customer_is_active = is_customer_active
+payment_is_confirmed = is_payment_confirmed
+order_is_not_cancelled = order_status != "Cancelled"
+
+can_process_order = (
+    has_valid_quantity
+    and has_valid_price
+    and customer_is_active
+    and payment_is_confirmed
+    and order_is_not_cancelled
+)
+
+if can_process_order:
+    print("Order can be processed")
+
+This is easier to understand, test, and maintain.
+
+4.14 Practical NovaMart Order Calculator
+
+NovaMart wants to calculate the final payable amount for an order.
+
+The calculation includes:
+
+Product quantity
+
+Unit price
+
+Subtotal
+
+Discount percentage
+
+Discount amount
+
+Shipping charge
+
+Final amount
+
+Order validation
+
+Example
+quantity = 3
+unit_price = 799.50
+discount_percentage = 10
+
+subtotal = quantity * unit_price
+discount_amount = subtotal * discount_percentage / 100
+amount_after_discount = subtotal - discount_amount
+
+if amount_after_discount >= 2000:
+    shipping_charge = 0
+else:
+    shipping_charge = 100
+
+final_amount = amount_after_discount + shipping_charge
+
+print("Subtotal:", subtotal)
+print("Discount Amount:", discount_amount)
+print("Amount After Discount:", amount_after_discount)
+print("Shipping Charge:", shipping_charge)
+print("Final Amount:", final_amount)
+
+Output:
+
+Subtotal: 2398.5
+Discount Amount: 239.85
+Amount After Discount: 2158.65
+Shipping Charge: 0
+Final Amount: 2158.65
+Adding Validation
+quantity = 3
+unit_price = 799.50
+discount_percentage = 10
+
+if quantity <= 0:
+    print("Invalid quantity")
+elif unit_price <= 0:
+    print("Invalid unit price")
+elif discount_percentage < 0 or discount_percentage > 100:
+    print("Invalid discount percentage")
+else:
+    subtotal = quantity * unit_price
+    discount_amount = subtotal * discount_percentage / 100
+    amount_after_discount = subtotal - discount_amount
+
+    if amount_after_discount >= 2000:
+        shipping_charge = 0
+    else:
+        shipping_charge = 100
+
+    final_amount = amount_after_discount + shipping_charge
+
+    print("Final Amount:", final_amount)
+4.15 Practical Implementation
+
+Create this file:
+
+code\01-python-foundations\01-python-fundamentals\04_operators_and_expressions.py
+
+Add:
+
+"""
+Practice file for Python operators and expressions.
+
+NovaMart example:
+Calculating order amounts and validating order information.
+"""
+
+
+# 1. Arithmetic operators
+quantity = 3
+unit_price = 799.50
+
+subtotal = quantity * unit_price
+
+print("Subtotal:", subtotal)
+print("Addition:", subtotal + 100)
+print("Subtraction:", subtotal - 100)
+print("Multiplication:", quantity * unit_price)
+print("Division:", subtotal / quantity)
+print("Floor Division:", 10 // 3)
+print("Remainder:", 10 % 3)
+print("Power:", 2 ** 3)
+
+
+# 2. Comparison operators
+print("\nComparison Operators:")
+print(subtotal == 2398.50)
+print(subtotal != 1000)
+print(subtotal > 2000)
+print(subtotal < 3000)
+print(subtotal >= 2398.50)
+print(subtotal <= 2398.50)
+
+
+# 3. Logical operators
+is_customer_active = True
+is_payment_confirmed = True
+
+can_process_order = (
+    quantity > 0
+    and unit_price > 0
+    and is_customer_active
+    and is_payment_confirmed
+)
+
+print("\nCan Process Order:", can_process_order)
+
+
+# 4. Assignment operators
+processed_orders = 0
+
+processed_orders += 1
+processed_orders += 1
+processed_orders += 1
+
+print("Processed Orders:", processed_orders)
+
+
+# 5. Membership operators
+allowed_statuses = ["Pending", "Processing", "Delivered"]
+current_status = "Processing"
+
+print("\nStatus Allowed:", current_status in allowed_statuses)
+print("Status Not Cancelled:", current_status not in ["Cancelled"])
+
+
+# 6. Identity operator
+delivery_date = None
+
+print("Delivery Date Missing:", delivery_date is None)
+
+
+# 7. Discount calculation
+discount_percentage = 10
+
+discount_amount = subtotal * discount_percentage / 100
+amount_after_discount = subtotal - discount_amount
+
+print("\nDiscount Amount:", discount_amount)
+print("Amount After Discount:", amount_after_discount)
+
+
+# 8. Shipping calculation
+if amount_after_discount >= 2000:
+    shipping_charge = 0
+else:
+    shipping_charge = 100
+
+final_amount = amount_after_discount + shipping_charge
+
+print("Shipping Charge:", shipping_charge)
+print("Final Amount:", final_amount)
+
+
+# 9. Order validation
+is_valid_order = (
+    quantity > 0
+    and unit_price > 0
+    and final_amount >= 0
+)
+
+print("Is Valid Order:", is_valid_order)
+4.16 Running the Implementation
+
+From the project root, run:
+
+python code\01-python-foundations\01-python-fundamentals\04_operators_and_expressions.py
+
+Check that:
+
+Arithmetic calculations work.
+
+Comparison operators return True or False.
+
+Logical conditions work.
+
+Assignment operators update values.
+
+Membership operators check statuses.
+
+is None works correctly.
+
+Discount and shipping calculations work.
+
+Order validation returns True.
+
+4.17 Testing and Production Considerations
+
+Operators are commonly used in data engineering for:
+
+Data quality checks.
+
+Record validation.
+
+Batch calculations.
+
+Filtering records.
+
+Conditional transformations.
+
+Monitoring thresholds.
+
+Calculating metrics.
+
+Example:
+
+quantity = 3
+unit_price = 799.50
+
+is_valid = quantity > 0 and unit_price > 0
+
+if is_valid:
+    total = quantity * unit_price
+    print("Valid order total:", total)
+else:
+    print("Invalid order data")
+
+Important checks include:
+
+Avoid division by zero.
+
+Validate numeric ranges.
+
+Handle missing values.
+
+Use parentheses for complex expressions.
+
+Use Decimal for sensitive currency calculations.
+
+Keep conditions readable.
+
+Test boundary values such as 0, negative numbers, and empty values.
+
+4.18 Exercises
+Exercise 1: Basic Calculator
+
+Create two numbers and calculate:
+
+Addition
+
+Subtraction
+
+Multiplication
+
+Division
+
+Floor division
+
+Remainder
+
+Power
+
+Exercise 2: Order Validation
+
+Create:
+
+quantity = 4
+unit_price = 250
+
+Check whether both values are greater than zero.
+
+Exercise 3: Discount Calculation
+
+Given:
+
+subtotal = 5000
+discount_percentage = 15
+
+Calculate:
+
+Discount amount
+
+Final amount
+
+Exercise 4: Shipping Rule
+
+If the order amount is greater than or equal to 2000, shipping should be free. Otherwise, shipping should be 100.
+
+Exercise 5: Status Validation
+
+Check whether this status is allowed:
+
+status = "Delivered"
+allowed_statuses = ["Pending", "Processing", "Delivered"]
+Exercise 6: Batch Processing
+
+Given:
+
+total_records = 105
+batch_size = 20
+
+Calculate:
+
+Number of complete batches.
+
+Number of remaining records.
+
+Exercise 7: Average Order Value
+
+Given:
+
+total_sales = 15000
+number_of_orders = 25
+
+Calculate the average order value and safely handle the case where the number of orders is zero.
+
+4.19 Interview Questions
+
+What are operators in Python?
+
+What is the difference between / and //?
+
+What does the modulus operator return?
+
+What is the use of **?
+
+What is the difference between = and ==?
+
+What is the difference between == and is?
+
+What are logical operators?
+
+How does operator precedence work?
+
+What is short-circuit evaluation?
+
+How can you prevent division-by-zero errors?
+
+How are membership operators used in data validation?
+
+Why should complex expressions use parentheses?
+
+How would you validate a positive order quantity?
+
+How would you calculate complete batches and remaining records?
+
+Why should financial calculations be handled carefully with floating-point values?
+
+4.20 Section Summary
+
+In this section, you learned:
+
+What operators and expressions are.
+
+How arithmetic operators perform calculations.
+
+How comparison operators return Boolean results.
+
+How logical operators combine conditions.
+
+How assignment operators update variables.
+
+How membership operators validate values.
+
+How identity operators work with objects and None.
+
+How operator precedence affects calculations.
+
+The difference between expressions and statements.
+
+How to calculate NovaMart order totals.
+
+How to validate order data.
+
+How operators are used in data engineering pipelines.
+
+In the next section, you will learn about Python’s built-in data structures:
+
+Lists
+
+Tuples
+
+Sets
+
+Dictionaries
+
+These structures are essential for handling collections of records and structured data.
+
+4.21 Completion Checklist
+
+Before moving to Section 5, confirm that you have:
+
+Added the remaining Common Mistakes.
+Added the NovaMart order calculator.
+Created 04_operators_and_expressions.py.
+Run the implementation successfully.
+Practiced arithmetic operators.
+Practiced comparison and logical operators.
+Practiced membership and identity operators.
+Practiced operator precedence.
+Completed the exercises.
+Reviewed the interview questions.
+Updated documentation if required.
+Committed and pushed the changes.
